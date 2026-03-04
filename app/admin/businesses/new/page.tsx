@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
 
-const businessTypes = ['restaurant', 'salon', 'clinic', 'consultancy', 'hotel'] as const
+const businessTypes = ['restaurant', 'cafe', 'bar', 'lounge', 'salon', 'clinic', 'consultancy', 'hotel'] as const
 const languages = ['en', 'fr', 'ar'] as const
 
 function normalizeSlug(value: string) {

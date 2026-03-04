@@ -190,7 +190,7 @@ export default async function DashboardSettingsPage() {
         <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-loom-muted">
           <li>{t('heroGalleryItem')}</li>
           <li>{t('aboutContactItem')}</li>
-          <li>{data.type === 'restaurant' ? t('offeringsItemMenu') : t('offeringsItemServices')}</li>
+          <li>{data.type === 'restaurant' || data.type === 'cafe' || data.type === 'bar' || data.type === 'lounge' ? t('offeringsItemMenu') : t('offeringsItemServices')}</li>
           <li>{t('teamItem')}</li>
         </ul>
         <div className="mt-4 flex flex-wrap gap-2">

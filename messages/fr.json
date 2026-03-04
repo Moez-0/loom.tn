@@ -232,6 +232,9 @@
   },
   "public": {
     "restaurantLabel": "Restaurant",
+    "cafeLabel": "Café",
+    "barLabel": "Bar",
+    "loungeLabel": "Lounge",
     "salonLabel": "Salon",
     "clinicLabel": "Clinique",
     "consultancyLabel": "Cabinet",

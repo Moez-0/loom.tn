@@ -186,7 +186,7 @@ export default async function Home() {
                   <Image
                     alt={t('workflow.step1.title')}
                     className="h-[260px] w-full object-cover object-top"
-                    src="/dashboard_preview.png"
+                    src="/dashboard_website_preview.png"
                     width={1600}
                     height={900}
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -210,14 +210,15 @@ export default async function Home() {
                 <button className="rounded-md bg-[#0067b0] px-6 py-2 text-sm font-bold text-white">{t('workflow.learnMore')}</button>
               </div>
               <div className="glass-card w-full max-w-xl rounded-xl border border-white/5 p-4 shadow-2xl">
-                <div className="rounded-lg border border-white/10 bg-[#0f0f0f] p-4">
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#0067b0]">{t('workflow.goLive.title')}</p>
-                  <div className="space-y-2">
-                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">1. {t('workflow.goLive.item1')}</div>
-                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">2. {t('workflow.goLive.item2')}</div>
-                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">3. {t('workflow.goLive.item3')}</div>
-                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">4. {t('workflow.goLive.item4')}</div>
-                  </div>
+                <div className="overflow-hidden rounded-lg border border-white/10">
+                  <Image
+                    alt={t('workflow.goLive.title')}
+                    className="h-[260px] w-full object-cover object-top"
+                    src="/dashboard_reservations_preview.png"
+                    width={1600}
+                    height={900}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
                 <div className="mt-3 grid grid-cols-3 gap-2">
                   <div className="h-2 rounded bg-[#0067b0]/70" />

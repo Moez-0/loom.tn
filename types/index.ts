@@ -1,4 +1,4 @@
-export type BusinessType = 'restaurant' | 'salon' | 'clinic' | 'consultancy' | 'hotel'
+export type BusinessType = 'restaurant' | 'cafe' | 'bar' | 'lounge' | 'salon' | 'clinic' | 'consultancy' | 'hotel'
 export type Language = 'en' | 'fr' | 'ar'
 
 export interface Business {

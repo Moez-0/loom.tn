@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
 
-const businessTypeValues = ['restaurant', 'salon', 'clinic', 'consultancy', 'hotel'] as const
+const businessTypeValues = ['restaurant', 'cafe', 'bar', 'lounge', 'salon', 'clinic', 'consultancy', 'hotel'] as const
 const languageValues = ['en', 'fr', 'ar'] as const
 
 const createBusinessSchema = z.object({

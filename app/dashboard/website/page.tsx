@@ -193,7 +193,7 @@ export default async function DashboardWebsitePage({
 
   const effective = config ?? getDefaultPublicSiteConfig()
   const offeringsLabel =
-    business.type === 'restaurant'
+    business.type === 'restaurant' || business.type === 'cafe' || business.type === 'bar' || business.type === 'lounge'
       ? tPublic('menuLabel')
       : business.type === 'hotel'
         ? tPublic('roomsLabel')

@@ -5,7 +5,15 @@ import type { PublicSiteSectionKey } from '@/types/public-site'
 import type { TemplateProps } from '@/types/template'
 
 type BusinessWebsiteProps = TemplateProps & {
-  typeLabelKey: 'restaurantLabel' | 'salonLabel' | 'clinicLabel' | 'consultancyLabel' | 'hotelLabel'
+  typeLabelKey:
+    | 'restaurantLabel'
+    | 'cafeLabel'
+    | 'barLabel'
+    | 'loungeLabel'
+    | 'salonLabel'
+    | 'clinicLabel'
+    | 'consultancyLabel'
+    | 'hotelLabel'
   offeringsTitleKey: 'menuLabel' | 'servicesLabel' | 'expertiseLabel' | 'roomsLabel'
 }
 

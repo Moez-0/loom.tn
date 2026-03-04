@@ -11,6 +11,9 @@ const hotel = dynamic(() => import('@/components/templates/hotel'))
 
 export const templateMap: Record<BusinessType, ComponentType<TemplateProps>> = {
   restaurant,
+  cafe: restaurant,
+  bar: restaurant,
+  lounge: restaurant,
   salon,
   clinic,
   consultancy,

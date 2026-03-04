@@ -232,6 +232,9 @@
   },
   "public": {
     "restaurantLabel": "مطعم",
+    "cafeLabel": "مقهى",
+    "barLabel": "بار",
+    "loungeLabel": "لاونج",
     "salonLabel": "صالون",
     "clinicLabel": "عيادة",
     "consultancyLabel": "استشارات",
