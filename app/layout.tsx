@@ -6,6 +6,14 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Loom',
   description: 'Reservation infrastructure for modern businesses',
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: ['/favicon.svg'],
+    apple: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+  },
 }
 
 export default async function RootLayout({
