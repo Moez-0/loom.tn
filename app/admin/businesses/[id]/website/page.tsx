@@ -104,6 +104,8 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
       return
     }
 
+    const currentConfig = (await getPublicSiteConfig(admin, businessId)) ?? getDefaultPublicSiteConfig()
+
     await savePublicSiteConfig(admin, businessId, {
       show_gallery: formData.get('show_gallery') === 'on',
       show_team: formData.get('show_team') === 'on',
@@ -114,6 +116,7 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
       tagline: String(formData.get('tagline') ?? '').trim() || null,
       hero_cta_label: String(formData.get('hero_cta_label') ?? '').trim() || null,
       secondary_cta_label: String(formData.get('secondary_cta_label') ?? '').trim() || null,
+      editor: currentConfig.editor,
     })
 
     revalidatePath(nextPath)
