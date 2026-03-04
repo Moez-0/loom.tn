@@ -8,9 +8,10 @@ import { createClient } from '@/lib/supabase/client'
 
 type LoginFormProps = {
   nextPath: string
+  verified?: boolean
 }
 
-export default function LoginForm({ nextPath }: LoginFormProps) {
+export default function LoginForm({ nextPath, verified = false }: LoginFormProps) {
   const router = useRouter()
   const t = useTranslations('auth')
   const [email, setEmail] = useState('')
@@ -41,6 +42,12 @@ export default function LoginForm({ nextPath }: LoginFormProps) {
 
   return (
     <form className="mt-5 space-y-3" onSubmit={handleSubmit}>
+      {verified ? (
+        <div className="rounded-md border border-emerald-400/30 bg-emerald-500/10 p-3">
+          <p className="text-sm text-emerald-300">{t('accountVerified')}</p>
+        </div>
+      ) : null}
+
       <div>
         <label className="mb-2 block text-xs font-medium uppercase tracking-widest text-[#888888]" htmlFor="email">
           {t('email')}

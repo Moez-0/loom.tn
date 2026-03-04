@@ -10,7 +10,7 @@ type CallbackPageProps = {
 
 export default async function CallbackPage({ searchParams }: CallbackPageProps) {
   const code = searchParams.code
-  const next = searchParams.next || '/auth/redirect'
+  const next = searchParams.next?.startsWith('/') ? searchParams.next : '/auth/login?verified=1'
 
   if (!code) {
     redirect('/auth/login?error=missing_code')

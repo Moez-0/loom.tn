@@ -7,6 +7,7 @@ import AuthMobileMenu from '@/components/auth/AuthMobileMenu'
 type LoginPageProps = {
   searchParams: {
     next?: string
+    verified?: string
   }
 }
 
@@ -15,6 +16,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const tLanding = await getTranslations('landing')
   const locale = (await getLocale()) as 'en' | 'fr' | 'ar'
   const nextPath = searchParams.next || '/auth/redirect'
+  const isVerified = searchParams.verified === '1'
 
   return (
     <main className="loom-landing grid-bg min-h-screen bg-[#0b0b0b] px-4 text-white sm:px-6">
@@ -58,7 +60,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           </h1>
           <p className="mt-2 text-sm text-[#888888]">{t('subtitle')}</p>
 
-          <LoginForm nextPath={nextPath} />
+          <LoginForm nextPath={nextPath} verified={isVerified} />
         </div>
       </div>
     </main>

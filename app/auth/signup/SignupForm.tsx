@@ -21,6 +21,25 @@ export default function SignupForm({ nextPath }: SignupFormProps) {
   const [success, setSuccess] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
 
+  function getAuthRedirectBaseUrl() {
+    const appDomain = process.env.NEXT_PUBLIC_APP_DOMAIN?.trim()
+    const appUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim()
+
+    if (typeof window !== 'undefined' && window.location.origin) {
+      return window.location.origin
+    }
+
+    if (appUrl) {
+      return appUrl
+    }
+
+    if (appDomain) {
+      return `https://${appDomain}`
+    }
+
+    return 'http://localhost:3000'
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setSubmitting(true)
@@ -34,6 +53,9 @@ export default function SignupForm({ nextPath }: SignupFormProps) {
     }
 
     const supabase = createClient()
+    const callbackUrl = new URL('/auth/callback', getAuthRedirectBaseUrl())
+    callbackUrl.searchParams.set('next', '/auth/login?verified=1')
+
     const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
@@ -41,6 +63,7 @@ export default function SignupForm({ nextPath }: SignupFormProps) {
         data: {
           full_name: fullName.trim() || null,
         },
+        emailRedirectTo: callbackUrl.toString(),
       },
     })
 
@@ -56,7 +79,7 @@ export default function SignupForm({ nextPath }: SignupFormProps) {
       return
     }
 
-    setSuccess(t('signupSuccess'))
+    setSuccess(t('signupCheckEmail'))
     setSubmitting(false)
   }
 
@@ -123,7 +146,12 @@ export default function SignupForm({ nextPath }: SignupFormProps) {
       </div>
 
       {error ? <p className="text-sm text-red-400">{error}</p> : null}
-      {success ? <p className="text-sm text-emerald-400">{success}</p> : null}
+      {success ? (
+        <div className="rounded-md border border-emerald-400/30 bg-emerald-500/10 p-3">
+          <p className="text-sm text-emerald-300">{success}</p>
+          <p className="mt-1 text-xs text-emerald-200">{t('signupCheckEmailHint')}</p>
+        </div>
+      ) : null}
 
       <button
         type="submit"
