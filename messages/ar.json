@@ -664,7 +664,6 @@
       "email": "البريد الإلكتروني",
       "whatsapp": "واتساب",
       "address": "العنوان",
-      "subscription": "الاشتراك",
       "logoUrl": "رابط الشعار",
       "uploadLogo": "رفع الشعار",
       "coverUrl": "رابط صورة الغلاف",
@@ -674,12 +673,6 @@
       "slotDuration": "مدة الفترة (دقائق)",
       "maxCovers": "أقصى عدد لكل فترة",
       "primaryColor": "اللون الأساسي",
-    "trial": "تجريبي",
-    "subscription": {
-      "active": "نشط",
-      "past_due": "متأخر السداد",
-      "cancelled": "ملغي"
-    },
       "secondaryColor": "اللون الثانوي"
     }
   },
