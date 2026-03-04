@@ -1,0 +1,556 @@
+{
+  "common": {
+    "language": "Language",
+    "en": "EN",
+    "fr": "FR",
+    "ar": "AR"
+  },
+  "landing": {
+    "nav": {
+      "product": "Product",
+      "solutions": "Solutions",
+      "pricing": "Pricing",
+      "resources": "Resources",
+      "contact": "Contact",
+      "login": "Login",
+      "contactSales": "Contact for Full Usage",
+      "startTrial": "Start Free Trial"
+    },
+    "hero": {
+      "titlePrefix": "The professional engine for",
+      "titleAccent": "booking & landing pages.",
+      "subtitle": "The complete infrastructure for service providers in Tunisia to manage bookings, staff, and customer data. Build your professional online presence without the complexity.",
+      "contactSales": "Contact for Full Usage",
+      "startTrial": "Start Free Trial",
+      "contactTeam": "Contact Loom Team",
+      "flowTitle": "Owner onboarding flow",
+      "flowText": "Step 1: Create your owner account with Start Free Trial. Step 2: Contact Loom team to create your business and link it to your account for full usage.",
+      "bookDemo": "Book a Demo",
+      "imageAlt": "Dashboard Preview"
+    },
+    "trusted": {
+      "title": "Trusted by business owners across Tunisia"
+    },
+    "dashboardPreview": {
+      "title": "Reservation operations, decoded",
+      "subtitle": "Loom helps service businesses run reservations clearly: schedule slots, manage availability, and track booking flow in one place.",
+      "tabs": {
+        "overview": "Overview",
+        "analytics": "Analytics",
+        "staff": "Staff",
+        "calendar": "Calendar"
+      },
+      "month": "April 2026",
+      "stats": {
+        "totalBookings": {
+          "label": "Total Bookings",
+          "note": "+12% from last month"
+        },
+        "activeVisitors": {
+          "label": "Active Visitors",
+          "note": "+8% from last month"
+        },
+        "conversionRate": {
+          "label": "Conversion Rate",
+          "note": "-0.5% from last month"
+        },
+        "avgTime": {
+          "label": "Avg. Booking Time",
+          "note": "Faster than average"
+        }
+      },
+      "table": {
+        "customer": "Customer",
+        "status": "Status",
+        "date": "Date",
+        "partySize": "Party Size",
+        "guests": "guests",
+        "confirmed": "Confirmed",
+        "pending": "Pending"
+      }
+    },
+    "pillars": {
+      "website": {
+        "title": "Public Website + Booking",
+        "text": "A professional frontend for your customers to discover your services and book instantly from any device."
+      },
+      "operations": {
+        "title": "Operations Dashboard",
+        "text": "Centralize your reservation flow. Manage staff schedules, availability, and booking performance analytics in one place."
+      },
+      "automations": {
+        "title": "Automations Included",
+        "text": "Reduce manual work with automated SMS reminders, email confirmations, and smart waitlist management."
+      }
+    },
+    "workflow": {
+      "learnMore": "Learn More",
+      "step1": {
+        "label": "Step 01",
+        "title": "Set up your profile",
+        "text": "Input your business details, services, and staff availability. Our intuitive wizard guides you through the process in minutes."
+      },
+      "step2": {
+        "label": "Step 02",
+        "title": "Go live in hours",
+        "text": "Connect your custom domain and start accepting bookings immediately. Loom handles the hosting and security for you."
+      }
+    },
+    "metrics": {
+      "description": "Track reservation performance with clearer workflows, fewer manual follow-ups, and faster confirmation cycles."
+    },
+    "pricing": {
+      "title": "Pricing for our services",
+      "subtitle": "Simple reservation infrastructure pricing built for growing service businesses in Tunisia.",
+      "professional": {
+        "title": "Professional Plan",
+        "text": "Built for serious owners who want to scale their reservation business without the technical headache.",
+        "features": {
+          "unlimited": "Unlimited Bookings",
+          "domain": "Custom Domain Integration",
+          "analytics": "Advanced Analytics",
+          "support": "Priority Support (Arabic & French)"
+        }
+      },
+      "monthlyLabel": "Monthly Plan",
+      "perSub": "DT/sub",
+      "cardText": "Everything you need to run reservations professionally: booking page, calendar control, and team workflows.",
+      "contactForFullUsage": "Contact for Full Usage",
+      "activationNote": "After signup, Loom team activates your business and links it to your owner account.",
+      "getStartedNow": "Get Started Now"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": {
+        "domain": {
+          "q": "Can I use my own domain name?",
+          "a": "Yes, you can connect any custom domain you own. Our team can also help you with the DNS configuration if needed."
+        },
+        "languages": {
+          "q": "Does Loom support Arabic and French?",
+          "a": "Absolutely. Both your public booking site and the internal dashboard are fully localized for Arabic, French, and English users in Tunisia."
+        },
+        "payments": {
+          "q": "How do I receive payments?",
+          "a": "Loom supports scheduling workflows and 'Pay at Venue' coordination. All booking activity is tracked in your dashboard for operational clarity."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready for full Loom usage for your business?",
+      "text": "Contact our team to activate your full setup, onboarding, and production rollout for your business operations.",
+      "processNote": "Business owners first create an account, then Loom creates and links their business workspace.",
+      "button": "Contact Sales Team"
+    },
+    "contactBlocks": {
+      "emailLabel": "Business Email",
+      "phoneLabel": "Direct Phone",
+      "whatsappLabel": "WhatsApp"
+    },
+    "footer": {
+      "description": "Professional Booking and Website Infrastructure for Service-Based Businesses in Tunisia.",
+      "login": "Login",
+      "company": {
+        "title": "Company",
+        "about": "About Us",
+        "rules": "Rules",
+        "jobs": "Open Positions",
+        "support": "Support",
+        "contact": "Contact"
+      },
+      "contact": {
+        "title": "Contact",
+        "email": "Email",
+        "phone": "Phone",
+        "location": "Location",
+        "webinars": "Webinars",
+        "video": "Video"
+      },
+      "info": {
+        "title": "Contact Info",
+        "newImage": "New Image",
+        "trends": "Search Trends",
+        "blog": "Open Blog",
+        "terms": "Terms & Condition",
+        "license": "License Agreements",
+        "privacy": "Privacy Policy"
+      },
+      "copyright": "© 2026 Loom. All Rights Reserved."
+    }
+  },
+  "public": {
+    "restaurantLabel": "Restaurant",
+    "salonLabel": "Salon",
+    "clinicLabel": "Clinic",
+    "consultancyLabel": "Consultancy",
+    "hotelLabel": "Hotel",
+    "reserveCta": "Reserve",
+    "aboutLabel": "About",
+    "servicesLabel": "Services",
+    "teamLabel": "Team",
+    "doctorsLabel": "Doctors",
+    "processLabel": "Process",
+    "roomsLabel": "Rooms",
+    "amenitiesLabel": "Amenities",
+    "aboutFallback": "A considered dining experience with modern reservation flow.",
+    "hoursLabel": "Hours",
+    "dayLabel": "Day",
+    "openLabel": "Open",
+    "closeLabel": "Close",
+    "contactLabel": "Contact",
+    "addressFallback": "Address coming soon",
+    "phoneFallback": "Phone coming soon",
+    "emailFallback": "Email coming soon",
+    "whatsappLabel": "WhatsApp",
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    }
+  },
+  "auth": {
+    "sectionLabel": "Authentication",
+    "title": "Sign In",
+    "subtitle": "Owner and admin access.",
+    "signupTitle": "Start Free Trial",
+    "signupSubtitle": "Create your owner account and launch your trial.",
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "submit": "Sign In",
+    "submitting": "Signing in...",
+    "signupSubmit": "Create Account",
+    "signupSubmitting": "Creating account...",
+    "passwordMismatch": "Passwords do not match.",
+    "signupSuccess": "Account created. Check your email to confirm your account if required.",
+    "ownerFlowTitle": "Owner onboarding flow",
+    "ownerFlowText": "Create your owner account first. Then contact Loom team to create your business and link it to this account for full usage.",
+    "ownerFlowContact": "Contact Loom team for business linking",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "signIn": "Sign in"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "businessDashboard": "Business Dashboard",
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "calendar": "Calendar",
+    "reservations": "Reservations",
+    "staff": "Staff",
+    "services": "Services",
+    "billing": "Billing",
+    "settings": "Settings",
+    "subscriptionLabel": "Subscription",
+    "freeTrialBadge": "Free Trial",
+    "trialEndsTodayBadge": "Ends today",
+    "trialDaysLeftBadge": "{days} days left",
+    "planStatus": "Plan Status",
+    "trialStarted": "Trial Started",
+    "trialEnds": "Trial Ends",
+    "daysLeft": "Days Left",
+    "requestContract": "Request Contract",
+    "contactSupport": "Contact Support",
+    "billingLoadError": "Billing details could not be loaded.",
+    "fullUseNotice": "Your free trial lasts 2 days. To continue full usage after trial, contact the Loom team to finalize your contract and payment.",
+    "logout": "Logout",
+    "today": "Today",
+    "thisWeek": "This Week",
+    "total": "Total",
+    "viewReservations": "View Reservations",
+    "newReservation": "New Reservation",
+    "backToReservations": "Back to Reservations",
+    "manualCreateError": "Could not create reservation. Check fields and try again.",
+    "noBusiness": "No business is linked to this user yet.",
+    "reservationsLoadError": "Failed to load reservations",
+    "reservationsEmpty": "No reservations yet.",
+    "table": {
+      "date": "Date",
+      "time": "Time",
+      "guest": "Guest",
+      "party": "Party",
+      "source": "Source",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "no_show": "No Show",
+      "completed": "Completed"
+    },
+    "source": {
+      "online": "Online",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "walk_in": "Walk In"
+    },
+    "actions": {
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "noShow": "No Show"
+    },
+    "manualForm": {
+      "name": "Guest Name",
+      "phone": "Phone",
+      "email": "Email (optional)",
+      "date": "Date",
+      "time": "Time",
+      "partySize": "Party Size",
+      "source": "Source",
+      "notes": "Notes",
+      "submit": "Create Reservation"
+    },
+    "filters": {
+      "search": "Search",
+      "searchPlaceholder": "Name or phone",
+      "status": "Status",
+      "allStatuses": "All statuses",
+      "date": "Date",
+      "apply": "Apply",
+      "reset": "Reset",
+      "export": "Export CSV"
+    },
+    "analyticsCards": {
+      "total14d": "Reservations (14d)",
+      "confirmationRate": "Confirmation Rate",
+      "noShowRate": "No-Show Rate"
+    },
+    "analyticsSections": {
+      "byStatus": "By Status",
+      "bySource": "By Source",
+      "dailyTrend": "Daily Trend (14 days)"
+    },
+    "calendarUpcoming": "Upcoming",
+    "calendarPast": "Past",
+    "calendarEmpty": "No upcoming reservations found.",
+    "calendarPastEmpty": "No past reservations found.",
+    "calendarReservations": "reservations",
+    "calendarGuests": "guests"
+  },
+  "admin": {
+    "admin": "Admin",
+    "new": "New",
+    "clients": "Clients",
+    "users": "Users",
+    "analytics": "Analytics",
+    "calendar": "Calendar",
+    "usersTitle": "User Access",
+    "syncUsers": "Sync Users",
+    "usersEmpty": "No users found yet.",
+    "usersUnassigned": "No business assigned",
+    "usersSave": "Save",
+    "businesses": "Businesses",
+    "addBusiness": "Add Business",
+    "addNewBusiness": "Add New Business",
+    "editBusiness": "Edit Business",
+    "saveBusiness": "Save Changes",
+    "backToBusinesses": "Back to Businesses",
+    "updateError": "Could not update business. Check fields and try again.",
+    "updateSuccess": "Business updated successfully.",
+    "createBusiness": "Create Business",
+    "createError": "Could not create business. Check fields and try again.",
+    "loadError": "Failed to load businesses",
+    "empty": "No businesses yet.",
+    "active": "Active",
+    "inactive": "Inactive",
+    "logout": "Logout",
+    "website": "Website",
+    "publicLink": "Public Link",
+    "published": "Published",
+    "unpublished": "Unpublished",
+    "cancel": "Cancel",
+    "table": {
+      "name": "Name",
+      "slug": "Slug",
+      "website": "Website",
+      "type": "Type",
+      "lang": "Lang",
+      "status": "Status",
+      "subscription": "Subscription",
+      "created": "Created"
+    },
+    "trial": "Trial",
+    "subscription": {
+      "active": "Active",
+      "past_due": "Past due",
+      "cancelled": "Cancelled"
+    },
+    "viewSite": "Open Site",
+    "form": {
+      "businessName": "Business Name",
+      "slug": "Slug",
+      "customDomain": "Custom Domain",
+      "businessType": "Business Type",
+      "language": "Language",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "description": "Description",
+      "openingTime": "Opening Time",
+      "closingTime": "Closing Time",
+      "slotDuration": "Slot Duration (minutes)",
+      "maxCovers": "Max Covers Per Slot"
+    },
+    "usersTable": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "business": "Business",
+      "actions": "Actions"
+    },
+    "roles": {
+      "superadmin": "Superadmin",
+      "owner": "Owner",
+      "staff": "Staff"
+    },
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "no_show": "No Show",
+      "completed": "Completed"
+    },
+    "source": {
+      "online": "Online",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "walk_in": "Walk In"
+    },
+    "analyticsCards": {
+      "businesses": "Businesses",
+      "activeBusinesses": "Active Businesses",
+      "trialing": "Trialing",
+      "reservations30d": "Reservations (30d)",
+      "confirmedRate": "Confirmed Rate"
+    },
+    "analyticsSections": {
+      "loadByBusiness": "Reservation Load by Business",
+      "empty": "No reservation activity in the selected window."
+    }
+    ,"calendarEmpty": "No upcoming reservations found.",
+    "calendarReservations": "reservations",
+    "calendarGuests": "guests"
+  },
+  "staff": {
+    "dashboard": "Dashboard",
+    "title": "Staff",
+    "addLabel": "Add Staff Member",
+    "noBusiness": "No business is linked to this user yet.",
+    "empty": "No staff members yet.",
+    "active": "Active",
+    "inactive": "Inactive",
+    "form": {
+      "name": "Name",
+      "role": "Role",
+      "avatarUrl": "Avatar URL"
+    },
+    "table": {
+      "name": "Name",
+      "role": "Role",
+      "avatarUrl": "Avatar URL",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "actions": {
+      "add": "Add",
+      "save": "Save",
+      "enable": "Enable",
+      "disable": "Disable"
+    }
+  },
+  "services": {
+    "dashboard": "Dashboard",
+    "title": "Services",
+    "addLabel": "Add Service",
+    "noBusiness": "No business is linked to this user yet.",
+    "empty": "No services yet.",
+    "active": "Active",
+    "inactive": "Inactive",
+    "form": {
+      "name": "Service name",
+      "description": "Description",
+      "duration": "Duration (min)",
+      "price": "Price"
+    },
+    "table": {
+      "service": "Service",
+      "duration": "Duration",
+      "price": "Price",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "actions": {
+      "add": "Add",
+      "save": "Save",
+      "enable": "Enable",
+      "disable": "Disable"
+    }
+  },
+  "settings": {
+    "dashboard": "Dashboard",
+    "title": "Settings",
+    "save": "Save Settings",
+    "noBusiness": "No business is linked to this user yet.",
+    "loadError": "Business settings could not be loaded.",
+    "form": {
+      "businessName": "Business Name",
+      "phone": "Phone",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "address": "Address",
+      "description": "Description",
+      "logoUrl": "Logo URL",
+      "uploadLogo": "Upload Logo",
+      "coverUrl": "Cover Image URL",
+      "uploadCover": "Upload Cover",
+      "openingTime": "Opening Time",
+      "closingTime": "Closing Time",
+      "slotDuration": "Slot Duration (minutes)",
+      "maxCovers": "Max Covers Per Slot",
+      "primaryColor": "Primary Color",
+      "secondaryColor": "Secondary Color"
+    }
+  },
+  "booking": {
+    "title": "Make a Reservation",
+    "reservationLabel": "Reservation",
+    "backToSite": "Back to Site",
+    "bookAnother": "Book Another",
+    "bookDirectly": "Book directly with {name}.",
+    "reservationHelp": "Complete your reservation details",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "emailOptional": "Email Address (optional)",
+    "service": "Service",
+    "staff": "Preferred Staff",
+    "staffOptional": "No preference",
+    "date": "Date",
+    "checkOut": "Check-out Date",
+    "time": "Time",
+    "partySize": "Number of Guests",
+    "notes": "Special Requests",
+    "submit": "Confirm Reservation",
+    "submitting": "Confirming...",
+    "success": "Reservation Confirmed",
+    "successMessage": "You will receive a confirmation shortly.",
+    "noSlots": "No availability for this date.",
+    "loadingSlots": "Loading available times...",
+    "errors": {
+      "nameRequired": "Name is required",
+      "phoneRequired": "Phone is required",
+      "invalidEmail": "Invalid email",
+      "dateRequired": "Date is required",
+      "timeRequired": "Time is required",
+      "loadSlots": "Could not load available times.",
+      "submitFailed": "Could not submit reservation."
+    }
+  }
+}

@@ -1,0 +1,572 @@
+{
+  "common": {
+    "language": "اللغة",
+    "en": "EN",
+    "fr": "FR",
+    "ar": "AR"
+  },
+  "landing": {
+    "nav": {
+      "product": "المنتج",
+      "solutions": "الحلول",
+      "pricing": "الأسعار",
+      "resources": "الموارد",
+      "contact": "تواصل",
+      "login": "تسجيل الدخول",
+      "contactSales": "تواصل للاستخدام الكامل",
+      "startTrial": "ابدأ التجربة المجانية"
+    },
+    "hero": {
+      "titlePrefix": "المحرّك الاحترافي لـ",
+      "titleAccent": "الحجوزات وصفحات الهبوط.",
+      "subtitle": "البنية التحتية الكاملة لمزوّدي الخدمات في تونس لإدارة الحجوزات والموظفين وبيانات العملاء. أنشئ حضورك الرقمي بسهولة.",
+      "contactSales": "تواصل للاستخدام الكامل",
+      "startTrial": "ابدأ التجربة المجانية",
+      "contactTeam": "تواصل مع فريق Loom",
+      "flowTitle": "مسار انضمام مالك النشاط",
+      "flowText": "الخطوة 1: أنشئ حساب المالك عبر زر ابدأ التجربة المجانية. الخطوة 2: تواصل مع فريق Loom لإنشاء النشاط وربطه بحسابك للاستخدام الكامل.",
+      "bookDemo": "احجز عرضاً",
+      "imageAlt": "معاينة لوحة التحكم"
+    },
+    "trusted": {
+      "title": "موثوق من أصحاب الأعمال في كل تونس"
+    },
+    "dashboardPreview": {
+      "title": "تشغيل الحجوزات بشكل أوضح",
+      "subtitle": "يساعد Loom شركات الخدمات على إدارة الحجوزات بوضوح: تنظيم المواعيد، إدارة التوفر، ومتابعة الطلبات من مكان واحد.",
+      "tabs": {
+        "overview": "نظرة عامة",
+        "analytics": "التحليلات",
+        "staff": "الموظفون",
+        "calendar": "التقويم"
+      },
+      "month": "أفريل 2026",
+      "stats": {
+        "totalBookings": {
+          "label": "إجمالي الحجوزات",
+          "note": "+12% مقارنة بالشهر الماضي"
+        },
+        "activeVisitors": {
+          "label": "الزوّار النشطون",
+          "note": "+8% مقارنة بالشهر الماضي"
+        },
+        "conversionRate": {
+          "label": "معدل التحويل",
+          "note": "-0.5% مقارنة بالشهر الماضي"
+        },
+        "avgTime": {
+          "label": "متوسط وقت الحجز",
+          "note": "أسرع من المتوسط"
+        }
+      },
+      "table": {
+        "customer": "العميل",
+        "status": "الحالة",
+        "date": "التاريخ",
+        "partySize": "عدد الأشخاص",
+        "guests": "أشخاص",
+        "confirmed": "مؤكد",
+        "pending": "قيد الانتظار"
+      }
+    },
+    "pillars": {
+      "website": {
+        "title": "موقع عام + حجز",
+        "text": "واجهة احترافية لعملائك لاكتشاف خدماتك والحجز فوراً من أي جهاز."
+      },
+      "operations": {
+        "title": "لوحة تشغيل العمليات",
+        "text": "وحّد تدفق الحجوزات. أدِر جداول الموظفين والتوفر وتحليلات أداء الحجوزات من مكان واحد."
+      },
+      "automations": {
+        "title": "أتمتة مدمجة",
+        "text": "قلّل العمل اليدوي عبر رسائل التذكير SMS وتأكيدات البريد وإدارة ذكية لقائمة الانتظار."
+      }
+    },
+    "workflow": {
+      "learnMore": "اعرف أكثر",
+      "step1": {
+        "label": "الخطوة 01",
+        "title": "إعداد ملفك",
+        "text": "أدخل بيانات نشاطك وخدماتك وتوفر الموظفين. المعالج الذكي يساعدك خلال دقائق."
+      },
+      "step2": {
+        "label": "الخطوة 02",
+        "title": "انطلق خلال ساعات",
+        "text": "اربط نطاقك الخاص وابدأ استقبال الحجوزات فوراً. Loom يتكفل بالاستضافة والأمان."
+      }
+    },
+    "metrics": {
+      "description": "تابع أداء الحجوزات عبر سير عمل أوضح، ومتابعة يدوية أقل، ودورات تأكيد أسرع."
+    },
+    "pricing": {
+      "title": "أسعار خدماتنا",
+      "subtitle": "تسعير بسيط لبنية إدارة الحجوزات مخصص لشركات الخدمات المتنامية في تونس.",
+      "professional": {
+        "title": "الخطة الاحترافية",
+        "text": "مخصّصة لأصحاب الأعمال الجادّين الذين يريدون التوسع دون تعقيدات تقنية.",
+        "features": {
+          "unlimited": "حجوزات غير محدودة",
+          "domain": "ربط نطاق مخصص",
+          "analytics": "تحليلات متقدمة",
+          "support": "دعم أولوية (عربي وفرنسي)"
+        }
+      },
+      "monthlyLabel": "خطة شهرية",
+      "perSub": "د.ت/اشتراك",
+      "cardText": "كل ما تحتاجه لإدارة الحجوزات باحتراف: صفحة حجز، تحكم في التقويم، وسير عمل للفريق.",
+      "contactForFullUsage": "تواصل للاستخدام الكامل",
+      "activationNote": "بعد التسجيل، يقوم فريق Loom بتفعيل نشاطك وربطه بحساب المالك.",
+      "getStartedNow": "ابدأ الآن"
+    },
+    "faq": {
+      "title": "الأسئلة الشائعة",
+      "items": {
+        "domain": {
+          "q": "هل يمكنني استخدام نطاقي الخاص؟",
+          "a": "نعم، يمكنك ربط أي نطاق تملكه. ويمكن لفريقنا مساعدتك في إعداد DNS عند الحاجة."
+        },
+        "languages": {
+          "q": "هل يدعم Loom العربية والفرنسية؟",
+          "a": "بالتأكيد. موقع الحجز ولوحة التحكم الداخلية متاحان بالكامل بالعربية والفرنسية والإنجليزية في تونس."
+        },
+        "payments": {
+          "q": "كيف أستقبل المدفوعات؟",
+          "a": "Loom يدعم سير عمل الحجوزات والتنسيق بخيار الدفع في المكان، مع تتبع كامل للنشاط داخل لوحة التحكم."
+        }
+      }
+    },
+    "cta": {
+      "title": "جاهز للاستخدام الكامل لـ Loom في نشاطك؟",
+      "text": "تواصل مع فريقنا لتفعيل الإعداد الكامل، والتأهيل، والإطلاق الفعلي لتشغيل نشاطك.",
+      "processNote": "مالك النشاط ينشئ الحساب أولاً، ثم Loom ينشئ مساحة النشاط ويربطها بالحساب.",
+      "button": "تواصل مع فريق المبيعات"
+    },
+    "contactBlocks": {
+      "emailLabel": "بريد الأعمال",
+      "phoneLabel": "هاتف مباشر",
+      "whatsappLabel": "واتساب"
+    },
+    "footer": {
+      "description": "بنية احترافية للحجوزات والمواقع لقطاع الخدمات في تونس.",
+      "login": "تسجيل الدخول",
+      "company": {
+        "title": "الشركة",
+        "about": "من نحن",
+        "rules": "القواعد",
+        "jobs": "وظائف مفتوحة",
+        "support": "الدعم",
+        "contact": "اتصل بنا"
+      },
+      "contact": {
+        "title": "التواصل",
+        "email": "البريد",
+        "phone": "الهاتف",
+        "location": "الموقع",
+        "webinars": "الندوات",
+        "video": "فيديو"
+      },
+      "info": {
+        "title": "معلومات",
+        "newImage": "صورة جديدة",
+        "trends": "اتجاهات البحث",
+        "blog": "المدونة",
+        "terms": "الشروط والأحكام",
+        "license": "اتفاقيات الترخيص",
+        "privacy": "سياسة الخصوصية"
+      },
+      "copyright": "© 2026 Loom. جميع الحقوق محفوظة."
+    }
+  },
+  "public": {
+    "restaurantLabel": "مطعم",
+    "salonLabel": "صالون",
+    "clinicLabel": "عيادة",
+    "consultancyLabel": "استشارات",
+    "hotelLabel": "فندق",
+    "reserveCta": "احجز",
+    "aboutLabel": "من نحن",
+    "servicesLabel": "الخدمات",
+    "teamLabel": "الفريق",
+    "doctorsLabel": "الأطباء",
+    "processLabel": "العملية",
+    "roomsLabel": "الغرف",
+    "amenitiesLabel": "المرافق",
+    "aboutFallback": "تجربة طعام مدروسة مع نظام حجز حديث.",
+    "hoursLabel": "ساعات العمل",
+    "dayLabel": "اليوم",
+    "openLabel": "الافتتاح",
+    "closeLabel": "الإغلاق",
+    "contactLabel": "اتصل بنا",
+    "addressFallback": "العنوان قريباً",
+    "phoneFallback": "الهاتف قريباً",
+    "emailFallback": "البريد الإلكتروني قريباً",
+    "whatsappLabel": "واتساب",
+    "days": {
+      "monday": "الاثنين",
+      "tuesday": "الثلاثاء",
+      "wednesday": "الأربعاء",
+      "thursday": "الخميس",
+      "friday": "الجمعة",
+      "saturday": "السبت",
+      "sunday": "الأحد"
+    }
+  },
+  "auth": {
+    "sectionLabel": "تسجيل الدخول",
+    "title": "الدخول",
+    "subtitle": "وصول المالك والإدارة.",
+    "signupTitle": "ابدأ الفترة التجريبية",
+    "signupSubtitle": "أنشئ حساب المالك وابدأ تجربتك.",
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "submit": "الدخول",
+    "submitting": "جاري تسجيل الدخول...",
+    "signupSubmit": "إنشاء حساب",
+    "signupSubmitting": "جاري إنشاء الحساب...",
+    "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+    "signupSuccess": "تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتأكيد الحساب إذا لزم.",
+    "ownerFlowTitle": "مسار انضمام مالك النشاط",
+    "ownerFlowText": "أنشئ حساب المالك أولاً. ثم تواصل مع فريق Loom لإنشاء نشاطك وربطه بهذا الحساب للاستخدام الكامل.",
+    "ownerFlowContact": "تواصل مع فريق Loom لربط نشاطك",
+    "noAccount": "ليس لديك حساب؟",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "signUp": "إنشاء حساب",
+    "signIn": "تسجيل الدخول"
+  },
+  "dashboard": {
+    "dashboard": "لوحة التحكم",
+    "businessDashboard": "لوحة تحكم النشاط",
+    "overview": "نظرة عامة",
+    "analytics": "التحليلات",
+    "calendar": "التقويم",
+    "reservations": "الحجوزات",
+    "staff": "الموظفون",
+    "services": "الخدمات",
+    "billing": "الفوترة",
+    "settings": "الإعدادات",
+    "subscriptionLabel": "الاشتراك",
+    "freeTrialBadge": "تجربة مجانية",
+    "trialEndsTodayBadge": "تنتهي اليوم",
+    "trialDaysLeftBadge": "متبقي {days} يوم",
+    "planStatus": "حالة الخطة",
+    "trialStarted": "بداية التجربة",
+    "trialEnds": "نهاية التجربة",
+    "daysLeft": "الأيام المتبقية",
+    "requestContract": "طلب عقد",
+    "contactSupport": "اتصل بالدعم",
+    "billingLoadError": "تعذر تحميل تفاصيل الفوترة.",
+    "fullUseNotice": "تستمر التجربة المجانية لمدة يومين. لمواصلة الاستخدام الكامل بعد التجربة، تواصل مع فريق Loom لإتمام العقد والدفع.",
+    "logout": "تسجيل الخروج",
+    "today": "اليوم",
+    "thisWeek": "هذا الأسبوع",
+    "total": "الإجمالي",
+    "viewReservations": "عرض الحجوزات",
+    "newReservation": "حجز جديد",
+    "backToReservations": "العودة إلى الحجوزات",
+    "manualCreateError": "تعذر إنشاء الحجز. تحقق من الحقول وحاول مرة أخرى.",
+    "noBusiness": "لا توجد منشأة مرتبطة بهذا المستخدم بعد.",
+    "reservationsLoadError": "تعذر تحميل الحجوزات",
+    "reservationsEmpty": "لا توجد حجوزات بعد.",
+    "table": {
+      "date": "التاريخ",
+      "time": "الوقت",
+      "guest": "العميل",
+      "party": "الأشخاص",
+      "source": "المصدر",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    },
+    "status": {
+      "pending": "قيد الانتظار",
+      "confirmed": "مؤكد",
+      "cancelled": "ملغي",
+      "no_show": "غياب",
+      "completed": "مكتمل"
+    },
+    "source": {
+      "online": "أونلاين",
+      "phone": "هاتف",
+      "whatsapp": "واتساب",
+      "walk_in": "حضور مباشر"
+    },
+    "actions": {
+      "confirm": "تأكيد",
+      "cancel": "إلغاء",
+      "noShow": "غياب"
+    },
+    "manualForm": {
+      "name": "اسم العميل",
+      "phone": "الهاتف",
+      "email": "البريد الإلكتروني (اختياري)",
+      "date": "التاريخ",
+      "time": "الوقت",
+      "partySize": "عدد الأشخاص",
+      "source": "المصدر",
+      "notes": "ملاحظات",
+      "submit": "إنشاء الحجز"
+    },
+    "filters": {
+      "search": "بحث",
+      "searchPlaceholder": "الاسم أو الهاتف",
+      "status": "الحالة",
+      "allStatuses": "كل الحالات",
+      "date": "التاريخ",
+      "apply": "تطبيق",
+      "reset": "إعادة تعيين",
+      "export": "تصدير CSV"
+    },
+    "analyticsCards": {
+      "total14d": "الحجوزات (14 يوم)",
+      "confirmationRate": "معدل التأكيد",
+      "noShowRate": "معدل الغياب"
+    },
+    "analyticsSections": {
+      "byStatus": "حسب الحالة",
+      "bySource": "حسب المصدر",
+      "dailyTrend": "الاتجاه اليومي (14 يوم)"
+    },
+    "calendarUpcoming": "القادمة",
+    "calendarPast": "السابقة",
+    "calendarEmpty": "لا توجد حجوزات قادمة.",
+    "calendarPastEmpty": "لا توجد حجوزات سابقة.",
+    "calendarReservations": "حجوزات",
+    "calendarGuests": "أشخاص"
+  },
+  "admin": {
+    "admin": "الإدارة",
+    "new": "جديد",
+    "clients": "العملاء",
+    "users": "المستخدمون",
+    "analytics": "التحليلات",
+    "calendar": "التقويم",
+    "usersTitle": "صلاحيات المستخدمين",
+    "syncUsers": "مزامنة المستخدمين",
+    "usersEmpty": "لا يوجد مستخدمون بعد.",
+    "usersUnassigned": "لا توجد منشأة مرتبطة",
+    "usersSave": "حفظ",
+    "businesses": "المنشآت",
+    "addBusiness": "إضافة منشأة",
+    "addNewBusiness": "إضافة منشأة جديدة",
+    "editBusiness": "تعديل المنشأة",
+    "saveBusiness": "حفظ التغييرات",
+    "backToBusinesses": "العودة إلى المنشآت",
+    "updateError": "تعذر تحديث المنشأة. تحقق من الحقول وحاول مرة أخرى.",
+    "updateSuccess": "تم تحديث المنشأة بنجاح.",
+    "createBusiness": "إنشاء المنشأة",
+    "createError": "تعذر إنشاء المنشأة. تحقق من الحقول وحاول مرة أخرى.",
+    "loadError": "تعذر تحميل المنشآت",
+    "empty": "لا توجد منشآت بعد.",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "logout": "تسجيل الخروج",
+    "website": "الموقع",
+    "publicLink": "الرابط العام",
+    "published": "منشور",
+    "unpublished": "غير منشور",
+    "cancel": "إلغاء",
+    "table": {
+      "name": "الاسم",
+      "slug": "المعرف",
+      "website": "الموقع",
+      "type": "النوع",
+      "lang": "اللغة",
+      "status": "الحالة",
+      "subscription": "الاشتراك",
+      "created": "تاريخ الإنشاء"
+    },
+    "trial": "تجريبي",
+    "subscription": {
+      "active": "نشط",
+      "past_due": "متأخر",
+      "cancelled": "ملغي"
+    },
+    "viewSite": "فتح الموقع",
+    "form": {
+      "businessName": "اسم المنشأة",
+      "slug": "المعرف",
+      "customDomain": "نطاق مخصص",
+      "businessType": "نوع المنشأة",
+      "language": "اللغة",
+      "phone": "الهاتف",
+      "email": "البريد الإلكتروني",
+      "address": "العنوان",
+      "description": "الوصف",
+      "openingTime": "وقت الافتتاح",
+      "closingTime": "وقت الإغلاق",
+      "slotDuration": "مدة الفترة (دقائق)",
+      "maxCovers": "أقصى عدد لكل فترة"
+    },
+    "usersTable": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "business": "المنشأة",
+      "actions": "الإجراءات"
+    },
+    "roles": {
+      "superadmin": "مشرف عام",
+      "owner": "مالك",
+      "staff": "موظف"
+    },
+    "status": {
+      "pending": "قيد الانتظار",
+      "confirmed": "مؤكد",
+      "cancelled": "ملغي",
+      "no_show": "غياب",
+      "completed": "مكتمل"
+    },
+    "source": {
+      "online": "أونلاين",
+      "phone": "هاتف",
+      "whatsapp": "واتساب",
+      "walk_in": "حضور مباشر"
+    },
+    "analyticsCards": {
+      "businesses": "المنشآت",
+      "activeBusinesses": "المنشآت النشطة",
+      "trialing": "تجريبي",
+      "reservations30d": "الحجوزات (30 يوم)",
+      "confirmedRate": "معدل التأكيد"
+    },
+    "analyticsSections": {
+      "loadByBusiness": "حمل الحجوزات حسب المنشأة",
+      "empty": "لا توجد نشاطات حجوزات في الفترة المحددة."
+    }
+    ,"calendarEmpty": "لا توجد حجوزات قادمة.",
+    "calendarReservations": "حجوزات",
+    "calendarGuests": "أشخاص"
+  },
+  "staff": {
+    "dashboard": "لوحة التحكم",
+    "title": "الموظفون",
+    "addLabel": "إضافة موظف",
+    "noBusiness": "لا توجد منشأة مرتبطة بهذا المستخدم بعد.",
+    "empty": "لا يوجد موظفون بعد.",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "form": {
+      "name": "الاسم",
+      "role": "الدور",
+      "avatarUrl": "رابط الصورة"
+    },
+    "table": {
+      "name": "الاسم",
+      "role": "الدور",
+      "avatarUrl": "رابط الصورة",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    },
+    "actions": {
+      "add": "إضافة",
+      "save": "حفظ",
+      "enable": "تفعيل",
+      "disable": "تعطيل"
+    }
+  },
+  "services": {
+    "dashboard": "لوحة التحكم",
+    "title": "الخدمات",
+    "addLabel": "إضافة خدمة",
+    "noBusiness": "لا توجد منشأة مرتبطة بهذا المستخدم بعد.",
+    "empty": "لا توجد خدمات بعد.",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "form": {
+      "name": "اسم الخدمة",
+      "description": "الوصف",
+      "duration": "المدة (دقيقة)",
+      "price": "السعر"
+    },
+    "table": {
+      "service": "الخدمة",
+      "duration": "المدة",
+      "price": "السعر",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    },
+    "actions": {
+      "add": "إضافة",
+      "save": "حفظ",
+      "enable": "تفعيل",
+      "disable": "تعطيل"
+    }
+  },
+  "settings": {
+    "dashboard": "لوحة التحكم",
+    "title": "الإعدادات",
+    "save": "حفظ الإعدادات",
+    "noBusiness": "لا توجد منشأة مرتبطة بهذا المستخدم بعد.",
+    "billing": "الفوترة",
+    "subscriptionLabel": "الاشتراك",
+    "planStatus": "حالة الخطة",
+    "trialStarted": "بدء الفترة التجريبية",
+    "trialEnds": "نهاية الفترة التجريبية",
+    "daysLeft": "الأيام المتبقية",
+    "requestContract": "طلب عقد",
+    "contactSupport": "التواصل مع الدعم",
+    "billingLoadError": "تعذر تحميل تفاصيل الفوترة.",
+    "fullUseNotice": "الفترة التجريبية المجانية مدتها يومان. لمواصلة الاستخدام الكامل بعد التجربة، تواصل مع فريق Loom لإتمام العقد والدفع.",
+    "loadError": "تعذر تحميل إعدادات المنشأة.",
+    "form": {
+      "businessName": "اسم المنشأة",
+      "phone": "الهاتف",
+      "email": "البريد الإلكتروني",
+      "whatsapp": "واتساب",
+      "address": "العنوان",
+      "subscription": "الاشتراك",
+      "logoUrl": "رابط الشعار",
+      "uploadLogo": "رفع الشعار",
+      "coverUrl": "رابط صورة الغلاف",
+      "uploadCover": "رفع الغلاف",
+      "openingTime": "وقت الافتتاح",
+      "closingTime": "وقت الإغلاق",
+      "slotDuration": "مدة الفترة (دقائق)",
+      "maxCovers": "أقصى عدد لكل فترة",
+      "primaryColor": "اللون الأساسي",
+    "trial": "تجريبي",
+    "subscription": {
+      "active": "نشط",
+      "past_due": "متأخر السداد",
+      "cancelled": "ملغي"
+    },
+      "secondaryColor": "اللون الثانوي"
+    }
+  },
+  "booking": {
+    "title": "احجز موعدك",
+    "reservationLabel": "الحجز",
+    "backToSite": "العودة إلى الموقع",
+    "bookAnother": "حجز جديد",
+    "bookDirectly": "احجز مباشرة مع {name}.",
+    "reservationHelp": "أكمل تفاصيل الحجز",
+    "name": "الاسم الكامل",
+    "phone": "رقم الهاتف",
+    "emailOptional": "البريد الإلكتروني (اختياري)",
+    "service": "الخدمة",
+    "staff": "الموظف المفضل",
+    "staffOptional": "لا تفضيل",
+    "date": "التاريخ",
+    "checkOut": "تاريخ المغادرة",
+    "time": "الوقت",
+    "partySize": "عدد الأشخاص",
+    "notes": "طلبات خاصة",
+    "submit": "تأكيد الحجز",
+    "submitting": "جاري التأكيد...",
+    "success": "تم تأكيد الحجز",
+    "successMessage": "ستصلك رسالة تأكيد قريباً.",
+    "noSlots": "لا تتوفر أوقات لهذا اليوم.",
+    "loadingSlots": "جاري تحميل الأوقات المتاحة...",
+    "errors": {
+      "nameRequired": "الاسم مطلوب",
+      "phoneRequired": "رقم الهاتف مطلوب",
+      "invalidEmail": "بريد إلكتروني غير صالح",
+      "dateRequired": "التاريخ مطلوب",
+      "timeRequired": "الوقت مطلوب",
+      "loadSlots": "تعذر تحميل الأوقات المتاحة.",
+      "submitFailed": "تعذر إرسال الحجز."
+    }
+  }
+}
