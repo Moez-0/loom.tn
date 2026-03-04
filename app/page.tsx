@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getLocale, getTranslations } from 'next-intl/server'
 import LocaleSwitcher from '@/components/i18n/LocaleSwitcher'
 import LandingMobileMenu from '@/components/landing/LandingMobileMenu'
@@ -80,10 +81,14 @@ export default async function Home() {
             </div>
             <div className="relative">
               <div>
-                <img
+                <Image
                   alt={t('hero.imageAlt')}
                   className="h-auto w-full rounded-xl border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-105"
                   src="/dashboard_preview.png"
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
                   style={{ transform: 'perspective(1000px) rotateY(-15deg) rotateX(5deg)' }}
                 />
               </div>
@@ -115,10 +120,13 @@ export default async function Home() {
           </div>
 
           <div className="glass-card overflow-hidden rounded-xl border border-white/5 shadow-2xl">
-            <img
+            <Image
               alt={t('hero.imageAlt')}
               className="h-auto w-full"
               src="/dashboard_preview.png"
+              width={1600}
+              height={900}
+              sizes="100vw"
             />
           </div>
         </div>
@@ -172,10 +180,13 @@ export default async function Home() {
               </div>
               <div className="glass-card w-full max-w-xl rounded-xl border border-white/5 p-4 shadow-2xl">
                 <div className="overflow-hidden rounded-lg border border-white/10">
-                  <img
+                  <Image
                     alt={t('workflow.step1.title')}
                     className="h-[260px] w-full object-cover object-top"
                     src="/dashboard_preview.png"
+                    width={1600}
+                    height={900}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-white/90">
