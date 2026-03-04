@@ -5,6 +5,19 @@
     "fr": "FR",
     "ar": "AR"
   },
+  "loading": {
+    "preparingExperience": "جارٍ تجهيز تجربتك...",
+    "ownerDashboardTitle": "لوحة المالك",
+    "loadingData": "جارٍ تحميل بياناتك...",
+    "adminConsoleTitle": "لوحة الإدارة",
+    "loadingAdminTools": "جارٍ تحميل أدوات الإدارة...",
+    "authenticationTitle": "المصادقة",
+    "securingSession": "جارٍ تأمين جلستك...",
+    "businessWebsiteTitle": "موقع النشاط",
+    "loadingWebsite": "جارٍ تحميل الموقع...",
+    "reservationTitle": "الحجز",
+    "loadingBookingFlow": "جارٍ تحميل مسار الحجز..."
+  },
   "landing": {
     "nav": {
       "product": "المنتج",

@@ -1,5 +1,7 @@
+import { getTranslations } from 'next-intl/server'
 import BrandSplash from '@/components/ui/BrandSplash'
 
-export default function DashboardLoading() {
-  return <BrandSplash title="Owner Dashboard" subtitle="Loading your data..." fullScreen={false} />
+export default async function DashboardLoading() {
+  const t = await getTranslations('loading')
+  return <BrandSplash title={t('ownerDashboardTitle')} subtitle={t('loadingData')} fullScreen={false} />
 }

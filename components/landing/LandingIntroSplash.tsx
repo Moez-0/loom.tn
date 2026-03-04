@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 export default function LandingIntroSplash() {
+  const t = useTranslations('loading')
   const [visible, setVisible] = useState(true)
   const [fadeOut, setFadeOut] = useState(false)
 
@@ -38,7 +40,7 @@ export default function LandingIntroSplash() {
           <Image src="/loom-mark.svg" alt="Loom" width={28} height={28} priority />
         </div>
         <p className="text-lg font-bold tracking-tight text-white">LOOM</p>
-        <p className="mt-2 text-sm text-[#888888]">Preparing your experience...</p>
+        <p className="mt-2 text-sm text-[#888888]">{t('preparingExperience')}</p>
         <div className="mt-6 flex items-center justify-center gap-2">
           <span className="h-2 w-2 animate-pulse rounded-full bg-[#0067b0]" />
           <span className="h-2 w-2 animate-pulse rounded-full bg-[#0067b0]/75 [animation-delay:120ms]" />

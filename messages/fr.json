@@ -5,6 +5,19 @@
     "fr": "FR",
     "ar": "AR"
   },
+  "loading": {
+    "preparingExperience": "Préparation de votre expérience...",
+    "ownerDashboardTitle": "Tableau Propriétaire",
+    "loadingData": "Chargement de vos données...",
+    "adminConsoleTitle": "Console Admin",
+    "loadingAdminTools": "Chargement des outils admin...",
+    "authenticationTitle": "Authentification",
+    "securingSession": "Sécurisation de votre session...",
+    "businessWebsiteTitle": "Site de l'entreprise",
+    "loadingWebsite": "Chargement du site...",
+    "reservationTitle": "Réservation",
+    "loadingBookingFlow": "Chargement du parcours de réservation..."
+  },
   "landing": {
     "nav": {
       "product": "Produit",
