@@ -10,7 +10,7 @@ export default function ClinicTemplate({ business, services, staff, publicConfig
       publicConfig={publicConfig}
       publicAssets={publicAssets}
       typeLabelKey="clinicLabel"
-      offeringsTitle="Services"
+      offeringsTitleKey="servicesLabel"
     />
   )
 }

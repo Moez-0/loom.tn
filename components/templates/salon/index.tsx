@@ -10,7 +10,7 @@ export default function SalonTemplate({ business, services, staff, publicConfig,
       publicConfig={publicConfig}
       publicAssets={publicAssets}
       typeLabelKey="salonLabel"
-      offeringsTitle="Services"
+      offeringsTitleKey="servicesLabel"
     />
   )
 }

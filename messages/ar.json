@@ -1,6 +1,8 @@
 {
   "common": {
     "language": "اللغة",
+    "chooseLanguage": "اختر اللغة",
+    "toggleMenu": "تبديل القائمة",
     "en": "EN",
     "fr": "FR",
     "ar": "AR"
@@ -107,6 +109,43 @@
         "label": "الخطوة 02",
         "title": "انطلق خلال ساعات",
         "text": "اربط نطاقك الخاص وابدأ استقبال الحجوزات فوراً. Loom يتكفل بالاستضافة والأمان."
+      },
+      "goLive": {
+        "title": "مسار الإطلاق",
+        "item1": "العميل يحجز أونلاين خلال ثوانٍ",
+        "item2": "يتم إرسال التأكيد تلقائياً",
+        "item3": "يتم إرسال تذكير قبل الموعد",
+        "item4": "الفريق يرى كل شيء في لوحة واحدة"
+      },
+      "badges": {
+        "liveDashboard": "لوحة مباشرة",
+        "reservations": "الحجوزات",
+        "analytics": "التحليلات"
+      }
+    },
+    "widgets": {
+      "cookie": {
+        "title": "تفضيلات ملفات الارتباط",
+        "description": "يستخدم Loom ملفات الارتباط لتحسين الأداء وتخصيص تجربتك.",
+        "accept": "قبول الكل",
+        "essentialOnly": "الأساسية فقط",
+        "close": "إغلاق نافذة ملفات الارتباط"
+      },
+      "chat": {
+        "title": "تحتاج مساعدة سريعة؟",
+        "subtitle": "احصل على إرشاد فوري قبل بدء التجربة.",
+        "open": "مساعدة",
+        "close": "إغلاق المساعدة",
+        "topics": {
+          "pricing": "الأسعار",
+          "setup": "الإعداد",
+          "support": "الدعم"
+        },
+        "responses": {
+          "pricing": "الخطة الاحترافية تشمل الحجوزات وسير عمل الفريق والتحليلات. يمكنك بدء التجربة ثم طلب التفعيل الكامل مع Loom.",
+          "setup": "أنشئ حساب المالك أولاً، ثم يقوم Loom بربط مساحة نشاطك ويساعدك في إعداد الموقع ومسار الحجز.",
+          "support": "دعم Loom متاح بالعربية والفرنسية. تواصل معنا من أسفل الصفحة وسيرد فريقنا بسرعة."
+        }
       }
     },
     "metrics": {
@@ -197,6 +236,8 @@
     "clinicLabel": "عيادة",
     "consultancyLabel": "استشارات",
     "hotelLabel": "فندق",
+    "menuLabel": "القائمة",
+    "expertiseLabel": "الخبرات",
     "reserveCta": "احجز",
     "aboutLabel": "من نحن",
     "servicesLabel": "الخدمات",
@@ -211,6 +252,11 @@
     "openLabel": "الافتتاح",
     "closeLabel": "الإغلاق",
     "contactLabel": "اتصل بنا",
+    "galleryLabel": "المعرض",
+    "menuFilesLabel": "ملفات القائمة",
+    "menuFileItem": "قائمة",
+    "galleryUploadHint": "ارفع صور المعرض من لوحة التحكم ← Uploads لملء معرضك.",
+    "teamMemberFallback": "عضو فريق",
     "addressFallback": "العنوان قريباً",
     "phoneFallback": "الهاتف قريباً",
     "emailFallback": "البريد الإلكتروني قريباً",
@@ -255,6 +301,13 @@
   "dashboard": {
     "dashboard": "لوحة التحكم",
     "businessDashboard": "لوحة تحكم النشاط",
+    "website": "الموقع",
+    "uploads": "التحميلات",
+    "openPublicSite": "فتح الموقع العام",
+    "manageUploads": "إدارة التحميلات",
+    "editBrandContent": "تعديل محتوى الهوية",
+    "openFullPage": "فتح الصفحة كاملة",
+    "missingServiceRoleKey": "مفتاح SUPABASE_SERVICE_ROLE_KEY مفقود",
     "overview": "نظرة عامة",
     "analytics": "التحليلات",
     "calendar": "التقويم",
@@ -349,7 +402,74 @@
     "calendarEmpty": "لا توجد حجوزات قادمة.",
     "calendarPastEmpty": "لا توجد حجوزات سابقة.",
     "calendarReservations": "حجوزات",
-    "calendarGuests": "أشخاص"
+    "calendarGuests": "أشخاص",
+    "websiteEditor": {
+      "title": "محرر الموقع المرئي",
+      "subtitle": "خصص البنية والمحتوى والتصميم مع معاينة مباشرة.",
+      "designPreset": "إعداد تصميم",
+      "themeStyle": "نمط الثيم",
+      "themeClassic": "كلاسيكي",
+      "themeSoft": "ناعم",
+      "themeBold": "قوي",
+      "colorPreset": "إعداد الألوان",
+      "presetNeutral": "محايد",
+      "presetOcean": "محيطي",
+      "presetForest": "غابة",
+      "presetCharcoal": "فحمي",
+      "sectionOrder": "ترتيب الأقسام",
+      "heroAlignment": "محاذاة الهيرو",
+      "leftAligned": "محاذاة لليسار",
+      "centered": "في الوسط",
+      "buttonShape": "شكل الأزرار",
+      "rounded": "دائري",
+      "pill": "حبّة",
+      "brandAccentColor": "لون تمييز الهوية",
+      "pageBackgroundColor": "لون خلفية الصفحة",
+      "surfaceColor": "لون الأسطح (البطاقات/التنقل/التذييل)",
+      "textColor": "لون النص",
+      "layout": "التخطيط",
+      "galleryColumns": "أعمدة المعرض",
+      "columns2": "عمودان",
+      "columns3": "3 أعمدة",
+      "columns4": "4 أعمدة",
+      "sectionVisibility": "ظهور الأقسام",
+      "sectionVisibilityHelp": "اختر الكتل التي تظهر في موقعك العام.",
+      "gallery": "المعرض",
+      "team": "الفريق",
+      "hours": "الساعات",
+      "contact": "التواصل",
+      "map": "الخريطة",
+      "heroAndNavigation": "الهيرو والتنقل",
+      "heroHeadlineOptional": "عنوان الهيرو (اختياري)",
+      "heroSupportingTextOptional": "النص المساند للهيرو (اختياري)",
+      "primaryCtaLabelOptional": "نص زر الإجراء الأساسي (اختياري)",
+      "secondaryCtaLabelOptional": "نص زر الإجراء الثانوي (اختياري)",
+      "topNavigationCtaOptional": "نص زر الإجراء في أعلى التنقل (اختياري)",
+      "sectionContent": "محتوى الأقسام",
+      "aboutTitleOptional": "عنوان نبذة (اختياري)",
+      "aboutTextOptional": "نص نبذة (اختياري)",
+      "offeringsSectionTitleOptional": "عنوان قسم {offeringsLabel} (اختياري)",
+      "gallerySectionTitleOptional": "عنوان قسم المعرض (اختياري)",
+      "teamSectionTitleOptional": "عنوان قسم الفريق (اختياري)",
+      "hoursSectionTitleOptional": "عنوان قسم الساعات (اختياري)",
+      "contactSectionTitleOptional": "عنوان قسم التواصل (اختياري)",
+      "contactIntroTextOptional": "النص التعريفي للتواصل (اختياري)",
+      "footerNoteOptional": "ملاحظة التذييل (اختياري)",
+      "saveWebsiteDesign": "حفظ تصميم الموقع",
+      "assetUploads": "Uploads الأصول",
+      "assetUploadsHelp": "تم نقل إدارة صور المعرض وملفات القائمة إلى قسم Uploads المخصص.",
+      "openUploads": "فتح Uploads",
+      "livePreview": "المعاينة المباشرة"
+    },
+    "uploadsPage": {
+      "description": "إدارة ملفات المعرض والقائمة لموقعك العام.",
+      "backToBuilder": "العودة إلى محرر الموقع",
+      "galleryUploads": "Uploads المعرض",
+      "uploadGalleryImages": "رفع صور المعرض",
+      "menuUploads": "Uploads القائمة",
+      "uploadMenuFiles": "رفع ملفات القائمة",
+      "delete": "حذف"
+    }
   },
   "admin": {
     "admin": "الإدارة",
@@ -374,6 +494,7 @@
     "createBusiness": "إنشاء المنشأة",
     "createError": "تعذر إنشاء المنشأة. تحقق من الحقول وحاول مرة أخرى.",
     "loadError": "تعذر تحميل المنشآت",
+    "missingServiceRoleKey": "مفتاح SUPABASE_SERVICE_ROLE_KEY مفقود",
     "empty": "لا توجد منشآت بعد.",
     "active": "نشط",
     "inactive": "غير نشط",
@@ -400,6 +521,7 @@
       "cancelled": "ملغي"
     },
     "viewSite": "فتح الموقع",
+    "openWebsiteEditor": "فتح محرر الموقع",
     "form": {
       "businessName": "اسم المنشأة",
       "slug": "المعرف",
@@ -526,6 +648,16 @@
     "billingLoadError": "تعذر تحميل تفاصيل الفوترة.",
     "fullUseNotice": "الفترة التجريبية المجانية مدتها يومان. لمواصلة الاستخدام الكامل بعد التجربة، تواصل مع فريق Loom لإتمام العقد والدفع.",
     "loadError": "تعذر تحميل إعدادات المنشأة.",
+    "websiteGuideTitle": "محرر الموقع العام",
+    "websiteGuideDescription": "يستخدم موقعك العام قالباً مخصصاً للنشاط. عدّل المحتوى من هذه الصفحة وأدِر الخدمات/الفريق من أقسامها المخصصة.",
+    "heroGalleryItem": "صور الهيرو والمعرض: الشعار + صورة الغلاف",
+    "aboutContactItem": "أقسام النبذة والتواصل: الوصف، العنوان، الهاتف، البريد الإلكتروني، واتساب",
+    "offeringsItemMenu": "عناصر القائمة: تُدار من قسم الخدمات",
+    "offeringsItemServices": "الخدمات/الغرف: تُدار من قسم الخدمات",
+    "teamItem": "قسم الفريق: يُدار من قسم الموظفين",
+    "previewPublicSite": "معاينة الموقع العام",
+    "editServices": "تعديل الخدمات",
+    "editStaff": "تعديل الفريق",
     "form": {
       "businessName": "اسم المنشأة",
       "phone": "الهاتف",

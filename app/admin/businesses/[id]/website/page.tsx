@@ -84,6 +84,10 @@ type PageProps = {
 export default async function AdminBusinessWebsitePage({ params, searchParams }: PageProps) {
   const nextPath = `/admin/businesses/${params.id}/website`
   const t = await getTranslations('admin')
+  const td = await getTranslations('dashboard')
+  const tPublic = await getTranslations('public')
+  const tw = (key: string, values?: Record<string, string | number>) => td(`websiteEditor.${key}`, values)
+  const tu = (key: string) => td(`uploadsPage.${key}`)
   await assertSuperadmin(nextPath)
 
   async function updateWebsiteConfig(formData: FormData) {
@@ -184,7 +188,7 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
     return (
       <main>
         <p className="border border-loom-error bg-loom-white p-4 text-sm text-loom-error">
-          {t('loadError')}: Missing SUPABASE_SERVICE_ROLE_KEY
+          {t('loadError')}: {td('missingServiceRoleKey')}
         </p>
       </main>
     )
@@ -201,7 +205,14 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
   }
 
   const effective = config ?? getDefaultPublicSiteConfig()
-  const offeringsLabel = business.type === 'restaurant' ? 'Menu' : business.type === 'hotel' ? 'Rooms' : 'Services'
+  const offeringsLabel =
+    business.type === 'restaurant'
+      ? tPublic('menuLabel')
+      : business.type === 'hotel'
+        ? tPublic('roomsLabel')
+        : business.type === 'consultancy'
+          ? tPublic('expertiseLabel')
+          : tPublic('servicesLabel')
   const galleryAssets = assets.filter((asset) => asset.type === 'gallery')
   const menuAssets = assets.filter((asset) => asset.type === 'menu')
   const iframeToken = searchParams?.preview || previewToken()
@@ -211,14 +222,16 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="section-label">{t('admin')}</p>
-          <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">Website Editor — {business.name}</h1>
+          <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">
+            {td('websiteEditor.title')} — {business.name}
+          </h1>
         </div>
         <div className="flex w-full flex-wrap gap-2 sm:w-auto sm:justify-end">
           <Link href={`/admin/businesses/${business.id}`} className="btn-secondary inline-flex items-center">
             {t('backToBusinesses')}
           </Link>
           <Link href={`/${business.slug}`} className="btn-primary inline-flex items-center">
-            Open Public Site
+            {td('openPublicSite')}
           </Link>
         </div>
       </div>
@@ -227,56 +240,56 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
         <div className="space-y-6">
           <form action={updateWebsiteConfig} className="card space-y-4 p-5">
             <input type="hidden" name="business_id" value={business.id} />
-            <p className="section-label">Section Visibility</p>
+            <p className="section-label">{tw('sectionVisibility')}</p>
 
             <label className="flex items-center justify-between rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-sm">
               <span>{offeringsLabel}</span>
               <input type="checkbox" name="show_offerings" defaultChecked={effective.show_offerings} />
             </label>
             <label className="flex items-center justify-between rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-sm">
-              <span>Gallery</span>
+              <span>{tw('gallery')}</span>
               <input type="checkbox" name="show_gallery" defaultChecked={effective.show_gallery} />
             </label>
             <label className="flex items-center justify-between rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-sm">
-              <span>Team</span>
+              <span>{tw('team')}</span>
               <input type="checkbox" name="show_team" defaultChecked={effective.show_team} />
             </label>
             <label className="flex items-center justify-between rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-sm">
-              <span>Hours</span>
+              <span>{tw('hours')}</span>
               <input type="checkbox" name="show_hours" defaultChecked={effective.show_hours} />
             </label>
             <label className="flex items-center justify-between rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-sm">
-              <span>Contact</span>
+              <span>{tw('contact')}</span>
               <input type="checkbox" name="show_contact" defaultChecked={effective.show_contact} />
             </label>
             <label className="flex items-center justify-between rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-sm">
-              <span>Map</span>
+              <span>{tw('map')}</span>
               <input type="checkbox" name="show_map" defaultChecked={effective.show_map} />
             </label>
 
             <div>
-              <label className="label" htmlFor="tagline">Hero Tagline</label>
+              <label className="label" htmlFor="tagline">{tw('heroSupportingTextOptional')}</label>
               <textarea id="tagline" name="tagline" className="input min-h-[90px]" defaultValue={effective.tagline ?? ''} />
             </div>
             <div>
-              <label className="label" htmlFor="hero_cta_label">Primary CTA Label</label>
+              <label className="label" htmlFor="hero_cta_label">{tw('primaryCtaLabelOptional')}</label>
               <input id="hero_cta_label" name="hero_cta_label" className="input" defaultValue={effective.hero_cta_label ?? ''} />
             </div>
             <div>
-              <label className="label" htmlFor="secondary_cta_label">Secondary CTA Label</label>
+              <label className="label" htmlFor="secondary_cta_label">{tw('secondaryCtaLabelOptional')}</label>
               <input id="secondary_cta_label" name="secondary_cta_label" className="input" defaultValue={effective.secondary_cta_label ?? ''} />
             </div>
 
-            <button type="submit" className="btn-primary inline-flex items-center">Save Website Settings</button>
+            <button type="submit" className="btn-primary inline-flex items-center">{tw('saveWebsiteDesign')}</button>
           </form>
 
           <section className="card space-y-3 p-5">
-            <p className="section-label">Gallery Uploads</p>
+            <p className="section-label">{tu('galleryUploads')}</p>
             <form action={uploadPublicAssets} encType="multipart/form-data" className="space-y-3">
               <input type="hidden" name="business_id" value={business.id} />
               <input type="hidden" name="type" value="gallery" />
               <input type="file" name="files" accept="image/*" multiple className="input" />
-              <button type="submit" className="btn-secondary inline-flex items-center">Upload Gallery Images</button>
+              <button type="submit" className="btn-secondary inline-flex items-center">{tu('uploadGalleryImages')}</button>
             </form>
             {galleryAssets.map((asset) => (
               <div key={asset.id} className="flex items-center justify-between gap-2 rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-xs">
@@ -286,19 +299,19 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
                 <form action={removePublicAsset}>
                   <input type="hidden" name="business_id" value={business.id} />
                   <input type="hidden" name="asset_id" value={asset.id} />
-                  <button type="submit" className="text-loom-error hover:underline">Delete</button>
+                  <button type="submit" className="text-loom-error hover:underline">{tu('delete')}</button>
                 </form>
               </div>
             ))}
           </section>
 
           <section className="card space-y-3 p-5">
-            <p className="section-label">Menu Uploads</p>
+            <p className="section-label">{tu('menuUploads')}</p>
             <form action={uploadPublicAssets} encType="multipart/form-data" className="space-y-3">
               <input type="hidden" name="business_id" value={business.id} />
               <input type="hidden" name="type" value="menu" />
               <input type="file" name="files" accept="image/*,.pdf" multiple className="input" />
-              <button type="submit" className="btn-secondary inline-flex items-center">Upload Menu Files</button>
+              <button type="submit" className="btn-secondary inline-flex items-center">{tu('uploadMenuFiles')}</button>
             </form>
             {menuAssets.map((asset) => (
               <div key={asset.id} className="flex items-center justify-between gap-2 rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-xs">
@@ -308,7 +321,7 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
                 <form action={removePublicAsset}>
                   <input type="hidden" name="business_id" value={business.id} />
                   <input type="hidden" name="asset_id" value={asset.id} />
-                  <button type="submit" className="text-loom-error hover:underline">Delete</button>
+                  <button type="submit" className="text-loom-error hover:underline">{tu('delete')}</button>
                 </form>
               </div>
             ))}
@@ -317,10 +330,14 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
 
         <section className="card overflow-hidden p-0">
           <div className="flex items-center justify-between border-b border-loom-border bg-loom-surface px-4 py-3">
-            <p className="text-sm font-medium text-loom-black">Live Preview</p>
-            <Link href={`/${business.slug}`} className="text-xs font-medium text-loom-accent hover:underline">Open full page</Link>
+            <p className="text-sm font-medium text-loom-black">{tw('livePreview')}</p>
+            <Link href={`/${business.slug}`} className="text-xs font-medium text-loom-accent hover:underline">{td('openFullPage')}</Link>
           </div>
-          <iframe title="Public Website Preview" src={`/${business.slug}?preview=${encodeURIComponent(iframeToken)}`} className="h-[80vh] w-full bg-white" />
+          <iframe
+            title={tw('livePreview')}
+            src={`/${business.slug}?preview=${encodeURIComponent(iframeToken)}`}
+            className="h-[80vh] w-full bg-white"
+          />
         </section>
       </div>
     </main>

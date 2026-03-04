@@ -10,7 +10,7 @@ export default function HotelTemplate({ business, services, staff, publicConfig,
       publicConfig={publicConfig}
       publicAssets={publicAssets}
       typeLabelKey="hotelLabel"
-      offeringsTitle="Rooms"
+      offeringsTitleKey="roomsLabel"
     />
   )
 }

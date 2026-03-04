@@ -44,7 +44,7 @@ export default async function DashboardPage() {
         <p className="section-label">{t('dashboard')}</p>
         <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{t('overview')}</h1>
         <p className="mt-4 border border-loom-error bg-loom-white p-4 text-sm text-loom-error">
-          Missing SUPABASE_SERVICE_ROLE_KEY
+          {t('missingServiceRoleKey')}
         </p>
       </main>
     )

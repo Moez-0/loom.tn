@@ -1,6 +1,8 @@
 {
   "common": {
     "language": "Language",
+    "chooseLanguage": "Choose language",
+    "toggleMenu": "Toggle menu",
     "en": "EN",
     "fr": "FR",
     "ar": "AR"
@@ -107,6 +109,43 @@
         "label": "Step 02",
         "title": "Go live in hours",
         "text": "Connect your custom domain and start accepting bookings immediately. Loom handles the hosting and security for you."
+      },
+      "goLive": {
+        "title": "Go-live flow",
+        "item1": "Customer books online in seconds",
+        "item2": "Confirmation is sent automatically",
+        "item3": "Reminder goes out before the visit",
+        "item4": "Team sees everything in one dashboard"
+      },
+      "badges": {
+        "liveDashboard": "Live dashboard",
+        "reservations": "Reservations",
+        "analytics": "Analytics"
+      }
+    },
+    "widgets": {
+      "cookie": {
+        "title": "Cookie preferences",
+        "description": "Loom uses cookies to improve performance and personalize your experience.",
+        "accept": "Accept all",
+        "essentialOnly": "Essential only",
+        "close": "Close cookie popup"
+      },
+      "chat": {
+        "title": "Need quick help?",
+        "subtitle": "Get instant guidance before starting your trial.",
+        "open": "Help",
+        "close": "Close help chat",
+        "topics": {
+          "pricing": "Pricing",
+          "setup": "Setup",
+          "support": "Support"
+        },
+        "responses": {
+          "pricing": "The Professional plan includes reservations, team workflow, and analytics. You can start your trial and request full setup with Loom.",
+          "setup": "Create your owner account first, then Loom links your business workspace and helps configure your website and booking flow.",
+          "support": "Loom support is available in Arabic and French. Contact us from the page footer and our team will follow up quickly."
+        }
       }
     },
     "metrics": {
@@ -197,6 +236,8 @@
     "clinicLabel": "Clinic",
     "consultancyLabel": "Consultancy",
     "hotelLabel": "Hotel",
+    "menuLabel": "Menu",
+    "expertiseLabel": "Expertise",
     "reserveCta": "Reserve",
     "aboutLabel": "About",
     "servicesLabel": "Services",
@@ -211,6 +252,11 @@
     "openLabel": "Open",
     "closeLabel": "Close",
     "contactLabel": "Contact",
+    "galleryLabel": "Gallery",
+    "menuFilesLabel": "Menu Files",
+    "menuFileItem": "Menu",
+    "galleryUploadHint": "Upload gallery images from Dashboard → Uploads to populate your gallery.",
+    "teamMemberFallback": "Team member",
     "addressFallback": "Address coming soon",
     "phoneFallback": "Phone coming soon",
     "emailFallback": "Email coming soon",
@@ -255,6 +301,13 @@
   "dashboard": {
     "dashboard": "Dashboard",
     "businessDashboard": "Business Dashboard",
+    "website": "Website",
+    "uploads": "Uploads",
+    "openPublicSite": "Open Public Site",
+    "manageUploads": "Manage Uploads",
+    "editBrandContent": "Edit Brand Content",
+    "openFullPage": "Open full page",
+    "missingServiceRoleKey": "Missing SUPABASE_SERVICE_ROLE_KEY",
     "overview": "Overview",
     "analytics": "Analytics",
     "calendar": "Calendar",
@@ -349,7 +402,74 @@
     "calendarEmpty": "No upcoming reservations found.",
     "calendarPastEmpty": "No past reservations found.",
     "calendarReservations": "reservations",
-    "calendarGuests": "guests"
+    "calendarGuests": "guests",
+    "websiteEditor": {
+      "title": "Visual Website Builder",
+      "subtitle": "Customize structure, copy, and styling with live preview updates.",
+      "designPreset": "Design Preset",
+      "themeStyle": "Theme style",
+      "themeClassic": "Classic",
+      "themeSoft": "Soft",
+      "themeBold": "Bold",
+      "colorPreset": "Color preset",
+      "presetNeutral": "Neutral",
+      "presetOcean": "Ocean",
+      "presetForest": "Forest",
+      "presetCharcoal": "Charcoal",
+      "sectionOrder": "Section order",
+      "heroAlignment": "Hero alignment",
+      "leftAligned": "Left aligned",
+      "centered": "Centered",
+      "buttonShape": "Button shape",
+      "rounded": "Rounded",
+      "pill": "Pill",
+      "brandAccentColor": "Brand accent color",
+      "pageBackgroundColor": "Page background color",
+      "surfaceColor": "Surface color (cards/nav/footer)",
+      "textColor": "Text color",
+      "layout": "Layout",
+      "galleryColumns": "Gallery columns",
+      "columns2": "2 columns",
+      "columns3": "3 columns",
+      "columns4": "4 columns",
+      "sectionVisibility": "Section Visibility",
+      "sectionVisibilityHelp": "Choose which blocks appear on your public website.",
+      "gallery": "Gallery",
+      "team": "Team",
+      "hours": "Hours",
+      "contact": "Contact",
+      "map": "Map",
+      "heroAndNavigation": "Hero & Navigation",
+      "heroHeadlineOptional": "Hero headline (optional)",
+      "heroSupportingTextOptional": "Hero supporting text (optional)",
+      "primaryCtaLabelOptional": "Primary CTA Label (optional)",
+      "secondaryCtaLabelOptional": "Secondary CTA Label (optional)",
+      "topNavigationCtaOptional": "Top navigation CTA label (optional)",
+      "sectionContent": "Section Content",
+      "aboutTitleOptional": "About title (optional)",
+      "aboutTextOptional": "About text (optional)",
+      "offeringsSectionTitleOptional": "{offeringsLabel} section title (optional)",
+      "gallerySectionTitleOptional": "Gallery section title (optional)",
+      "teamSectionTitleOptional": "Team section title (optional)",
+      "hoursSectionTitleOptional": "Hours section title (optional)",
+      "contactSectionTitleOptional": "Contact section title (optional)",
+      "contactIntroTextOptional": "Contact intro text (optional)",
+      "footerNoteOptional": "Footer note (optional)",
+      "saveWebsiteDesign": "Save Website Design",
+      "assetUploads": "Asset Uploads",
+      "assetUploadsHelp": "Gallery and menu file management has moved to the dedicated Uploads area.",
+      "openUploads": "Open Uploads",
+      "livePreview": "Live Preview"
+    },
+    "uploadsPage": {
+      "description": "Manage gallery and menu files for your public website.",
+      "backToBuilder": "Back to Website Builder",
+      "galleryUploads": "Gallery Uploads",
+      "uploadGalleryImages": "Upload Gallery Images",
+      "menuUploads": "Menu Uploads",
+      "uploadMenuFiles": "Upload Menu Files",
+      "delete": "Delete"
+    }
   },
   "admin": {
     "admin": "Admin",
@@ -374,6 +494,7 @@
     "createBusiness": "Create Business",
     "createError": "Could not create business. Check fields and try again.",
     "loadError": "Failed to load businesses",
+    "missingServiceRoleKey": "Missing SUPABASE_SERVICE_ROLE_KEY",
     "empty": "No businesses yet.",
     "active": "Active",
     "inactive": "Inactive",
@@ -400,6 +521,7 @@
       "cancelled": "Cancelled"
     },
     "viewSite": "Open Site",
+    "openWebsiteEditor": "Open Website Editor",
     "form": {
       "businessName": "Business Name",
       "slug": "Slug",
@@ -516,6 +638,16 @@
     "save": "Save Settings",
     "noBusiness": "No business is linked to this user yet.",
     "loadError": "Business settings could not be loaded.",
+    "websiteGuideTitle": "Public Website Editor",
+    "websiteGuideDescription": "Your public site uses a dedicated business website template. Edit content from this page and manage offerings/team from their dedicated sections.",
+    "heroGalleryItem": "Hero and gallery images: logo + cover image",
+    "aboutContactItem": "About and contact sections: description, address, phone, email, WhatsApp",
+    "offeringsItemMenu": "Menu items: managed in Services",
+    "offeringsItemServices": "Services/rooms: managed in Services",
+    "teamItem": "Team section: managed in Staff",
+    "previewPublicSite": "Preview Public Site",
+    "editServices": "Edit Services",
+    "editStaff": "Edit Staff",
     "form": {
       "businessName": "Business Name",
       "phone": "Phone",

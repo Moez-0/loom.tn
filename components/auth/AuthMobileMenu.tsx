@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 type AuthMobileMenuProps = {
   productLabel: string
@@ -12,13 +13,14 @@ type AuthMobileMenuProps = {
 
 export default function AuthMobileMenu({ productLabel, pricingLabel, loginLabel, startTrialLabel }: AuthMobileMenuProps) {
   const [open, setOpen] = useState(false)
+  const tCommon = useTranslations('common')
 
   return (
     <div className="relative">
       <button
         type="button"
         className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-[#111111] text-white transition hover:bg-zinc-800"
-        aria-label="Open menu"
+        aria-label={tCommon('toggleMenu')}
         aria-expanded={open}
         onClick={() => setOpen((prev) => !prev)}
       >

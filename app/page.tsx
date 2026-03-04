@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from 'next-intl/server'
 import LocaleSwitcher from '@/components/i18n/LocaleSwitcher'
 import LandingMobileMenu from '@/components/landing/LandingMobileMenu'
 import LandingIntroSplash from '@/components/landing/LandingIntroSplash'
+import LandingFloatingWidgets from '@/components/landing/LandingFloatingWidgets'
 
 const trustedBy = ['ATLAS GROUP', 'NABLI CLINIC', 'LA BRASSERIE', 'SENSE SALON', 'MÉDINA HOTEL', 'ARCHI STUDIO']
 
@@ -34,7 +35,7 @@ export default async function Home() {
               <a className="transition hover:text-white" href="#contact">{t('nav.contact')}</a>
             </div>
             <div className="hidden items-center gap-4 md:flex">
-              <LocaleSwitcher currentLocale={locale} />
+              <LocaleSwitcher currentLocale={locale} variant="icon" />
               <Link className="rounded-md px-4 py-2 text-sm font-medium text-white" href="/auth/login">
                 {t('nav.login')}
               </Link>
@@ -43,7 +44,7 @@ export default async function Home() {
               </Link>
             </div>
             <div className="flex items-center gap-2 md:hidden">
-              <LocaleSwitcher currentLocale={locale} />
+              <LocaleSwitcher currentLocale={locale} variant="icon" />
               <LandingMobileMenu
                 productLabel={t('nav.product')}
                 solutionsLabel={t('nav.solutions')}
@@ -192,9 +193,9 @@ export default async function Home() {
                   />
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-white/90">
-                  <span className="rounded-full border border-[#0067b0]/60 bg-[#0067b0]/20 px-3 py-1">Live dashboard</span>
-                  <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1">Reservations</span>
-                  <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1">Analytics</span>
+                  <span className="rounded-full border border-[#0067b0]/60 bg-[#0067b0]/20 px-3 py-1">{t('workflow.badges.liveDashboard')}</span>
+                  <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1">{t('workflow.badges.reservations')}</span>
+                  <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1">{t('workflow.badges.analytics')}</span>
                 </div>
               </div>
             </div>
@@ -210,12 +211,12 @@ export default async function Home() {
               </div>
               <div className="glass-card w-full max-w-xl rounded-xl border border-white/5 p-4 shadow-2xl">
                 <div className="rounded-lg border border-white/10 bg-[#0f0f0f] p-4">
-                  <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#0067b0]">Go-live flow</p>
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#0067b0]">{t('workflow.goLive.title')}</p>
                   <div className="space-y-2">
-                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">1. Customer books online in seconds</div>
-                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">2. Confirmation is sent automatically</div>
-                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">3. Reminder goes out before the visit</div>
-                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">4. Team sees everything in one dashboard</div>
+                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">1. {t('workflow.goLive.item1')}</div>
+                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">2. {t('workflow.goLive.item2')}</div>
+                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">3. {t('workflow.goLive.item3')}</div>
+                    <div className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white">4. {t('workflow.goLive.item4')}</div>
                   </div>
                 </div>
                 <div className="mt-3 grid grid-cols-3 gap-2">
@@ -372,6 +373,7 @@ export default async function Home() {
           </div>
         </div>
       </footer>
+      <LandingFloatingWidgets />
     </main>
   )
 }

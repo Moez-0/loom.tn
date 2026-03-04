@@ -129,6 +129,7 @@ async function updateSettings(formData: FormData) {
 
 export default async function DashboardSettingsPage() {
   const t = await getTranslations('settings')
+  const td = await getTranslations('dashboard')
   const businessId = await getBusinessId()
 
   if (!businessId) {
@@ -150,7 +151,7 @@ export default async function DashboardSettingsPage() {
         <p className="section-label">{t('dashboard')}</p>
         <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{t('title')}</h1>
         <p className="mt-4 border border-loom-error bg-loom-white p-4 text-sm text-loom-error">
-          {t('loadError')}: Missing SUPABASE_SERVICE_ROLE_KEY
+          {t('loadError')}: {td('missingServiceRoleKey')}
         </p>
       </main>
     )
@@ -182,26 +183,25 @@ export default async function DashboardSettingsPage() {
       <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{t('title')}</h1>
 
       <section className="mt-6 rounded-xl border border-loom-border bg-loom-surface p-5">
-        <h2 className="text-base font-semibold text-loom-black">Public Website Editor</h2>
+        <h2 className="text-base font-semibold text-loom-black">{t('websiteGuideTitle')}</h2>
         <p className="mt-2 text-sm text-loom-muted">
-          Your public site now uses a dedicated business website template. Edit content from this page and manage
-          offerings/team from their dedicated sections.
+          {t('websiteGuideDescription')}
         </p>
         <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-loom-muted">
-          <li>Hero and gallery images: logo + cover image</li>
-          <li>About and contact sections: description, address, phone, email, WhatsApp</li>
-          <li>{data.type === 'restaurant' ? 'Menu items' : 'Services/rooms'}: managed in Services</li>
-          <li>Team section: managed in Staff</li>
+          <li>{t('heroGalleryItem')}</li>
+          <li>{t('aboutContactItem')}</li>
+          <li>{data.type === 'restaurant' ? t('offeringsItemMenu') : t('offeringsItemServices')}</li>
+          <li>{t('teamItem')}</li>
         </ul>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link href={`/${data.slug}`} className="btn-primary inline-flex items-center">
-            Preview Public Site
+            {t('previewPublicSite')}
           </Link>
           <Link href="/dashboard/services" className="btn-secondary inline-flex items-center">
-            Edit Services
+            {t('editServices')}
           </Link>
           <Link href="/dashboard/staff" className="btn-secondary inline-flex items-center">
-            Edit Staff
+            {t('editStaff')}
           </Link>
         </div>
       </section>

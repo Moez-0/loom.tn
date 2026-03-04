@@ -10,7 +10,7 @@ export default function ConsultancyTemplate({ business, services, staff, publicC
       publicConfig={publicConfig}
       publicAssets={publicAssets}
       typeLabelKey="consultancyLabel"
-      offeringsTitle="Expertise"
+      offeringsTitleKey="expertiseLabel"
     />
   )
 }

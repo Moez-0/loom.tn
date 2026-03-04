@@ -1,6 +1,8 @@
 {
   "common": {
     "language": "Langue",
+    "chooseLanguage": "Choisir la langue",
+    "toggleMenu": "Ouvrir le menu",
     "en": "EN",
     "fr": "FR",
     "ar": "AR"
@@ -107,6 +109,43 @@
         "label": "Étape 02",
         "title": "Mettez en ligne en quelques heures",
         "text": "Connectez votre domaine et commencez à accepter des réservations immédiatement. Loom gère l'hébergement et la sécurité."
+      },
+      "goLive": {
+        "title": "Parcours de mise en ligne",
+        "item1": "Le client réserve en ligne en quelques secondes",
+        "item2": "La confirmation est envoyée automatiquement",
+        "item3": "Le rappel est envoyé avant la visite",
+        "item4": "L'équipe voit tout dans un seul tableau de bord"
+      },
+      "badges": {
+        "liveDashboard": "Tableau de bord live",
+        "reservations": "Réservations",
+        "analytics": "Analytique"
+      }
+    },
+    "widgets": {
+      "cookie": {
+        "title": "Préférences cookies",
+        "description": "Loom utilise des cookies pour améliorer les performances et personnaliser votre expérience.",
+        "accept": "Tout accepter",
+        "essentialOnly": "Essentiels uniquement",
+        "close": "Fermer la fenêtre cookies"
+      },
+      "chat": {
+        "title": "Besoin d'aide rapide ?",
+        "subtitle": "Obtenez une réponse instantanée avant de démarrer votre essai.",
+        "open": "Aide",
+        "close": "Fermer l'aide",
+        "topics": {
+          "pricing": "Tarifs",
+          "setup": "Setup",
+          "support": "Support"
+        },
+        "responses": {
+          "pricing": "Le plan Professionnel inclut les réservations, le workflow d'équipe et l'analytique. Vous pouvez lancer l'essai puis demander l'activation complète avec Loom.",
+          "setup": "Créez d'abord votre compte propriétaire, puis Loom lie votre espace entreprise et vous aide à configurer le site et le parcours de réservation.",
+          "support": "Le support Loom est disponible en arabe et en français. Contactez-nous depuis le bas de page et notre équipe revient rapidement vers vous."
+        }
       }
     },
     "metrics": {
@@ -197,6 +236,8 @@
     "clinicLabel": "Clinique",
     "consultancyLabel": "Cabinet",
     "hotelLabel": "Hôtel",
+    "menuLabel": "Menu",
+    "expertiseLabel": "Expertise",
     "reserveCta": "Réserver",
     "aboutLabel": "À Propos",
     "servicesLabel": "Services",
@@ -211,6 +252,11 @@
     "openLabel": "Ouverture",
     "closeLabel": "Fermeture",
     "contactLabel": "Contact",
+    "galleryLabel": "Galerie",
+    "menuFilesLabel": "Fichiers menu",
+    "menuFileItem": "Menu",
+    "galleryUploadHint": "Importez des images de galerie depuis Tableau de bord → Uploads pour alimenter votre galerie.",
+    "teamMemberFallback": "Membre de l'équipe",
     "addressFallback": "Adresse à venir",
     "phoneFallback": "Téléphone à venir",
     "emailFallback": "Email à venir",
@@ -255,6 +301,13 @@
   "dashboard": {
     "dashboard": "Tableau de Bord",
     "businessDashboard": "Tableau de Bord Entreprise",
+    "website": "Site Web",
+    "uploads": "Uploads",
+    "openPublicSite": "Ouvrir le site public",
+    "manageUploads": "Gérer les uploads",
+    "editBrandContent": "Modifier le contenu de marque",
+    "openFullPage": "Ouvrir la page complète",
+    "missingServiceRoleKey": "SUPABASE_SERVICE_ROLE_KEY manquante",
     "overview": "Vue d'ensemble",
     "analytics": "Analytique",
     "calendar": "Calendrier",
@@ -349,7 +402,74 @@
     "calendarEmpty": "Aucune réservation à venir.",
     "calendarPastEmpty": "Aucune réservation passée.",
     "calendarReservations": "réservations",
-    "calendarGuests": "personnes"
+    "calendarGuests": "personnes",
+    "websiteEditor": {
+      "title": "Éditeur visuel du site",
+      "subtitle": "Personnalisez structure, contenu et style avec aperçu en direct.",
+      "designPreset": "Préréglage de design",
+      "themeStyle": "Style de thème",
+      "themeClassic": "Classique",
+      "themeSoft": "Doux",
+      "themeBold": "Marqué",
+      "colorPreset": "Préréglage de couleurs",
+      "presetNeutral": "Neutre",
+      "presetOcean": "Océan",
+      "presetForest": "Forêt",
+      "presetCharcoal": "Charbon",
+      "sectionOrder": "Ordre des sections",
+      "heroAlignment": "Alignement du hero",
+      "leftAligned": "Aligné à gauche",
+      "centered": "Centré",
+      "buttonShape": "Forme des boutons",
+      "rounded": "Arrondi",
+      "pill": "Pilule",
+      "brandAccentColor": "Couleur d'accent de marque",
+      "pageBackgroundColor": "Couleur de fond de page",
+      "surfaceColor": "Couleur des surfaces (cartes/nav/footer)",
+      "textColor": "Couleur du texte",
+      "layout": "Mise en page",
+      "galleryColumns": "Colonnes de galerie",
+      "columns2": "2 colonnes",
+      "columns3": "3 colonnes",
+      "columns4": "4 colonnes",
+      "sectionVisibility": "Visibilité des sections",
+      "sectionVisibilityHelp": "Choisissez les blocs affichés sur votre site public.",
+      "gallery": "Galerie",
+      "team": "Équipe",
+      "hours": "Horaires",
+      "contact": "Contact",
+      "map": "Carte",
+      "heroAndNavigation": "Hero et navigation",
+      "heroHeadlineOptional": "Titre hero (optionnel)",
+      "heroSupportingTextOptional": "Texte d'accroche hero (optionnel)",
+      "primaryCtaLabelOptional": "Libellé CTA principal (optionnel)",
+      "secondaryCtaLabelOptional": "Libellé CTA secondaire (optionnel)",
+      "topNavigationCtaOptional": "Libellé CTA de navigation haute (optionnel)",
+      "sectionContent": "Contenu des sections",
+      "aboutTitleOptional": "Titre À propos (optionnel)",
+      "aboutTextOptional": "Texte À propos (optionnel)",
+      "offeringsSectionTitleOptional": "Titre de section {offeringsLabel} (optionnel)",
+      "gallerySectionTitleOptional": "Titre de section galerie (optionnel)",
+      "teamSectionTitleOptional": "Titre de section équipe (optionnel)",
+      "hoursSectionTitleOptional": "Titre de section horaires (optionnel)",
+      "contactSectionTitleOptional": "Titre de section contact (optionnel)",
+      "contactIntroTextOptional": "Texte d'intro contact (optionnel)",
+      "footerNoteOptional": "Note de pied de page (optionnel)",
+      "saveWebsiteDesign": "Enregistrer le design du site",
+      "assetUploads": "Uploads d'assets",
+      "assetUploadsHelp": "La gestion de la galerie et des fichiers menu a été déplacée vers la zone Uploads.",
+      "openUploads": "Ouvrir Uploads",
+      "livePreview": "Aperçu en direct"
+    },
+    "uploadsPage": {
+      "description": "Gérez les fichiers galerie et menu de votre site public.",
+      "backToBuilder": "Retour à l'éditeur du site",
+      "galleryUploads": "Uploads de galerie",
+      "uploadGalleryImages": "Importer des images de galerie",
+      "menuUploads": "Uploads de menu",
+      "uploadMenuFiles": "Importer des fichiers menu",
+      "delete": "Supprimer"
+    }
   },
   "admin": {
     "admin": "Admin",
@@ -374,6 +494,7 @@
     "createBusiness": "Créer l'Entreprise",
     "createError": "Impossible de créer l'entreprise. Vérifiez les champs et réessayez.",
     "loadError": "Échec du chargement des entreprises",
+    "missingServiceRoleKey": "SUPABASE_SERVICE_ROLE_KEY manquante",
     "empty": "Aucune entreprise pour le moment.",
     "active": "Actif",
     "inactive": "Inactif",
@@ -400,6 +521,7 @@
       "cancelled": "Annulé"
     },
     "viewSite": "Ouvrir le Site",
+    "openWebsiteEditor": "Ouvrir l'éditeur du site",
     "form": {
       "businessName": "Nom de l'Entreprise",
       "slug": "Slug",
@@ -516,6 +638,16 @@
     "save": "Enregistrer les Paramètres",
     "noBusiness": "Aucune entreprise n'est liée à cet utilisateur.",
     "loadError": "Impossible de charger les paramètres de l'entreprise.",
+    "websiteGuideTitle": "Éditeur du site public",
+    "websiteGuideDescription": "Votre site public utilise un modèle de site dédié à votre entreprise. Modifiez le contenu depuis cette page et gérez offres/équipe depuis leurs sections dédiées.",
+    "heroGalleryItem": "Images hero et galerie : logo + image de couverture",
+    "aboutContactItem": "Sections À propos et contact : description, adresse, téléphone, email, WhatsApp",
+    "offeringsItemMenu": "Éléments du menu : gérés dans Services",
+    "offeringsItemServices": "Services/chambres : gérés dans Services",
+    "teamItem": "Section équipe : gérée dans Personnel",
+    "previewPublicSite": "Prévisualiser le site public",
+    "editServices": "Modifier les services",
+    "editStaff": "Modifier l'équipe",
     "form": {
       "businessName": "Nom de l'Entreprise",
       "phone": "Téléphone",

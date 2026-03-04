@@ -9,9 +9,13 @@ create table if not exists public.business_public_sites (
   tagline text,
   hero_cta_label text,
   secondary_cta_label text,
+  editor_config jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.business_public_sites
+add column if not exists editor_config jsonb not null default '{}'::jsonb;
 
 create table if not exists public.business_public_assets (
   id uuid primary key default gen_random_uuid(),

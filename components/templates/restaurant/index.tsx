@@ -10,7 +10,7 @@ export default function RestaurantTemplate({ business, services, staff, publicCo
       publicConfig={publicConfig}
       publicAssets={publicAssets}
       typeLabelKey="restaurantLabel"
-      offeringsTitle="Menu"
+      offeringsTitleKey="menuLabel"
     />
   )
 }

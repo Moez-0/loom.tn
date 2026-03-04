@@ -48,8 +48,8 @@ export default async function AdminCalendarPage() {
   if (!admin) {
     return (
       <main>
-        <p className="border border-loom-error bg-loom-white p-4 text-sm text-loom-error">
-          {t('loadError')}: Missing SUPABASE_SERVICE_ROLE_KEY
+          <p className="border border-loom-error bg-loom-white p-4 text-sm text-loom-error">
+            {t('loadError')}: {t('missingServiceRoleKey')}
         </p>
       </main>
     )
