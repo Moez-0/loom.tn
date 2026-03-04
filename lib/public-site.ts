@@ -1,3 +1,4 @@
+import type { SupabaseClient } from '@supabase/supabase-js'
 import type { PublicSiteAsset, PublicSiteAssetType, PublicSiteConfig } from '@/types/public-site'
 
 const DEFAULT_PUBLIC_SITE_CONFIG: PublicSiteConfig = {
@@ -29,7 +30,7 @@ export function getDefaultPublicSiteConfig(): PublicSiteConfig {
 }
 
 export async function getPublicSiteConfig(
-  admin: { from: (table: string) => any },
+  admin: SupabaseClient,
   businessId: string
 ): Promise<PublicSiteConfig> {
   const { data, error } = await admin
@@ -51,7 +52,7 @@ export async function getPublicSiteConfig(
 }
 
 export async function savePublicSiteConfig(
-  admin: { from: (table: string) => any },
+  admin: SupabaseClient,
   businessId: string,
   config: PublicSiteConfig
 ) {
@@ -76,7 +77,7 @@ type PublicSiteAssetRow = {
 }
 
 export async function getPublicSiteAssets(
-  admin: { from: (table: string) => any },
+  admin: SupabaseClient,
   businessId: string
 ): Promise<PublicSiteAsset[]> {
   const { data, error } = await admin
@@ -94,14 +95,14 @@ export async function getPublicSiteAssets(
 }
 
 export async function createPublicSiteAsset(
-  admin: { from: (table: string) => any },
+  admin: SupabaseClient,
   payload: Omit<PublicSiteAssetRow, 'id' | 'created_at'>
 ) {
   await admin.from('business_public_assets').insert(payload)
 }
 
 export async function deletePublicSiteAsset(
-  admin: { from: (table: string) => any },
+  admin: SupabaseClient,
   businessId: string,
   assetId: string
 ) {
