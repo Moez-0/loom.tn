@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { getLocale, getTranslations } from 'next-intl/server'
 import LocaleSwitcher from '@/components/i18n/LocaleSwitcher'
 import LandingMobileMenu from '@/components/landing/LandingMobileMenu'
+import LandingIntroSplash from '@/components/landing/LandingIntroSplash'
 
 const trustedBy = ['ATLAS GROUP', 'NABLI CLINIC', 'LA BRASSERIE', 'SENSE SALON', 'MÉDINA HOTEL', 'ARCHI STUDIO']
 
@@ -18,6 +19,7 @@ export default async function Home() {
 
   return (
     <main className="loom-landing bg-[#0b0b0b] text-white antialiased">
+      <LandingIntroSplash />
       <nav className="nav-floating fixed z-50 border border-white/10 bg-[#0b0b0b]/60 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
