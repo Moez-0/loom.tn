@@ -73,16 +73,16 @@ export default async function DashboardLayout({
       <div className="min-h-screen bg-loom-off-white lg:ml-[256px]">
         <header className="border-b border-loom-border bg-loom-surface">
           <div className="flex min-h-14 items-center justify-between gap-3 px-4 py-2 sm:px-6 lg:px-8">
-            <p className="text-base font-bold tracking-tight text-loom-black lg:hidden">LOOM</p>
-            <p className="section-label">{t('businessDashboard')}</p>
-            <div className="flex items-center gap-3">
+            <p className="shrink-0 text-base font-bold tracking-tight text-loom-black lg:hidden">LOOM</p>
+            <p className="section-label hidden min-w-0 truncate sm:block">{t('businessDashboard')}</p>
+            <div className="flex shrink-0 items-center gap-2 sm:gap-3">
               {trialBadgeText ? (
                 <span className="badge hidden text-loom-accent sm:inline-flex" title={t('freeTrialBadge')}>
                   {t('freeTrialBadge')} · {trialBadgeText}
                 </span>
               ) : null}
-              <LocaleSwitcher currentLocale={locale} />
-              <LogoutButton label={t('logout')} />
+              <LocaleSwitcher currentLocale={locale} compactOnMobile />
+              <LogoutButton label={t('logout')} className="btn-secondary !px-3 !py-1.5 !text-[0.70rem] sm:!px-4 sm:!py-2 sm:!text-xs" />
             </div>
           </div>
           {trialBadgeText ? (
@@ -98,7 +98,7 @@ export default async function DashboardLayout({
                 <a
                   key={link.href}
                   href={link.href}
-                  className="whitespace-nowrap rounded-md border border-loom-border bg-loom-off-white px-3 py-1.5 text-xs font-medium text-loom-muted"
+                  className="whitespace-nowrap rounded-md border border-loom-border bg-loom-off-white px-2.5 py-1.5 text-[11px] font-medium text-loom-muted"
                 >
                   {link.label}
                 </a>

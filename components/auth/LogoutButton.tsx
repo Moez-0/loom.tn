@@ -6,9 +6,10 @@ import { createClient } from '@/lib/supabase/client'
 
 type LogoutButtonProps = {
   label?: string
+  className?: string
 }
 
-export default function LogoutButton({ label = 'Logout' }: LogoutButtonProps) {
+export default function LogoutButton({ label = 'Logout', className }: LogoutButtonProps) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
@@ -21,7 +22,7 @@ export default function LogoutButton({ label = 'Logout' }: LogoutButtonProps) {
   }
 
   return (
-    <button type="button" className="btn-secondary" onClick={handleLogout} disabled={loading}>
+    <button type="button" className={className ?? 'btn-secondary'} onClick={handleLogout} disabled={loading}>
       {loading ? 'Signing out...' : label}
     </button>
   )

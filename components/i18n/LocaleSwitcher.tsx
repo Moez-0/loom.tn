@@ -8,11 +8,12 @@ type Locale = 'en' | 'fr' | 'ar'
 
 type LocaleSwitcherProps = {
   currentLocale: Locale
+  compactOnMobile?: boolean
 }
 
 const locales: Locale[] = ['en', 'fr', 'ar']
 
-export default function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
+export default function LocaleSwitcher({ currentLocale, compactOnMobile = false }: LocaleSwitcherProps) {
   const router = useRouter()
   const t = useTranslations('common')
   const [isOpen, setIsOpen] = useState(false)
@@ -58,7 +59,7 @@ export default function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
         aria-expanded={isOpen}
         aria-haspopup="menu"
       >
-        <span>{t('language')}</span>
+        <span className={compactOnMobile ? 'hidden sm:inline' : ''}>{t('language')}</span>
         <span className="font-semibold text-white">{t(currentLocale)}</span>
         <svg className={`h-3.5 w-3.5 text-loom-faint transition ${isOpen ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 011.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
