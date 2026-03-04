@@ -16,6 +16,12 @@ const businessSchema = z.object({
   name: z.string().min(1),
   address: z.string().nullable().optional(),
   email: z.string().email().nullable().optional(),
+  logo_url: z.string().url().nullable().optional(),
+  logoUrl: z.string().url().nullable().optional(),
+  primary_color: z.string().nullable().optional(),
+  primaryColor: z.string().nullable().optional(),
+  secondary_color: z.string().nullable().optional(),
+  secondaryColor: z.string().nullable().optional(),
 })
 
 const payloadSchema = z.object({

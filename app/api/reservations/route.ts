@@ -34,13 +34,16 @@ export async function POST(request: Request) {
 
   const { data: business } = await supabase
     .from('businesses')
-    .select('id, name, address, email, is_active')
+    .select('id, name, address, email, logo_url, primary_color, secondary_color, is_active')
     .eq('id', payload.business_id)
     .single<{
       id: string
       name: string
       address: string | null
       email: string | null
+      logo_url: string | null
+      primary_color: string | null
+      secondary_color: string | null
       is_active: boolean
     }>()
 
