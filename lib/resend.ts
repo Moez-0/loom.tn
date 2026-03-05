@@ -5,12 +5,11 @@ type EmailBusiness = {
   address?: string | null
   email?: string | null
   language?: 'en' | 'fr' | 'ar' | null
-  logo_url?: string | null
-  logoUrl?: string | null
-  primary_color?: string | null
-  primaryColor?: string | null
-  secondary_color?: string | null
-  secondaryColor?: string | null
+  button_style?: 'rounded' | 'pill' | null
+  brand_color?: string | null
+  background_color?: string | null
+  surface_color?: string | null
+  text_color?: string | null
 }
 
 type EmailReservation = {
@@ -29,8 +28,10 @@ type EmailLocale = 'en' | 'fr' | 'ar'
 const resendApiKey = process.env.RESEND_API_KEY
 const resend = resendApiKey ? new Resend(resendApiKey) : null
 
-const DEFAULT_PRIMARY = '#111827'
-const DEFAULT_SECONDARY = '#f4f4f5'
+const DEFAULT_BRAND = '#111827'
+const DEFAULT_BACKGROUND = '#f8fafc'
+const DEFAULT_SURFACE = '#ffffff'
+const DEFAULT_TEXT = '#111827'
 
 const EMAIL_COPY: Record<
   EmailLocale,
@@ -130,7 +131,7 @@ function escapeHtml(value: string | number | null | undefined) {
     .replace(/'/g, '&#39;')
 }
 
-function normalizeHexColor(color?: string | null, fallback = DEFAULT_PRIMARY) {
+function normalizeHexColor(color?: string | null, fallback = DEFAULT_BRAND) {
   if (!color) {
     return fallback
   }
@@ -141,6 +142,23 @@ function normalizeHexColor(color?: string | null, fallback = DEFAULT_PRIMARY) {
   }
 
   return fallback
+}
+
+function hexToRgb(hex: string) {
+  const safe = hex.replace('#', '')
+  const parsed = Number.parseInt(safe, 16)
+
+  return {
+    r: (parsed >> 16) & 255,
+    g: (parsed >> 8) & 255,
+    b: parsed & 255,
+  }
+}
+
+function withAlpha(hex: string, alpha: number) {
+  const { r, g, b } = hexToRgb(hex)
+  const safeAlpha = Math.min(Math.max(alpha, 0), 1)
+  return `rgba(${r}, ${g}, ${b}, ${safeAlpha})`
 }
 
 function normalizeLocale(value?: string | null, fallback: EmailLocale = 'fr'): EmailLocale {
@@ -160,9 +178,11 @@ function translate(locale: EmailLocale, key: keyof (typeof EMAIL_COPY)['en'], va
 
 function getBranding(business: EmailBusiness) {
   return {
-    logoUrl: business.logo_url ?? business.logoUrl ?? null,
-    primary: normalizeHexColor(business.primary_color ?? business.primaryColor, DEFAULT_PRIMARY),
-    secondary: normalizeHexColor(business.secondary_color ?? business.secondaryColor, DEFAULT_SECONDARY),
+    buttonStyle: business.button_style === 'pill' ? 'pill' : 'rounded',
+    brand: normalizeHexColor(business.brand_color, DEFAULT_BRAND),
+    background: normalizeHexColor(business.background_color, DEFAULT_BACKGROUND),
+    surface: normalizeHexColor(business.surface_color, DEFAULT_SURFACE),
+    text: normalizeHexColor(business.text_color, DEFAULT_TEXT),
   }
 }
 
@@ -172,21 +192,18 @@ const emailBase = (business: EmailBusiness, locale: EmailLocale, content: string
   const isArabic = locale === 'ar'
   const textAlign = isArabic ? 'right' : 'left'
   const direction = isArabic ? 'rtl' : 'ltr'
-  const panelBg = '#ffffff'
-  const pageBg = brand.secondary
-  const muted = '#64748b'
-  const border = '#e2e8f0'
-  const logo =
-    brand.logoUrl && /^https?:\/\//i.test(brand.logoUrl)
-      ? `<img src="${escapeHtml(brand.logoUrl)}" alt="${businessName}" style="width:52px;height:52px;border-radius:14px;object-fit:cover;border:1px solid ${border};" />`
-      : ''
+  const pageBg = brand.background
+  const panelBg = brand.surface
+  const bodyText = brand.text
+  const muted = withAlpha(brand.text, 0.65)
+  const border = withAlpha(brand.text, 0.18)
+  const shadow = withAlpha(brand.text, 0.18)
 
   return `
-  <div dir="${direction}" style="margin:0;background:${pageBg};padding:28px 16px;font-family:'DM Sans',system-ui,sans-serif;color:#111827;">
-    <div style="max-width:640px;margin:0 auto;background:${panelBg};border:1px solid ${border};border-radius:20px;overflow:hidden;box-shadow:0 18px 48px rgba(15,23,42,0.12);">
-      <div style="height:5px;background:${brand.primary};"></div>
+  <div dir="${direction}" style="margin:0;background:${pageBg};padding:28px 16px;font-family:'DM Sans',system-ui,sans-serif;color:${bodyText};">
+    <div style="max-width:640px;margin:0 auto;background:${panelBg};border:1px solid ${border};border-radius:20px;overflow:hidden;box-shadow:0 18px 48px ${shadow};">
+      <div style="height:5px;background:${brand.brand};"></div>
       <div style="padding:22px 24px 12px;display:flex;align-items:center;gap:12px;${isArabic ? 'flex-direction:row-reverse;' : ''}">
-        ${logo}
         <div style="text-align:${textAlign};">
           <p style="margin:0;font-size:18px;font-weight:700;line-height:1.3;">${businessName}</p>
           <p style="margin:4px 0 0;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:${muted};">${escapeHtml(
@@ -202,10 +219,10 @@ const emailBase = (business: EmailBusiness, locale: EmailLocale, content: string
 `
 }
 
-const detailRow = (label: string, value: string | number) => `
+const detailRow = (label: string, value: string | number, text: string, border: string, muted: string) => `
   <tr>
-    <td style="padding:11px 0;border-top:1px solid #e2e8f0;color:#64748b;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;width:38%;vertical-align:top;">${escapeHtml(label)}</td>
-    <td style="padding:11px 0;border-top:1px solid #e2e8f0;font-size:14px;">${escapeHtml(value)}</td>
+    <td style="padding:11px 0;border-top:1px solid ${border};color:${muted};font-size:11px;letter-spacing:0.08em;text-transform:uppercase;width:38%;vertical-align:top;">${escapeHtml(label)}</td>
+    <td style="padding:11px 0;border-top:1px solid ${border};font-size:14px;color:${text};">${escapeHtml(value)}</td>
   </tr>
 `
 
@@ -215,7 +232,11 @@ export async function sendBookingConfirmation(reservation: EmailReservation, bus
   }
 
   const locale = normalizeLocale(reservation.reservation_language ?? business.language ?? 'fr')
-  const brand = getBranding(business)
+  const theme = getBranding(business)
+  const textMain = theme.text
+  const textMuted = withAlpha(theme.text, 0.74)
+  const border = withAlpha(theme.text, 0.18)
+  const buttonRadius = theme.buttonStyle === 'pill' ? '9999px' : '12px'
   const intro = translate(locale, 'bookingConfirmedIntro', { businessName: business.name })
 
   await resend.emails.send({
@@ -226,24 +247,27 @@ export async function sendBookingConfirmation(reservation: EmailReservation, bus
       business,
       locale,
       `
-      <h2 style="margin:0 0 8px;font-size:24px;line-height:1.25;color:${brand.primary};font-weight:800;">${escapeHtml(
+      <div style="display:inline-block;margin:0 0 12px;padding:7px 12px;border-radius:${buttonRadius};background:${theme.brand};color:#ffffff;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;">${escapeHtml(
+        translate(locale, 'bookingConfirmedSubject')
+      )}</div>
+      <h2 style="margin:0 0 8px;font-size:24px;line-height:1.25;color:${textMain};font-weight:800;">${escapeHtml(
         translate(locale, 'bookingConfirmedTitle')
       )}</h2>
-      <p style="margin:0 0 18px;font-size:14px;color:#475569;">${escapeHtml(intro)}</p>
-      <div style="border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px;">
-        <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">${escapeHtml(
+      <p style="margin:0 0 18px;font-size:14px;color:${textMuted};">${escapeHtml(intro)}</p>
+      <div style="border:1px solid ${border};border-radius:14px;padding:14px 16px;background:${theme.surface};">
+        <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:${textMuted};">${escapeHtml(
           translate(locale, 'detailsTitle')
         )}</p>
         <table style="width:100%;border-collapse:collapse;">
-          ${detailRow(translate(locale, 'guest'), reservation.customer_name)}
-          ${detailRow(translate(locale, 'date'), reservation.date)}
-          ${detailRow(translate(locale, 'time'), reservation.time_slot)}
-          ${detailRow(translate(locale, 'guests'), reservation.party_size)}
+          ${detailRow(translate(locale, 'guest'), reservation.customer_name, textMain, border, textMuted)}
+          ${detailRow(translate(locale, 'date'), reservation.date, textMain, border, textMuted)}
+          ${detailRow(translate(locale, 'time'), reservation.time_slot, textMain, border, textMuted)}
+          ${detailRow(translate(locale, 'guests'), reservation.party_size, textMain, border, textMuted)}
         </table>
       </div>
       ${
         business.address
-          ? `<p style="margin:16px 0 0;padding:12px 14px;border-radius:12px;background:${brand.secondary};font-size:13px;color:#334155;">${escapeHtml(
+          ? `<p style="margin:16px 0 0;padding:12px 14px;border-radius:12px;background:${theme.background};font-size:13px;color:${textMain};border:1px solid ${border};">${escapeHtml(
               translate(locale, 'contactAddress')
             )}: ${escapeHtml(
               business.address
@@ -261,7 +285,11 @@ export async function sendOwnerAlert(reservation: EmailReservation, business: Em
   }
 
   const locale = normalizeLocale(reservation.reservation_language ?? business.language ?? 'fr')
-  const brand = getBranding(business)
+  const theme = getBranding(business)
+  const textMain = theme.text
+  const textMuted = withAlpha(theme.text, 0.74)
+  const border = withAlpha(theme.text, 0.18)
+  const buttonRadius = theme.buttonStyle === 'pill' ? '9999px' : '12px'
   const intro = translate(locale, 'ownerIntro', { businessName: business.name })
 
   await resend.emails.send({
@@ -272,21 +300,30 @@ export async function sendOwnerAlert(reservation: EmailReservation, business: Em
       business,
       locale,
       `
-      <h2 style="margin:0 0 8px;font-size:24px;line-height:1.25;color:${brand.primary};font-weight:800;">${escapeHtml(
+      <div style="display:inline-block;margin:0 0 12px;padding:7px 12px;border-radius:${buttonRadius};background:${theme.brand};color:#ffffff;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;">${escapeHtml(
+        translate(locale, 'ownerSubject')
+      )}</div>
+      <h2 style="margin:0 0 8px;font-size:24px;line-height:1.25;color:${textMain};font-weight:800;">${escapeHtml(
         translate(locale, 'ownerTitle')
       )}</h2>
-      <p style="margin:0 0 18px;font-size:14px;color:#475569;">${escapeHtml(intro)}</p>
-      <div style="border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px;">
-        <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#64748b;">${escapeHtml(
+      <p style="margin:0 0 18px;font-size:14px;color:${textMuted};">${escapeHtml(intro)}</p>
+      <div style="border:1px solid ${border};border-radius:14px;padding:14px 16px;background:${theme.surface};">
+        <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:${textMuted};">${escapeHtml(
           translate(locale, 'detailsTitle')
         )}</p>
         <table style="width:100%;border-collapse:collapse;">
-          ${detailRow(translate(locale, 'customer'), reservation.customer_name)}
-          ${detailRow(translate(locale, 'phone'), reservation.customer_phone)}
-          ${detailRow(translate(locale, 'date'), reservation.date)}
-          ${detailRow(translate(locale, 'time'), reservation.time_slot)}
-          ${detailRow(translate(locale, 'partySize'), reservation.party_size)}
-          ${detailRow(translate(locale, 'notes'), reservation.special_requests || translate(locale, 'notProvided'))}
+          ${detailRow(translate(locale, 'customer'), reservation.customer_name, textMain, border, textMuted)}
+          ${detailRow(translate(locale, 'phone'), reservation.customer_phone, textMain, border, textMuted)}
+          ${detailRow(translate(locale, 'date'), reservation.date, textMain, border, textMuted)}
+          ${detailRow(translate(locale, 'time'), reservation.time_slot, textMain, border, textMuted)}
+          ${detailRow(translate(locale, 'partySize'), reservation.party_size, textMain, border, textMuted)}
+          ${detailRow(
+            translate(locale, 'notes'),
+            reservation.special_requests || translate(locale, 'notProvided'),
+            textMain,
+            border,
+            textMuted
+          )}
         </table>
       </div>
     `

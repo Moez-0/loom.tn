@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createClient } from '@supabase/supabase-js'
 import { sendBookingConfirmation, sendOwnerAlert } from '@/lib/resend'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -32,6 +33,7 @@ export async function POST(request: Request) {
   }
 
   const payload = parsed.data
+  const admin = createAdminClient()
 
   const { data: business } = await supabase
     .from('businesses')
@@ -48,6 +50,33 @@ export async function POST(request: Request) {
       language: 'en' | 'fr' | 'ar'
       is_active: boolean
     }>()
+
+  const { data: publicSite } = admin
+    ? await admin
+        .from('business_public_sites')
+        .select('editor_config')
+        .eq('business_id', payload.business_id)
+        .maybeSingle<{ editor_config: Record<string, unknown> | null }>()
+    : { data: null }
+
+  const editor = publicSite?.editor_config && typeof publicSite.editor_config === 'object' ? publicSite.editor_config : null
+  const buttonStyle = editor?.button_style === 'pill' ? 'pill' : 'rounded'
+  const brandColor = typeof editor?.brand_color === 'string' ? editor.brand_color : null
+  const backgroundColor =
+    typeof editor?.background_color === 'string'
+      ? editor.background_color
+      : typeof editor?.page_background_color === 'string'
+        ? editor.page_background_color
+        : null
+  const surfaceColor =
+    typeof editor?.surface_color === 'string'
+      ? editor.surface_color
+      : typeof editor?.section_background_color === 'string'
+        ? editor.section_background_color
+        : typeof editor?.card_background_color === 'string'
+          ? editor.card_background_color
+          : null
+  const textColor = typeof editor?.text_color === 'string' ? editor.text_color : null
 
   if (!business?.is_active) {
     return NextResponse.json({ error: 'Business not found' }, { status: 404 })
@@ -78,8 +107,28 @@ export async function POST(request: Request) {
   }
 
   await Promise.allSettled([
-    sendBookingConfirmation({ ...reservationPayload, reservation_language: reservationLanguage }, business),
-    sendOwnerAlert({ ...reservationPayload, reservation_language: reservationLanguage }, business),
+    sendBookingConfirmation(
+      { ...reservationPayload, reservation_language: reservationLanguage },
+      {
+        ...business,
+        button_style: buttonStyle,
+        brand_color: brandColor,
+        background_color: backgroundColor,
+        surface_color: surfaceColor,
+        text_color: textColor,
+      }
+    ),
+    sendOwnerAlert(
+      { ...reservationPayload, reservation_language: reservationLanguage },
+      {
+        ...business,
+        button_style: buttonStyle,
+        brand_color: brandColor,
+        background_color: backgroundColor,
+        surface_color: surfaceColor,
+        text_color: textColor,
+      }
+    ),
   ])
 
   return NextResponse.json({ ok: true })
