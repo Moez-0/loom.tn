@@ -10,6 +10,7 @@ import {
   getPublicSiteConfig,
   savePublicSiteConfig,
 } from '@/lib/public-site'
+import { offeringsLabelKeyForBusinessType } from '@/lib/business-type-config'
 import type { BusinessType } from '@/types'
 import type { PublicSiteSectionKey } from '@/types/public-site'
 import WebsiteSectionOrderBuilder from '@/components/dashboard/WebsiteSectionOrderBuilder'
@@ -192,14 +193,7 @@ export default async function DashboardWebsitePage({
   }
 
   const effective = config ?? getDefaultPublicSiteConfig()
-  const offeringsLabel =
-    business.type === 'restaurant' || business.type === 'cafe' || business.type === 'bar' || business.type === 'lounge'
-      ? tPublic('menuLabel')
-      : business.type === 'hotel'
-        ? tPublic('roomsLabel')
-        : business.type === 'consultancy'
-          ? tPublic('expertiseLabel')
-          : tPublic('servicesLabel')
+  const offeringsLabel = tPublic(offeringsLabelKeyForBusinessType(business.type))
   const previewToken = searchParams?.preview || websiteRedirectToken()
   const sectionLabels: Record<PublicSiteSectionKey, string> = {
     about: tPublic('aboutLabel'),

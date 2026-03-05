@@ -8,6 +8,9 @@ const salon = dynamic(() => import('@/components/templates/salon'))
 const clinic = dynamic(() => import('@/components/templates/clinic'))
 const consultancy = dynamic(() => import('@/components/templates/consultancy'))
 const hotel = dynamic(() => import('@/components/templates/hotel'))
+const architect = dynamic(() => import('@/components/templates/architect'))
+const doctor = dynamic(() => import('@/components/templates/doctor'))
+const legal = dynamic(() => import('@/components/templates/legal'))
 
 export const templateMap: Record<BusinessType, ComponentType<TemplateProps>> = {
   restaurant,
@@ -18,4 +21,7 @@ export const templateMap: Record<BusinessType, ComponentType<TemplateProps>> = {
   clinic,
   consultancy,
   hotel,
+  architect,
+  doctor,
+  legal,
 }

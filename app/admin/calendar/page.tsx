@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 
 type ReservationStatus = 'pending' | 'confirmed' | 'cancelled' | 'no_show' | 'completed'
 type ReservationSource = 'online' | 'phone' | 'whatsapp' | 'walk_in'
@@ -21,6 +22,7 @@ type ReservationRow = {
 type BusinessRow = {
   id: string
   name: string
+  type: import('@/types').BusinessType
 }
 
 function formatDate(date: Date) {
@@ -65,13 +67,43 @@ export default async function AdminCalendarPage() {
       .order('date', { ascending: true })
       .order('time_slot', { ascending: true })
       .limit(300),
-    admin.from('businesses').select('id, name'),
+    admin.from('businesses').select('id, name, type'),
   ])
 
   const reservations = (reservationsData ?? []) as ReservationRow[]
   const businesses = (businessesData ?? []) as BusinessRow[]
 
   const businessMap = new Map<string, string>(businesses.map((item) => [item.id, item.name]))
+  const businessTypeMap = new Map<string, import('@/types').BusinessType>(businesses.map((item) => [item.id, item.type]))
+  const typesInScope = new Set<import('@/types').BusinessType>()
+
+  for (const row of reservations) {
+    const type = businessTypeMap.get(row.business_id)
+    if (type) {
+      typesInScope.add(type)
+    }
+  }
+
+  if (typesInScope.size === 0) {
+    for (const type of businessTypeMap.values()) {
+      typesInScope.add(type)
+    }
+  }
+
+  const hasOnlyAppointmentTypes = typesInScope.size > 0 && Array.from(typesInScope).every((type) => usesAppointmentTerminology(type))
+  const hasOnlyReservationTypes = typesInScope.size > 0 && Array.from(typesInScope).every((type) => !usesAppointmentTerminology(type))
+
+  const emptyLabel = hasOnlyAppointmentTypes
+    ? t('calendarAppointmentEmpty')
+    : hasOnlyReservationTypes
+      ? t('calendarEmpty')
+      : t('calendarBookingEmpty')
+
+  const countNounLabel = hasOnlyAppointmentTypes
+    ? t('calendarAppointments')
+    : hasOnlyReservationTypes
+      ? t('calendarReservations')
+      : t('calendarBookings')
 
   const groups = reservations.reduce<Record<string, ReservationRow[]>>((acc, item) => {
     if (!acc[item.date]) {
@@ -98,7 +130,7 @@ export default async function AdminCalendarPage() {
 
       {dates.length === 0 ? (
         <div className="rounded-xl border border-loom-border bg-loom-surface p-8 text-sm text-loom-muted">
-          {t('calendarEmpty')}
+          {emptyLabel}
         </div>
       ) : (
         <div className="space-y-4">
@@ -106,7 +138,7 @@ export default async function AdminCalendarPage() {
             <section key={date} className="rounded-xl border border-loom-border bg-loom-surface p-5">
               <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-loom-black">{date}</h2>
-                <span className="text-sm text-loom-muted">{groups[date].length} {t('calendarReservations')}</span>
+                <span className="text-sm text-loom-muted">{groups[date].length} {countNounLabel}</span>
               </div>
               <div className="space-y-2">
                 {groups[date].map((reservation) => (

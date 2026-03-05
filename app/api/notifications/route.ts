@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { sendBookingConfirmation, sendOwnerAlert } from '@/lib/resend'
+import { BUSINESS_TYPE_VALUES } from '@/lib/business-type-config'
 
 const reservationSchema = z.object({
   customer_name: z.string().min(2),
@@ -15,6 +16,7 @@ const reservationSchema = z.object({
 
 const businessSchema = z.object({
   name: z.string().min(1),
+  type: z.enum(BUSINESS_TYPE_VALUES).nullable().optional(),
   language: z.enum(['en', 'fr', 'ar']).nullable().optional(),
   address: z.string().nullable().optional(),
   email: z.string().email().nullable().optional(),

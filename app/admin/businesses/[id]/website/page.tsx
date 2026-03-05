@@ -13,6 +13,7 @@ import {
   getPublicSiteConfig,
   savePublicSiteConfig,
 } from '@/lib/public-site'
+import { offeringsLabelKeyForBusinessType } from '@/lib/business-type-config'
 import type { BusinessType } from '@/types'
 import type { PublicSiteAssetType } from '@/types/public-site'
 
@@ -208,14 +209,7 @@ export default async function AdminBusinessWebsitePage({ params, searchParams }:
   }
 
   const effective = config ?? getDefaultPublicSiteConfig()
-  const offeringsLabel =
-    business.type === 'restaurant' || business.type === 'cafe' || business.type === 'bar' || business.type === 'lounge'
-      ? tPublic('menuLabel')
-      : business.type === 'hotel'
-        ? tPublic('roomsLabel')
-        : business.type === 'consultancy'
-          ? tPublic('expertiseLabel')
-          : tPublic('servicesLabel')
+  const offeringsLabel = tPublic(offeringsLabelKeyForBusinessType(business.type))
   const galleryAssets = assets.filter((asset) => asset.type === 'gallery')
   const menuAssets = assets.filter((asset) => asset.type === 'menu')
   const iframeToken = searchParams?.preview || previewToken()

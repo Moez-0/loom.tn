@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { getAvailableSlots } from '@/lib/availability'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -15,7 +16,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'businessId and date are required' }, { status: 400 })
   }
 
-  const slots = await getAvailableSlots(businessId, date, supabase)
+  const admin = createAdminClient()
+  const slots = await getAvailableSlots(businessId, date, admin ?? supabase)
 
   return NextResponse.json({ slots })
 }

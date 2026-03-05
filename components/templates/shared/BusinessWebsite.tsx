@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getLocale, getTranslations } from 'next-intl/server'
 import BusinessWebsiteTopNav from '@/components/templates/shared/BusinessWebsiteTopNav'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 import type { PublicSiteSectionKey } from '@/types/public-site'
 import type { TemplateProps } from '@/types/template'
 
@@ -14,6 +15,9 @@ type BusinessWebsiteProps = TemplateProps & {
     | 'clinicLabel'
     | 'consultancyLabel'
     | 'hotelLabel'
+    | 'architectLabel'
+    | 'doctorLabel'
+    | 'legalLabel'
   offeringsTitleKey: 'menuLabel' | 'servicesLabel' | 'expertiseLabel' | 'roomsLabel'
 }
 
@@ -139,11 +143,13 @@ export default async function BusinessWebsite({
     editor: DEFAULT_EDITOR_CONFIG,
   }
   const editor = config.editor ?? DEFAULT_EDITOR_CONFIG
-  const primaryCta = config.hero_cta_label?.trim() || t('reserveCta')
+  const isAppointmentBusiness = usesAppointmentTerminology(business.type)
   const secondaryCta = config.secondary_cta_label?.trim() || editor.offerings_title?.trim() || t(offeringsTitleKey)
   const heroTagline = config.tagline?.trim() || business.description || t('aboutFallback')
   const heroTitle = editor.hero_title?.trim() || business.name
-  const navCtaLabel = editor.nav_cta_label?.trim() || t('reserveCta')
+  const defaultCtaLabel = t(isAppointmentBusiness ? 'bookAppointmentCta' : 'reserveCta')
+  const primaryCta = config.hero_cta_label?.trim() || defaultCtaLabel
+  const navCtaLabel = editor.nav_cta_label?.trim() || defaultCtaLabel
   const aboutTitle = editor.about_title?.trim() || t('aboutLabel')
   const aboutBody = editor.about_body?.trim() || business.description || t('aboutFallback')
   const offeringsTitleText = editor.offerings_title?.trim() || t(offeringsTitleKey)
@@ -224,7 +230,7 @@ export default async function BusinessWebsite({
               className="rounded-md border px-4 py-2 text-sm font-semibold"
               style={{ borderColor, color: resolvedText }}
             >
-              {t('reserveCta')}
+              {defaultCtaLabel}
             </Link>
           </div>
 

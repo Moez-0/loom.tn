@@ -5,6 +5,8 @@ import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
+import { getAvailableSlots, normalizeTimeSlot } from '@/lib/availability'
 
 async function createManualReservation(formData: FormData) {
   'use server'
@@ -47,12 +49,20 @@ async function createManualReservation(formData: FormData) {
   }
 
   const { error } = await admin.from('reservations').insert({
+  const normalizedTimeSlot = normalizeTimeSlot(time_slot)
+  const availableSlots = await getAvailableSlots(profile.business_id, date, admin)
+
+  if (!availableSlots.includes(normalizedTimeSlot)) {
+    redirect('/dashboard/reservations/new?error=slot-taken')
+  }
+
+  const { error } = await admin.from('reservations').insert({
     business_id: profile.business_id,
     customer_name,
     customer_phone,
     customer_email: customer_email || null,
     date,
-    time_slot,
+    time_slot: normalizedTimeSlot,
     party_size,
     status: 'pending',
     source,
@@ -94,20 +104,35 @@ export default async function NewManualReservationPage({
     )
   }
 
+  const admin = createAdminClient()
+  const { data: businessTypeRow } = admin
+    ? await admin
+        .from('businesses')
+        .select('type')
+        .eq('id', profile.business_id)
+        .maybeSingle<{ type: import('@/types').BusinessType }>()
+    : { data: null }
+
+  const isAppointmentBusiness = Boolean(businessTypeRow?.type && usesAppointmentTerminology(businessTypeRow.type))
+  const newEntryLabel = isAppointmentBusiness ? t('newAppointment') : t('newReservation')
+  const backToListLabel = isAppointmentBusiness ? t('backToAppointments') : t('backToReservations')
+  const manualCreateErrorLabel = isAppointmentBusiness ? t('manualCreateAppointmentError') : t('manualCreateError')
+  const submitLabel = isAppointmentBusiness ? t('manualForm.submitAppointment') : t('manualForm.submit')
+
   return (
     <main>
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="section-label">{t('dashboard')}</p>
-          <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{t('newReservation')}</h1>
+          <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{newEntryLabel}</h1>
         </div>
         <Link href="/dashboard/reservations" className="btn-secondary inline-flex items-center">
-          {t('backToReservations')}
+          {backToListLabel}
         </Link>
       </div>
 
       {searchParams?.error ? (
-        <p className="mb-6 border border-loom-error bg-loom-white p-4 text-sm text-loom-error">{t('manualCreateError')}</p>
+        <p className="mb-6 border border-loom-error bg-loom-white p-4 text-sm text-loom-error">{manualCreateErrorLabel}</p>
       ) : null}
 
       <form action={createManualReservation} className="card max-w-3xl space-y-5 p-6">
@@ -169,7 +194,7 @@ export default async function NewManualReservationPage({
 
         <div className="flex items-center gap-3">
           <button type="submit" className="btn-primary inline-flex items-center">
-            {t('manualForm.submit')}
+            {submitLabel}
           </button>
           <Link href="/dashboard/reservations" className="btn-secondary inline-flex items-center">
             {t('cancel')}

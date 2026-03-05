@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import { getBusinessBySlug } from '@/lib/businesses'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 import { createClient } from '@/lib/supabase/server'
 import BookingForm from '@/components/booking/BookingForm'
 import type { Service, StaffMember } from '@/types'
@@ -17,6 +18,8 @@ export default async function ReservePage({ params }: ReservePageProps) {
   if (!business) {
     notFound()
   }
+
+  const isAppointmentBusiness = usesAppointmentTerminology(business.type)
 
   const supabase = await createClient()
   const [{ data: services }, { data: staff }] = await Promise.all([
@@ -53,7 +56,7 @@ export default async function ReservePage({ params }: ReservePageProps) {
             <div className="flex items-center gap-3">
               {business.logo_url ? <img src={business.logo_url} alt={business.name} className="h-11 w-11 rounded object-cover" /> : null}
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/70">{t('reservationLabel')}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/70">{t(isAppointmentBusiness ? 'appointmentLabel' : 'reservationLabel')}</p>
                 <h1 className="text-2xl font-bold tracking-tight text-white">{business.name}</h1>
               </div>
             </div>
@@ -66,8 +69,8 @@ export default async function ReservePage({ params }: ReservePageProps) {
 
       <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
         <div className="mb-6">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900">{t('title')}</h2>
-          <p className="mt-2 text-sm text-zinc-600">{t('bookDirectly', { name: business.name })}</p>
+          <h2 className="text-3xl font-bold tracking-tight text-zinc-900">{t(isAppointmentBusiness ? 'appointmentTitle' : 'title')}</h2>
+          <p className="mt-2 text-sm text-zinc-600">{t(isAppointmentBusiness ? 'bookDirectlyAppointment' : 'bookDirectly', { name: business.name })}</p>
         </div>
 
         <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">

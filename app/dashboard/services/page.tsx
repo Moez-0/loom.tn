@@ -4,6 +4,8 @@ import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { getTemplateServicesForBusinessType } from '@/lib/business-type-config'
+import type { BusinessType } from '@/types'
 
 type Service = {
   id: string
@@ -14,7 +16,12 @@ type Service = {
   is_active: boolean
 }
 
-async function getBusinessId() {
+type BusinessContext = {
+  id: string
+  type: BusinessType
+}
+
+async function getBusinessContext(): Promise<BusinessContext | null> {
   const supabase = await createClient()
   const {
     data: { user },
@@ -26,7 +33,29 @@ async function getBusinessId() {
 
   const profile = await ensureUserProfile(user)
 
-  return profile?.business_id ?? null
+  if (!profile?.business_id) {
+    return null
+  }
+
+  const admin = createAdminClient()
+
+  if (!admin) {
+    return null
+  }
+
+  const { data } = await admin
+    .from('businesses')
+    .select('id, type')
+    .eq('id', profile.business_id)
+    .maybeSingle<BusinessContext>()
+
+  return data ?? null
+}
+
+async function getBusinessId() {
+  const context = await getBusinessContext()
+
+  return context?.id ?? null
 }
 
 async function addService(formData: FormData) {
@@ -116,11 +145,54 @@ async function toggleService(formData: FormData) {
   revalidatePath('/dashboard/services')
 }
 
+async function seedTemplateServices() {
+  'use server'
+
+  const business = await getBusinessContext()
+
+  if (!business) {
+    return
+  }
+
+  const defaults = getTemplateServicesForBusinessType(business.type)
+  if (defaults.length === 0) {
+    return
+  }
+
+  const admin = createAdminClient()
+  if (!admin) {
+    return
+  }
+
+  const { data: existing } = await admin
+    .from('services')
+    .select('name')
+    .eq('business_id', business.id)
+
+  const existingNames = new Set((existing ?? []).map((item) => item.name.trim().toLowerCase()))
+  const rows = defaults
+    .filter((item) => !existingNames.has(item.name.trim().toLowerCase()))
+    .map((item) => ({
+      business_id: business.id,
+      name: item.name,
+      description: item.description,
+      duration_minutes: item.duration_minutes,
+      price: item.price,
+    }))
+
+  if (rows.length === 0) {
+    return
+  }
+
+  await admin.from('services').insert(rows)
+  revalidatePath('/dashboard/services')
+}
+
 export default async function DashboardServicesPage() {
   const t = await getTranslations('services')
-  const businessId = await getBusinessId()
+  const business = await getBusinessContext()
 
-  if (!businessId) {
+  if (!business) {
     return (
       <main>
         <p className="section-label">{t('dashboard')}</p>
@@ -131,6 +203,8 @@ export default async function DashboardServicesPage() {
       </main>
     )
   }
+
+  const defaultServices = getTemplateServicesForBusinessType(business.type)
 
   const admin = createAdminClient()
   if (!admin) {
@@ -148,7 +222,7 @@ export default async function DashboardServicesPage() {
   const { data } = await admin
     .from('services')
     .select('id, name, description, duration_minutes, price, is_active')
-    .eq('business_id', businessId)
+    .eq('business_id', business.id)
     .order('created_at', { ascending: false })
 
   const services = (data ?? []) as Service[]
@@ -157,6 +231,18 @@ export default async function DashboardServicesPage() {
     <main>
       <p className="section-label">{t('dashboard')}</p>
       <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{t('title')}</h1>
+
+      {services.length === 0 && defaultServices.length > 0 ? (
+        <section className="mt-6 border border-loom-border bg-loom-white p-6">
+          <p className="section-label">{t('recommendedTitle')}</p>
+          <p className="mt-2 text-sm text-loom-muted">{t('recommendedDescription')}</p>
+          <form action={seedTemplateServices} className="mt-4">
+            <button type="submit" className="btn-secondary">
+              {t('actions.addRecommended')}
+            </button>
+          </form>
+        </section>
+      ) : null}
 
       <section className="mt-6 border border-loom-border bg-loom-white p-6">
         <p className="section-label">{t('addLabel')}</p>

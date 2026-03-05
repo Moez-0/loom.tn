@@ -277,9 +277,13 @@
     "clinicLabel": "Clinique",
     "consultancyLabel": "Cabinet",
     "hotelLabel": "Hôtel",
+    "architectLabel": "Cabinet d'Architecture",
+    "doctorLabel": "Cabinet Médical",
+    "legalLabel": "Cabinet Juridique",
     "menuLabel": "Menu",
     "expertiseLabel": "Expertise",
     "reserveCta": "Réserver",
+    "bookAppointmentCta": "Prendre Rendez-vous",
     "aboutLabel": "À Propos",
     "servicesLabel": "Services",
     "teamLabel": "Équipe",
@@ -353,6 +357,7 @@
     "analytics": "Analytique",
     "calendar": "Calendrier",
     "reservations": "Réservations",
+    "appointments": "Rendez-vous",
     "staff": "Personnel",
     "services": "Services",
     "billing": "Facturation",
@@ -374,12 +379,18 @@
     "thisWeek": "Cette Semaine",
     "total": "Total",
     "viewReservations": "Voir les Réservations",
+    "viewAppointments": "Voir les Rendez-vous",
     "newReservation": "Nouvelle Réservation",
+    "newAppointment": "Nouveau Rendez-vous",
     "backToReservations": "Retour aux Réservations",
+    "backToAppointments": "Retour aux Rendez-vous",
     "manualCreateError": "Impossible de créer la réservation. Vérifiez les champs et réessayez.",
+    "manualCreateAppointmentError": "Impossible de créer le rendez-vous. Vérifiez les champs et réessayez.",
     "noBusiness": "Aucune entreprise n'est liée à cet utilisateur.",
     "reservationsLoadError": "Échec du chargement des réservations",
+    "appointmentsLoadError": "Échec du chargement des rendez-vous",
     "reservationsEmpty": "Aucune réservation pour le moment.",
+    "appointmentsEmpty": "Aucun rendez-vous pour le moment.",
     "table": {
       "date": "Date",
       "time": "Heure",
@@ -416,7 +427,8 @@
       "partySize": "Nombre de personnes",
       "source": "Source",
       "notes": "Notes",
-      "submit": "Créer la Réservation"
+      "submit": "Créer la Réservation",
+      "submitAppointment": "Créer un Rendez-vous"
     },
     "filters": {
       "search": "Recherche",
@@ -430,6 +442,7 @@
     },
     "analyticsCards": {
       "total14d": "Réservations (14j)",
+      "total14dAppointments": "Rendez-vous (14j)",
       "confirmationRate": "Taux de confirmation",
       "noShowRate": "Taux d'absence"
     },
@@ -443,6 +456,9 @@
     "calendarEmpty": "Aucune réservation à venir.",
     "calendarPastEmpty": "Aucune réservation passée.",
     "calendarReservations": "réservations",
+    "calendarAppointments": "rendez-vous",
+    "calendarAppointmentEmpty": "Aucun rendez-vous à venir.",
+    "calendarPastAppointmentEmpty": "Aucun rendez-vous passé.",
     "calendarGuests": "personnes",
     "websiteEditor": {
       "title": "Éditeur visuel du site",
@@ -608,14 +624,24 @@
       "activeBusinesses": "Entreprises actives",
       "trialing": "En essai",
       "reservations30d": "Réservations (30j)",
+      "appointments30d": "Rendez-vous (30j)",
+      "bookings30d": "Réservations (30j)",
       "confirmedRate": "Taux confirmé"
     },
     "analyticsSections": {
       "loadByBusiness": "Charge des réservations par entreprise",
-      "empty": "Aucune activité de réservation sur la période sélectionnée."
+      "loadByBusinessAppointments": "Charge des rendez-vous par entreprise",
+      "loadByBusinessBookings": "Charge des réservations par entreprise",
+      "empty": "Aucune activité de réservation sur la période sélectionnée.",
+      "emptyAppointments": "Aucune activité de rendez-vous sur la période sélectionnée.",
+      "emptyBookings": "Aucune activité sur la période sélectionnée."
     }
     ,"calendarEmpty": "Aucune réservation à venir.",
+    "calendarAppointmentEmpty": "Aucun rendez-vous à venir.",
+    "calendarBookingEmpty": "Aucune réservation à venir.",
     "calendarReservations": "réservations",
+    "calendarAppointments": "rendez-vous",
+    "calendarBookings": "réservations",
     "calendarGuests": "personnes"
   },
   "staff": {
@@ -649,6 +675,8 @@
     "dashboard": "Tableau de Bord",
     "title": "Services",
     "addLabel": "Ajouter un Service",
+    "recommendedTitle": "Services Recommandés",
+    "recommendedDescription": "Démarrez rapidement avec des services prêts à l'emploi selon votre type d'entreprise.",
     "noBusiness": "Aucune entreprise n'est liée à cet utilisateur.",
     "empty": "Aucun service pour le moment.",
     "active": "Actif",
@@ -670,7 +698,8 @@
       "add": "Ajouter",
       "save": "Enregistrer",
       "enable": "Activer",
-      "disable": "Désactiver"
+      "disable": "Désactiver",
+      "addRecommended": "Ajouter les services recommandés"
     }
   },
   "settings": {
@@ -710,11 +739,15 @@
   },
   "booking": {
     "title": "Faire une Réservation",
+    "appointmentTitle": "Prendre un Rendez-vous",
     "reservationLabel": "Réservation",
+    "appointmentLabel": "Rendez-vous",
     "backToSite": "Retour au site",
     "bookAnother": "Nouvelle réservation",
     "bookDirectly": "Réservez directement avec {name}.",
+    "bookDirectlyAppointment": "Prenez rendez-vous directement avec {name}.",
     "reservationHelp": "Complétez les détails de votre réservation",
+    "appointmentHelp": "Complétez les détails de votre rendez-vous",
     "name": "Nom Complet",
     "phone": "Numéro de Téléphone",
     "emailOptional": "Adresse Email (optionnel)",
@@ -727,9 +760,13 @@
     "partySize": "Nombre de Personnes",
     "notes": "Demandes Spéciales",
     "submit": "Confirmer la Réservation",
+    "submitAppointment": "Confirmer le Rendez-vous",
     "submitting": "Confirmation...",
     "success": "Réservation Confirmée",
+    "appointmentSuccess": "Rendez-vous Confirmé",
     "successMessage": "Vous recevrez une confirmation sous peu.",
+    "appointmentSuccessMessage": "Votre rendez-vous est confirmé. Vous recevrez une confirmation sous peu.",
+    "bookAnotherAppointment": "Prendre un autre rendez-vous",
     "noSlots": "Aucune disponibilité pour cette date.",
     "loadingSlots": "Chargement des heures disponibles...",
     "errors": {
@@ -739,7 +776,9 @@
       "dateRequired": "La date est requise",
       "timeRequired": "L'heure est requise",
       "loadSlots": "Impossible de charger les heures disponibles.",
-      "submitFailed": "Impossible d'envoyer la réservation."
+      "slotTaken": "Ce créneau vient d’être pris. Veuillez choisir une autre heure.",
+      "submitFailed": "Impossible d'envoyer la réservation.",
+      "submitFailedAppointment": "Impossible d'envoyer le rendez-vous."
     }
   }
 }

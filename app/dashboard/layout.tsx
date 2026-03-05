@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import LocaleSwitcher from '@/components/i18n/LocaleSwitcher'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 import { getTrialDaysRemaining } from '@/lib/billing/trial'
 
 export default async function DashboardLayout({
@@ -31,11 +32,28 @@ export default async function DashboardLayout({
 
   const t = await getTranslations('dashboard')
   const locale = (await getLocale()) as 'en' | 'fr' | 'ar'
+  let reservationsNavLabel = t('reservations')
+
+  if (profile?.business_id) {
+    const admin = createAdminClient()
+    if (admin) {
+      const { data: businessTypeRow } = await admin
+        .from('businesses')
+        .select('type')
+        .eq('id', profile.business_id)
+        .maybeSingle<{ type: import('@/types').BusinessType }>()
+
+      if (businessTypeRow?.type && usesAppointmentTerminology(businessTypeRow.type)) {
+        reservationsNavLabel = t('appointments')
+      }
+    }
+  }
+
   const links = [
     { href: '/dashboard', label: t('overview') },
     { href: '/dashboard/analytics', label: t('analytics') },
     { href: '/dashboard/calendar', label: t('calendar') },
-    { href: '/dashboard/reservations', label: t('reservations') },
+    { href: '/dashboard/reservations', label: reservationsNavLabel },
     { href: '/dashboard/website', label: t('website') },
     { href: '/dashboard/uploads', label: t('uploads') },
     { href: '/dashboard/staff', label: t('staff') },

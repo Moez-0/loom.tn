@@ -1,5 +1,10 @@
 import { addMinutes, format, isBefore, parse } from 'date-fns'
 import type { SupabaseClient } from '@supabase/supabase-js'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
+
+export function normalizeTimeSlot(timeSlot: string) {
+  return timeSlot.slice(0, 5)
+}
 
 export function generateTimeSlots(openingTime: string, closingTime: string, slotDuration: number) {
   const slots: string[] = []
@@ -30,10 +35,11 @@ export async function getAvailableSlots(
 ): Promise<string[]> {
   const { data: business } = await supabase
     .from('businesses')
-    .select('opening_time, closing_time, slot_duration_minutes, max_covers_per_slot')
+    .select('type, opening_time, closing_time, slot_duration_minutes, max_covers_per_slot')
     .eq('id', businessId)
     .eq('is_active', true)
     .single<{
+      type: import('@/types').BusinessType
       opening_time: string
       closing_time: string
       slot_duration_minutes: number
@@ -58,14 +64,17 @@ export async function getAvailableSlots(
     .in('status', ['pending', 'confirmed'])
 
   const counts: Record<string, number> = {}
+  const isAppointmentBusiness = usesAppointmentTerminology(business.type)
+  const maxPerSlot = isAppointmentBusiness ? 1 : business.max_covers_per_slot
 
   reservations?.forEach((reservation) => {
-    const slot = reservation.time_slot?.slice(0, 5)
+    const slot = reservation.time_slot ? normalizeTimeSlot(reservation.time_slot) : null
     if (!slot) {
       return
     }
-    counts[slot] = (counts[slot] || 0) + (reservation.party_size || 1)
+    const slotWeight = isAppointmentBusiness ? 1 : (reservation.party_size || 1)
+    counts[slot] = (counts[slot] || 0) + slotWeight
   })
 
-  return allSlots.filter((slot) => (counts[slot] || 0) < business.max_covers_per_slot)
+  return allSlots.filter((slot) => (counts[slot] || 0) < maxPerSlot)
 }

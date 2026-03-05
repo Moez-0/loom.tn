@@ -11,6 +11,7 @@ import TimeSlotPicker from './TimeSlotPicker'
 import ServicePicker from './ServicePicker'
 import StaffPicker from './StaffPicker'
 import type { BusinessType, Service, StaffMember } from '@/types'
+import { requiresServiceSelection, supportsStaffSelection, usesAppointmentTerminology } from '@/lib/business-type-config'
 
 type BookingFormProps = {
   businessId: string
@@ -98,8 +99,9 @@ export default function BookingForm({
   const serviceId = watch('service_id')
   const staffId = watch('staff_id')
 
-  const requiresService = businessType === 'salon' || businessType === 'clinic' || businessType === 'consultancy'
-  const supportsStaff = businessType === 'salon' || businessType === 'clinic'
+  const requiresService = requiresServiceSelection(businessType)
+  const supportsStaff = supportsStaffSelection(businessType)
+  const isAppointmentBusiness = usesAppointmentTerminology(businessType)
   const isHotel = businessType === 'hotel'
   const accent = brand.primaryColor || '#111827'
   const soft = brand.secondaryColor || '#f4f4f5'
@@ -145,13 +147,6 @@ export default function BookingForm({
     return () => controller.abort()
   }, [businessId, date, setValue, t, timeSlot])
 
-  const submitLabel = useMemo(() => {
-    if (isSubmitting) {
-      return t('submitting')
-    }
-    return t('submit')
-  }, [isSubmitting, t])
-
   async function onSubmit(values: FormValues) {
     setSubmitError(null)
 
@@ -166,8 +161,26 @@ export default function BookingForm({
     })
 
     if (!response.ok) {
+      if (response.status === 409 && values.date) {
+        try {
+          const slotsResponse = await fetch(`/api/availability?businessId=${businessId}&date=${values.date}`)
+          if (slotsResponse.ok) {
+            const slotsPayload = (await slotsResponse.json()) as { slots: string[] }
+            const nextSlots = slotsPayload.slots || []
+            setSlots(nextSlots)
+            if (!nextSlots.includes(values.time_slot)) {
+              setValue('time_slot', '', { shouldValidate: true })
+            }
+          }
+        } catch {
+        }
+
+        setSubmitError(t('errors.slotTaken'))
+        return
+      }
+
       const payload = (await response.json().catch(() => null)) as { error?: string } | null
-      setSubmitError(payload?.error || t('errors.submitFailed'))
+      setSubmitError(payload?.error || t(isAppointmentBusiness ? 'errors.submitFailedAppointment' : 'errors.submitFailed'))
       return
     }
 
@@ -186,7 +199,7 @@ export default function BookingForm({
         {brand.logoUrl ? <img src={brand.logoUrl} alt={brand.name} className="h-9 w-9 rounded object-cover" /> : null}
         <div>
           <p className="text-sm font-semibold text-zinc-900">{brand.name}</p>
-            <p className="text-xs text-zinc-500">{t('reservationHelp')}</p>
+            <p className="text-xs text-zinc-500">{t(isAppointmentBusiness ? 'appointmentHelp' : 'reservationHelp')}</p>
         </div>
       </div>
 
@@ -310,7 +323,7 @@ export default function BookingForm({
         style={{ backgroundColor: accent, boxShadow: `0 10px 24px ${accent}33` }}
         disabled={isSubmitting}
       >
-        {submitLabel}
+        {isSubmitting ? t('submitting') : t(isAppointmentBusiness ? 'submitAppointment' : 'submit')}
       </button>
 
       <div className="h-1 w-full rounded-full" style={{ backgroundColor: soft }} />

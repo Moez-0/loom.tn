@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { createClient } from '@supabase/supabase-js'
 import { sendBookingConfirmation, sendOwnerAlert } from '@/lib/resend'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { getAvailableSlots, normalizeTimeSlot } from '@/lib/availability'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -37,11 +38,12 @@ export async function POST(request: Request) {
 
   const { data: business } = await supabase
     .from('businesses')
-    .select('id, name, address, email, logo_url, primary_color, secondary_color, language, is_active')
+    .select('id, name, type, address, email, logo_url, primary_color, secondary_color, language, is_active')
     .eq('id', payload.business_id)
     .single<{
       id: string
       name: string
+      type: import('@/types').BusinessType
       address: string | null
       email: string | null
       logo_url: string | null
@@ -82,13 +84,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Business not found' }, { status: 404 })
   }
 
+  const reservationClient = admin ?? supabase
+  const selectedSlot = normalizeTimeSlot(payload.time_slot)
+  const availableSlots = await getAvailableSlots(payload.business_id, payload.date, reservationClient)
+
+  if (!availableSlots.includes(selectedSlot)) {
+    return NextResponse.json(
+      { error: 'Selected time is no longer available. Please choose another time.' },
+      { status: 409 }
+    )
+  }
+
   const reservationPayload = {
     business_id: payload.business_id,
     customer_name: payload.customer_name,
     customer_phone: payload.customer_phone,
     customer_email: payload.customer_email || null,
     date: payload.date,
-    time_slot: payload.time_slot,
+    time_slot: selectedSlot,
     service_id: payload.service_id || null,
     staff_id: payload.staff_id || null,
     checkout_date: payload.checkout_date || null,

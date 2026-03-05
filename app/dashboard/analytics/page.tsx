@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 import { formatLocalDate, getLastLocalDates, isDateWithinRange, normalizeReservationDate } from '@/lib/date'
 import OwnerAnalyticsCharts from '@/components/dashboard/OwnerAnalyticsCharts'
 
@@ -59,6 +60,17 @@ export default async function DashboardAnalyticsPage() {
     .from('reservations')
     .select('date, created_at, status, source')
     .eq('business_id', profile.business_id)
+
+  const { data: businessTypeRow } = await admin
+    .from('businesses')
+    .select('type')
+    .eq('id', profile.business_id)
+    .maybeSingle<{ type: import('@/types').BusinessType }>()
+
+  const isAppointmentBusiness = Boolean(businessTypeRow?.type && usesAppointmentTerminology(businessTypeRow.type))
+  const viewEntriesLabel = isAppointmentBusiness ? t('viewAppointments') : t('viewReservations')
+  const loadErrorLabel = isAppointmentBusiness ? t('appointmentsLoadError') : t('reservationsLoadError')
+  const total14dLabel = isAppointmentBusiness ? t('analyticsCards.total14dAppointments') : t('analyticsCards.total14d')
 
   const allRows = (data ?? []) as ReservationAnalyticsRow[]
   const rows = allRows.filter((row) => {
@@ -122,19 +134,19 @@ export default async function DashboardAnalyticsPage() {
           <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{t('analytics')}</h1>
         </div>
         <Link href="/dashboard/reservations" className="btn-secondary inline-flex items-center">
-          {t('viewReservations')}
+          {viewEntriesLabel}
         </Link>
       </div>
 
       {error ? (
         <p className="mb-6 border border-loom-error bg-loom-white p-4 text-sm text-loom-error">
-          {t('reservationsLoadError')}: {error.message}
+          {loadErrorLabel}: {error.message}
         </p>
       ) : null}
 
       <section className="grid gap-4 md:grid-cols-3">
         <article className="rounded-xl border border-loom-border bg-loom-surface p-6">
-          <p className="section-label">{t('analyticsCards.total14d')}</p>
+          <p className="section-label">{total14dLabel}</p>
           <p className="mt-3 text-3xl font-bold text-loom-black">{rows.length}</p>
         </article>
         <article className="rounded-xl border border-loom-border bg-loom-surface p-6">

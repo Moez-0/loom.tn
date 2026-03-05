@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import { getBusinessBySlug } from '@/lib/businesses'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 
 type SuccessPageProps = {
   params: { slug: string }
@@ -15,6 +16,8 @@ export default async function ReserveSuccessPage({ params }: SuccessPageProps) {
     notFound()
   }
 
+  const isAppointmentBusiness = usesAppointmentTerminology(business.type)
+
   return (
     <main className="min-h-screen bg-zinc-50">
       <div className="mx-auto flex min-h-screen w-full max-w-3xl items-center px-4 py-14 sm:px-6">
@@ -24,8 +27,8 @@ export default async function ReserveSuccessPage({ params }: SuccessPageProps) {
             <span className="text-sm font-semibold text-zinc-800">{business.name}</span>
           </div>
 
-          <h1 className="mt-6 text-3xl font-bold tracking-tight text-zinc-900">{t('success')}</h1>
-          <p className="mt-3 text-base text-zinc-600">{t('successMessage')}</p>
+          <h1 className="mt-6 text-3xl font-bold tracking-tight text-zinc-900">{t(isAppointmentBusiness ? 'appointmentSuccess' : 'success')}</h1>
+          <p className="mt-3 text-base text-zinc-600">{t(isAppointmentBusiness ? 'appointmentSuccessMessage' : 'successMessage')}</p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
@@ -36,7 +39,7 @@ export default async function ReserveSuccessPage({ params }: SuccessPageProps) {
               {t('backToSite')}
             </Link>
             <Link href={`/${business.slug}/reserve`} className="rounded-md border border-zinc-300 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-50">
-              {t('bookAnother')}
+              {t(isAppointmentBusiness ? 'bookAnotherAppointment' : 'bookAnother')}
             </Link>
           </div>
         </section>

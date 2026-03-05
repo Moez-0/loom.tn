@@ -5,6 +5,7 @@ import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 import ReservationTable, { type DashboardReservation } from '@/components/dashboard/ReservationTable'
 
 type ReservationRow = DashboardReservation
@@ -58,6 +59,10 @@ export default async function DashboardReservationsPage({
   }
 }) {
   const t = await getTranslations('dashboard')
+  const reservationsLabel = t('reservations')
+  const newReservationLabel = t('newReservation')
+  const emptyReservationLabel = t('reservationsEmpty')
+  const loadErrorLabel = t('reservationsLoadError')
   const supabase = await createClient()
   const {
     data: { user },
@@ -98,6 +103,18 @@ export default async function DashboardReservationsPage({
   const statusFilter = searchParams?.status || ''
   const dateFilter = searchParams?.date || ''
 
+  const { data: businessTypeRow } = await admin
+    .from('businesses')
+    .select('type')
+    .eq('id', profile.business_id)
+    .maybeSingle<{ type: import('@/types').BusinessType }>()
+
+  const isAppointmentBusiness = Boolean(businessTypeRow?.type && usesAppointmentTerminology(businessTypeRow.type))
+  const titleLabel = isAppointmentBusiness ? t('appointments') : reservationsLabel
+  const createLabel = isAppointmentBusiness ? t('newAppointment') : newReservationLabel
+  const emptyLabel = isAppointmentBusiness ? t('appointmentsEmpty') : emptyReservationLabel
+  const errorLabel = isAppointmentBusiness ? t('appointmentsLoadError') : loadErrorLabel
+
   let query = admin
     .from('reservations')
     .select('id, customer_name, customer_phone, date, time_slot, party_size, status, source')
@@ -125,10 +142,10 @@ export default async function DashboardReservationsPage({
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="section-label">{t('dashboard')}</p>
-          <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{t('reservations')}</h1>
+          <h1 className="mt-3 font-display text-[2rem] tracking-[-0.03em] text-loom-black">{titleLabel}</h1>
         </div>
         <Link href="/dashboard/reservations/new" className="btn-primary inline-flex items-center">
-          {t('newReservation')}
+          {createLabel}
         </Link>
       </div>
 
@@ -176,7 +193,7 @@ export default async function DashboardReservationsPage({
 
       {error ? (
         <p className="border border-loom-error bg-loom-white p-4 text-sm text-loom-error">
-          {t('reservationsLoadError')}: {error.message}
+          {errorLabel}: {error.message}
         </p>
       ) : (
         <ReservationTable
@@ -190,7 +207,7 @@ export default async function DashboardReservationsPage({
             source: t('table.source'),
             status: t('table.status'),
             actions: t('table.actions'),
-            empty: t('reservationsEmpty'),
+            empty: emptyLabel,
             sourceLabel: {
               online: t('source.online'),
               phone: t('source.phone'),

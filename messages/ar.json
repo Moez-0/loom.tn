@@ -277,9 +277,13 @@
     "clinicLabel": "عيادة",
     "consultancyLabel": "استشارات",
     "hotelLabel": "فندق",
+    "architectLabel": "مكتب هندسة معمارية",
+    "doctorLabel": "عيادة طبية",
+    "legalLabel": "مكتب قانوني",
     "menuLabel": "القائمة",
     "expertiseLabel": "الخبرات",
     "reserveCta": "احجز",
+    "bookAppointmentCta": "احجز موعداً",
     "aboutLabel": "من نحن",
     "servicesLabel": "الخدمات",
     "teamLabel": "الفريق",
@@ -353,6 +357,7 @@
     "analytics": "التحليلات",
     "calendar": "التقويم",
     "reservations": "الحجوزات",
+    "appointments": "المواعيد",
     "staff": "الموظفون",
     "services": "الخدمات",
     "billing": "الفوترة",
@@ -374,12 +379,18 @@
     "thisWeek": "هذا الأسبوع",
     "total": "الإجمالي",
     "viewReservations": "عرض الحجوزات",
+    "viewAppointments": "عرض المواعيد",
     "newReservation": "حجز جديد",
+    "newAppointment": "موعد جديد",
     "backToReservations": "العودة إلى الحجوزات",
+    "backToAppointments": "العودة إلى المواعيد",
     "manualCreateError": "تعذر إنشاء الحجز. تحقق من الحقول وحاول مرة أخرى.",
+    "manualCreateAppointmentError": "تعذر إنشاء الموعد. تحقق من الحقول وحاول مرة أخرى.",
     "noBusiness": "لا توجد منشأة مرتبطة بهذا المستخدم بعد.",
     "reservationsLoadError": "تعذر تحميل الحجوزات",
+    "appointmentsLoadError": "تعذر تحميل المواعيد",
     "reservationsEmpty": "لا توجد حجوزات بعد.",
+    "appointmentsEmpty": "لا توجد مواعيد بعد.",
     "table": {
       "date": "التاريخ",
       "time": "الوقت",
@@ -416,7 +427,8 @@
       "partySize": "عدد الأشخاص",
       "source": "المصدر",
       "notes": "ملاحظات",
-      "submit": "إنشاء الحجز"
+      "submit": "إنشاء الحجز",
+      "submitAppointment": "إنشاء موعد"
     },
     "filters": {
       "search": "بحث",
@@ -430,6 +442,7 @@
     },
     "analyticsCards": {
       "total14d": "الحجوزات (14 يوم)",
+      "total14dAppointments": "المواعيد (14 يوم)",
       "confirmationRate": "معدل التأكيد",
       "noShowRate": "معدل الغياب"
     },
@@ -443,6 +456,9 @@
     "calendarEmpty": "لا توجد حجوزات قادمة.",
     "calendarPastEmpty": "لا توجد حجوزات سابقة.",
     "calendarReservations": "حجوزات",
+    "calendarAppointments": "مواعيد",
+    "calendarAppointmentEmpty": "لا توجد مواعيد قادمة.",
+    "calendarPastAppointmentEmpty": "لا توجد مواعيد سابقة.",
     "calendarGuests": "أشخاص",
     "websiteEditor": {
       "title": "محرر الموقع المرئي",
@@ -608,14 +624,24 @@
       "activeBusinesses": "المنشآت النشطة",
       "trialing": "تجريبي",
       "reservations30d": "الحجوزات (30 يوم)",
+      "appointments30d": "المواعيد (30 يوم)",
+      "bookings30d": "الحجوزات (30 يوم)",
       "confirmedRate": "معدل التأكيد"
     },
     "analyticsSections": {
       "loadByBusiness": "حمل الحجوزات حسب المنشأة",
-      "empty": "لا توجد نشاطات حجوزات في الفترة المحددة."
+      "loadByBusinessAppointments": "حمل المواعيد حسب المنشأة",
+      "loadByBusinessBookings": "حمل الحجوزات حسب المنشأة",
+      "empty": "لا توجد نشاطات حجوزات في الفترة المحددة.",
+      "emptyAppointments": "لا توجد نشاطات مواعيد في الفترة المحددة.",
+      "emptyBookings": "لا توجد نشاطات حجوزات في الفترة المحددة."
     }
     ,"calendarEmpty": "لا توجد حجوزات قادمة.",
+    "calendarAppointmentEmpty": "لا توجد مواعيد قادمة.",
+    "calendarBookingEmpty": "لا توجد حجوزات قادمة.",
     "calendarReservations": "حجوزات",
+    "calendarAppointments": "مواعيد",
+    "calendarBookings": "حجوزات",
     "calendarGuests": "أشخاص"
   },
   "staff": {
@@ -649,6 +675,8 @@
     "dashboard": "لوحة التحكم",
     "title": "الخدمات",
     "addLabel": "إضافة خدمة",
+    "recommendedTitle": "خدمات مقترحة",
+    "recommendedDescription": "ابدأ بسرعة بخدمات جاهزة حسب نوع نشاطك.",
     "noBusiness": "لا توجد منشأة مرتبطة بهذا المستخدم بعد.",
     "empty": "لا توجد خدمات بعد.",
     "active": "نشط",
@@ -670,7 +698,8 @@
       "add": "إضافة",
       "save": "حفظ",
       "enable": "تفعيل",
-      "disable": "تعطيل"
+      "disable": "تعطيل",
+      "addRecommended": "إضافة الخدمات المقترحة"
     }
   },
   "settings": {
@@ -719,11 +748,15 @@
   },
   "booking": {
     "title": "احجز موعدك",
+    "appointmentTitle": "احجز موعداً",
     "reservationLabel": "الحجز",
+    "appointmentLabel": "الموعد",
     "backToSite": "العودة إلى الموقع",
     "bookAnother": "حجز جديد",
     "bookDirectly": "احجز مباشرة مع {name}.",
+    "bookDirectlyAppointment": "احجز موعداً مباشرة مع {name}.",
     "reservationHelp": "أكمل تفاصيل الحجز",
+    "appointmentHelp": "أكمل تفاصيل الموعد",
     "name": "الاسم الكامل",
     "phone": "رقم الهاتف",
     "emailOptional": "البريد الإلكتروني (اختياري)",
@@ -736,9 +769,13 @@
     "partySize": "عدد الأشخاص",
     "notes": "طلبات خاصة",
     "submit": "تأكيد الحجز",
+    "submitAppointment": "تأكيد الموعد",
     "submitting": "جاري التأكيد...",
     "success": "تم تأكيد الحجز",
+    "appointmentSuccess": "تم تأكيد الموعد",
     "successMessage": "ستصلك رسالة تأكيد قريباً.",
+    "appointmentSuccessMessage": "تم تأكيد موعدك. ستصلك رسالة تأكيد قريباً.",
+    "bookAnotherAppointment": "احجز موعداً آخر",
     "noSlots": "لا تتوفر أوقات لهذا اليوم.",
     "loadingSlots": "جاري تحميل الأوقات المتاحة...",
     "errors": {
@@ -748,7 +785,9 @@
       "dateRequired": "التاريخ مطلوب",
       "timeRequired": "الوقت مطلوب",
       "loadSlots": "تعذر تحميل الأوقات المتاحة.",
-      "submitFailed": "تعذر إرسال الحجز."
+      "slotTaken": "تم حجز هذا الوقت للتو. يرجى اختيار وقت آخر.",
+      "submitFailed": "تعذر إرسال الحجز.",
+      "submitFailedAppointment": "تعذر إرسال الموعد."
     }
   }
 }

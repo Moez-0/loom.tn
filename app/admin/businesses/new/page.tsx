@@ -5,8 +5,9 @@ import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { BUSINESS_TYPE_VALUES } from '@/lib/business-type-config'
 
-const businessTypes = ['restaurant', 'cafe', 'bar', 'lounge', 'salon', 'clinic', 'consultancy', 'hotel'] as const
+const businessTypes = BUSINESS_TYPE_VALUES
 const languages = ['en', 'fr', 'ar'] as const
 
 function normalizeSlug(value: string) {

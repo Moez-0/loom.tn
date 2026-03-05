@@ -3,14 +3,14 @@ import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { BUSINESS_TYPE_VALUES } from '@/lib/business-type-config'
 
-const businessTypeValues = ['restaurant', 'cafe', 'bar', 'lounge', 'salon', 'clinic', 'consultancy', 'hotel'] as const
 const languageValues = ['en', 'fr', 'ar'] as const
 
 const createBusinessSchema = z.object({
   name: z.string().min(2),
   slug: z.string().min(2),
-  type: z.enum(businessTypeValues),
+  type: z.enum(BUSINESS_TYPE_VALUES),
   language: z.enum(languageValues).default('fr'),
   phone: z.string().optional().or(z.literal('')),
   email: z.string().email().optional().or(z.literal('')),
@@ -21,7 +21,7 @@ const updateBusinessSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(2).optional(),
   slug: z.string().min(2).optional(),
-  type: z.enum(businessTypeValues).optional(),
+  type: z.enum(BUSINESS_TYPE_VALUES).optional(),
   language: z.enum(languageValues).optional(),
   phone: z.string().optional().or(z.literal('')),
   email: z.string().email().optional().or(z.literal('')),

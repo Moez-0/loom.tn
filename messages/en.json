@@ -277,9 +277,13 @@
     "clinicLabel": "Clinic",
     "consultancyLabel": "Consultancy",
     "hotelLabel": "Hotel",
+    "architectLabel": "Architecture Studio",
+    "doctorLabel": "Medical Practice",
+    "legalLabel": "Legal Practice",
     "menuLabel": "Menu",
     "expertiseLabel": "Expertise",
     "reserveCta": "Reserve",
+    "bookAppointmentCta": "Book Appointment",
     "aboutLabel": "About",
     "servicesLabel": "Services",
     "teamLabel": "Team",
@@ -353,6 +357,7 @@
     "analytics": "Analytics",
     "calendar": "Calendar",
     "reservations": "Reservations",
+    "appointments": "Appointments",
     "staff": "Staff",
     "services": "Services",
     "billing": "Billing",
@@ -374,12 +379,18 @@
     "thisWeek": "This Week",
     "total": "Total",
     "viewReservations": "View Reservations",
+    "viewAppointments": "View Appointments",
     "newReservation": "New Reservation",
+    "newAppointment": "New Appointment",
     "backToReservations": "Back to Reservations",
+    "backToAppointments": "Back to Appointments",
     "manualCreateError": "Could not create reservation. Check fields and try again.",
+    "manualCreateAppointmentError": "Could not create appointment. Check fields and try again.",
     "noBusiness": "No business is linked to this user yet.",
     "reservationsLoadError": "Failed to load reservations",
+    "appointmentsLoadError": "Failed to load appointments",
     "reservationsEmpty": "No reservations yet.",
+    "appointmentsEmpty": "No appointments yet.",
     "table": {
       "date": "Date",
       "time": "Time",
@@ -416,7 +427,8 @@
       "partySize": "Party Size",
       "source": "Source",
       "notes": "Notes",
-      "submit": "Create Reservation"
+      "submit": "Create Reservation",
+      "submitAppointment": "Create Appointment"
     },
     "filters": {
       "search": "Search",
@@ -430,6 +442,7 @@
     },
     "analyticsCards": {
       "total14d": "Reservations (14d)",
+      "total14dAppointments": "Appointments (14d)",
       "confirmationRate": "Confirmation Rate",
       "noShowRate": "No-Show Rate"
     },
@@ -443,6 +456,9 @@
     "calendarEmpty": "No upcoming reservations found.",
     "calendarPastEmpty": "No past reservations found.",
     "calendarReservations": "reservations",
+    "calendarAppointments": "appointments",
+    "calendarAppointmentEmpty": "No upcoming appointments found.",
+    "calendarPastAppointmentEmpty": "No past appointments found.",
     "calendarGuests": "guests",
     "websiteEditor": {
       "title": "Visual Website Builder",
@@ -608,14 +624,24 @@
       "activeBusinesses": "Active Businesses",
       "trialing": "Trialing",
       "reservations30d": "Reservations (30d)",
+      "appointments30d": "Appointments (30d)",
+      "bookings30d": "Bookings (30d)",
       "confirmedRate": "Confirmed Rate"
     },
     "analyticsSections": {
       "loadByBusiness": "Reservation Load by Business",
-      "empty": "No reservation activity in the selected window."
+      "loadByBusinessAppointments": "Appointment Load by Business",
+      "loadByBusinessBookings": "Booking Load by Business",
+      "empty": "No reservation activity in the selected window.",
+      "emptyAppointments": "No appointment activity in the selected window.",
+      "emptyBookings": "No booking activity in the selected window."
     }
     ,"calendarEmpty": "No upcoming reservations found.",
+    "calendarAppointmentEmpty": "No upcoming appointments found.",
+    "calendarBookingEmpty": "No upcoming bookings found.",
     "calendarReservations": "reservations",
+    "calendarAppointments": "appointments",
+    "calendarBookings": "bookings",
     "calendarGuests": "guests"
   },
   "staff": {
@@ -649,6 +675,8 @@
     "dashboard": "Dashboard",
     "title": "Services",
     "addLabel": "Add Service",
+    "recommendedTitle": "Recommended Services",
+    "recommendedDescription": "Start fast with ready-to-use services based on your business type.",
     "noBusiness": "No business is linked to this user yet.",
     "empty": "No services yet.",
     "active": "Active",
@@ -670,7 +698,8 @@
       "add": "Add",
       "save": "Save",
       "enable": "Enable",
-      "disable": "Disable"
+      "disable": "Disable",
+      "addRecommended": "Add Recommended Services"
     }
   },
   "settings": {
@@ -710,11 +739,15 @@
   },
   "booking": {
     "title": "Make a Reservation",
+    "appointmentTitle": "Book an Appointment",
     "reservationLabel": "Reservation",
+    "appointmentLabel": "Appointment",
     "backToSite": "Back to Site",
     "bookAnother": "Book Another",
     "bookDirectly": "Book directly with {name}.",
+    "bookDirectlyAppointment": "Book an appointment directly with {name}.",
     "reservationHelp": "Complete your reservation details",
+    "appointmentHelp": "Complete your appointment details",
     "name": "Full Name",
     "phone": "Phone Number",
     "emailOptional": "Email Address (optional)",
@@ -727,9 +760,13 @@
     "partySize": "Number of Guests",
     "notes": "Special Requests",
     "submit": "Confirm Reservation",
+    "submitAppointment": "Confirm Appointment",
     "submitting": "Confirming...",
     "success": "Reservation Confirmed",
+    "appointmentSuccess": "Appointment Confirmed",
     "successMessage": "You will receive a confirmation shortly.",
+    "appointmentSuccessMessage": "Your appointment is confirmed. You will receive a confirmation shortly.",
+    "bookAnotherAppointment": "Book Another Appointment",
     "noSlots": "No availability for this date.",
     "loadingSlots": "Loading available times...",
     "errors": {
@@ -739,7 +776,9 @@
       "dateRequired": "Date is required",
       "timeRequired": "Time is required",
       "loadSlots": "Could not load available times.",
-      "submitFailed": "Could not submit reservation."
+      "slotTaken": "This time was just booked. Please choose another time.",
+      "submitFailed": "Could not submit reservation.",
+      "submitFailedAppointment": "Could not submit appointment."
     }
   }
 }

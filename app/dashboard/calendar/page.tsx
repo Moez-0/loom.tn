@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { formatLocalDate, normalizeReservationDate } from '@/lib/date'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 
 type ReservationStatus = 'pending' | 'confirmed' | 'cancelled' | 'no_show' | 'completed'
 type ReservationSource = 'online' | 'phone' | 'whatsapp' | 'walk_in'
@@ -23,16 +24,18 @@ function renderDateGroups({
   dates,
   groups,
   t,
+  countNounLabel,
 }: {
   dates: string[]
   groups: Record<string, CalendarReservation[]>
   t: Awaited<ReturnType<typeof getTranslations>>
+  countNounLabel: string
 }) {
   return dates.map((date) => (
     <section key={date} className="rounded-xl border border-loom-border bg-loom-surface p-5">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-lg font-semibold text-loom-black">{date}</h2>
-        <span className="text-sm text-loom-muted">{groups[date].length} {t('calendarReservations')}</span>
+        <span className="text-sm text-loom-muted">{groups[date].length} {countNounLabel}</span>
       </div>
 
       <div className="space-y-2">
@@ -96,6 +99,20 @@ export default async function DashboardCalendarPage() {
     .eq('business_id', profile.business_id)
     .limit(250)
 
+  const { data: businessTypeRow } = await admin
+    .from('businesses')
+    .select('type')
+    .eq('id', profile.business_id)
+    .maybeSingle<{ type: import('@/types').BusinessType }>()
+
+  const isAppointmentBusiness = Boolean(businessTypeRow?.type && usesAppointmentTerminology(businessTypeRow.type))
+  const newEntryLabel = isAppointmentBusiness ? t('newAppointment') : t('newReservation')
+  const viewEntriesLabel = isAppointmentBusiness ? t('viewAppointments') : t('viewReservations')
+  const loadErrorLabel = isAppointmentBusiness ? t('appointmentsLoadError') : t('reservationsLoadError')
+  const upcomingEmptyLabel = isAppointmentBusiness ? t('calendarAppointmentEmpty') : t('calendarEmpty')
+  const pastEmptyLabel = isAppointmentBusiness ? t('calendarPastAppointmentEmpty') : t('calendarPastEmpty')
+  const countNounLabel = isAppointmentBusiness ? t('calendarAppointments') : t('calendarReservations')
+
   const reservations = (data ?? []) as CalendarReservation[]
 
   const normalizedReservations = reservations
@@ -156,17 +173,17 @@ export default async function DashboardCalendarPage() {
         </div>
         <div className="flex w-full flex-wrap gap-2 sm:w-auto sm:justify-end">
           <Link href="/dashboard/reservations/new" className="btn-primary inline-flex items-center">
-            {t('newReservation')}
+            {newEntryLabel}
           </Link>
           <Link href="/dashboard/reservations" className="btn-secondary inline-flex items-center">
-            {t('viewReservations')}
+            {viewEntriesLabel}
           </Link>
         </div>
       </div>
 
       {error ? (
         <p className="mb-6 border border-loom-error bg-loom-white p-4 text-sm text-loom-error">
-          {t('reservationsLoadError')}: {error.message}
+          {loadErrorLabel}: {error.message}
         </p>
       ) : null}
 
@@ -175,10 +192,10 @@ export default async function DashboardCalendarPage() {
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-loom-muted">{t('calendarUpcoming')}</h2>
           {upcomingDates.length === 0 ? (
             <div className="rounded-xl border border-loom-border bg-loom-surface p-8 text-sm text-loom-muted">
-              {t('calendarEmpty')}
+              {upcomingEmptyLabel}
             </div>
           ) : (
-            <div className="space-y-4">{renderDateGroups({ dates: upcomingDates, groups: upcomingGroups, t })}</div>
+            <div className="space-y-4">{renderDateGroups({ dates: upcomingDates, groups: upcomingGroups, t, countNounLabel })}</div>
           )}
         </section>
 
@@ -186,10 +203,10 @@ export default async function DashboardCalendarPage() {
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-loom-muted">{t('calendarPast')}</h2>
           {pastDates.length === 0 ? (
             <div className="rounded-xl border border-loom-border bg-loom-surface p-8 text-sm text-loom-muted">
-              {t('calendarPastEmpty')}
+              {pastEmptyLabel}
             </div>
           ) : (
-            <div className="space-y-4">{renderDateGroups({ dates: pastDates, groups: pastGroups, t })}</div>
+            <div className="space-y-4">{renderDateGroups({ dates: pastDates, groups: pastGroups, t, countNounLabel })}</div>
           )}
         </section>
       </div>

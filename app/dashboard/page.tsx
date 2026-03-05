@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
 import { ensureUserProfile } from '@/lib/auth/profile'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { usesAppointmentTerminology } from '@/lib/business-type-config'
 import { addDays, formatLocalDate, isDateWithinRange, normalizeReservationDate } from '@/lib/date'
 import StatBlock from '@/components/dashboard/StatBlock'
 
@@ -59,6 +60,15 @@ export default async function DashboardPage() {
     .select('date, created_at')
     .eq('business_id', profile.business_id)
 
+  const { data: businessTypeRow } = await admin
+    .from('businesses')
+    .select('type')
+    .eq('id', profile.business_id)
+    .maybeSingle<{ type: import('@/types').BusinessType }>()
+
+  const isAppointmentBusiness = Boolean(businessTypeRow?.type && usesAppointmentTerminology(businessTypeRow.type))
+  const viewEntriesLabel = isAppointmentBusiness ? t('viewAppointments') : t('viewReservations')
+
   const reservations = (data ?? []) as ReservationDateRow[]
 
   let todayCount = 0
@@ -102,7 +112,7 @@ export default async function DashboardPage() {
 
       <div className="mt-8">
         <Link href="/dashboard/reservations" className="btn-primary inline-flex items-center">
-          {t('viewReservations')}
+          {viewEntriesLabel}
         </Link>
       </div>
     </main>
