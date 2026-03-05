@@ -233,14 +233,41 @@ export default async function Home() {
 
       <section className="border-y border-[#1e1e1e] bg-[#0b0b0b] py-16">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
-            {['+42%', '-31%', '3 min', '99.9%'].map((value) => (
-              <div key={value} className="text-center">
-                <p className="mb-2 text-4xl font-bold text-[#0067b0]">{value}</p>
-                <p className="text-sm font-medium text-[#888888]">
-                  {t('metrics.description')}
-                </p>
-              </div>
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold md:text-4xl">{t('metrics.title')}</h2>
+            <p className="mx-auto mt-3 max-w-3xl text-sm text-[#888888] md:text-base">
+              {t('metrics.description')}
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                value: '+18%',
+                label: t('metrics.cards.conversionRate.label'),
+                detail: t('metrics.cards.conversionRate.detail'),
+              },
+              {
+                value: '+24%',
+                label: t('metrics.cards.monthlyRevenue.label'),
+                detail: t('metrics.cards.monthlyRevenue.detail'),
+              },
+              {
+                value: '-31%',
+                label: t('metrics.cards.noShowRate.label'),
+                detail: t('metrics.cards.noShowRate.detail'),
+              },
+              {
+                value: '3 min',
+                label: t('metrics.cards.opsTime.label'),
+                detail: t('metrics.cards.opsTime.detail'),
+              },
+            ].map((item) => (
+              <article key={item.label} className="rounded-xl border border-white/10 bg-white/[0.03] p-5 text-left">
+                <p className="text-3xl font-extrabold text-[#0067b0]">{item.value}</p>
+                <p className="mt-2 text-sm font-semibold text-white">{item.label}</p>
+                <p className="mt-1 text-xs text-[#9a9a9a]">{item.detail}</p>
+              </article>
             ))}
           </div>
         </div>

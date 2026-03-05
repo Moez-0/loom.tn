@@ -6,6 +6,7 @@ const reservationSchema = z.object({
   customer_name: z.string().min(2),
   customer_phone: z.string().min(6),
   customer_email: z.string().email().optional().or(z.literal('')),
+  reservation_language: z.enum(['en', 'fr', 'ar']).optional(),
   date: z.string().min(10),
   time_slot: z.string().min(4),
   party_size: z.number().int().min(1).max(20),
@@ -14,6 +15,7 @@ const reservationSchema = z.object({
 
 const businessSchema = z.object({
   name: z.string().min(1),
+  language: z.enum(['en', 'fr', 'ar']).nullable().optional(),
   address: z.string().nullable().optional(),
   email: z.string().email().nullable().optional(),
   logo_url: z.string().url().nullable().optional(),

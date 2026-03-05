@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -49,6 +49,7 @@ export default function BookingForm({
 }: BookingFormProps) {
   const router = useRouter()
   const t = useTranslations('booking')
+  const locale = useLocale() as 'en' | 'fr' | 'ar'
   const [slots, setSlots] = useState<string[]>([])
   const [loadingSlots, setLoadingSlots] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
@@ -160,6 +161,7 @@ export default function BookingForm({
       body: JSON.stringify({
         ...values,
         business_id: businessId,
+        reservation_language: locale,
       }),
     })
 

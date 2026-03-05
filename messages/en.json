@@ -33,8 +33,8 @@
     },
     "hero": {
       "titlePrefix": "The professional engine for",
-      "titleAccent": "booking & landing pages.",
-      "subtitle": "The complete infrastructure for service providers in Tunisia to manage bookings, staff, and customer data. Build your professional online presence without the complexity.",
+      "titleAccent": "website building, hosting & reservations.",
+      "subtitle": "Loom lets you build and edit your business website, hosts it for you, and manages reservations in one place. A complete infrastructure for service providers in Tunisia.",
       "contactSales": "Contact for Full Usage",
       "startTrial": "Start Free Trial",
       "contactTeam": "Contact Loom Team",
@@ -149,7 +149,26 @@
       }
     },
     "metrics": {
-      "description": "Track reservation performance with clearer workflows, fewer manual follow-ups, and faster confirmation cycles."
+      "title": "Analytics owners care about",
+      "description": "See clear business impact: improve conversion, reduce no-shows, and grow monthly revenue with less manual effort.",
+      "cards": {
+        "conversionRate": {
+          "label": "Booking conversion rate",
+          "detail": "More visitors complete a reservation"
+        },
+        "monthlyRevenue": {
+          "label": "Monthly revenue uplift",
+          "detail": "Fewer empty slots, better capacity usage"
+        },
+        "noShowRate": {
+          "label": "No-show reduction",
+          "detail": "Automated reminders keep your calendar full"
+        },
+        "opsTime": {
+          "label": "Average booking handling time",
+          "detail": "Fast workflow from booking to confirmation"
+        }
+      }
     },
     "pricing": {
       "title": "Pricing for our services",

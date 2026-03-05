@@ -20,6 +20,7 @@ const reservationSchema = z.object({
   checkout_date: z.string().optional().or(z.literal('')),
   party_size: z.number().int().min(1).max(20),
   special_requests: z.string().max(1000).optional().or(z.literal('')),
+  reservation_language: z.enum(['en', 'fr', 'ar']).optional(),
 })
 
 export async function POST(request: Request) {
@@ -34,7 +35,7 @@ export async function POST(request: Request) {
 
   const { data: business } = await supabase
     .from('businesses')
-    .select('id, name, address, email, logo_url, primary_color, secondary_color, is_active')
+    .select('id, name, address, email, logo_url, primary_color, secondary_color, language, is_active')
     .eq('id', payload.business_id)
     .single<{
       id: string
@@ -44,6 +45,7 @@ export async function POST(request: Request) {
       logo_url: string | null
       primary_color: string | null
       secondary_color: string | null
+      language: 'en' | 'fr' | 'ar'
       is_active: boolean
     }>()
 
@@ -63,6 +65,7 @@ export async function POST(request: Request) {
     checkout_date: payload.checkout_date || null,
     party_size: payload.party_size,
     special_requests: payload.special_requests || null,
+    reservation_language: payload.reservation_language || business.language || 'fr',
     status: 'pending',
     source: 'online',
   }

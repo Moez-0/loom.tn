@@ -33,8 +33,8 @@
     },
     "hero": {
       "titlePrefix": "Le moteur professionnel pour",
-      "titleAccent": "les réservations et pages vitrines.",
-      "subtitle": "L'infrastructure complète pour les prestataires en Tunisie afin de gérer réservations, équipe et données clients. Créez votre présence en ligne sans complexité.",
+      "titleAccent": "la création, l’hébergement et les réservations.",
+      "subtitle": "Loom vous permet de créer et modifier le site web de votre entreprise, l’héberge pour vous et gère les réservations dans un seul espace. Une infrastructure complète pour les prestataires en Tunisie.",
       "contactSales": "Contact pour accès complet",
       "startTrial": "Essai Gratuit",
       "contactTeam": "Contacter l'équipe Loom",
@@ -149,7 +149,26 @@
       }
     },
     "metrics": {
-      "description": "Suivez les performances de réservation avec des workflows plus clairs, moins de relances manuelles et des confirmations plus rapides."
+      "title": "Les analyses utiles pour les propriétaires",
+      "description": "Mesurez l'impact business : améliorez la conversion, réduisez les absences et augmentez le revenu mensuel avec moins d'effort manuel.",
+      "cards": {
+        "conversionRate": {
+          "label": "Taux de conversion des réservations",
+          "detail": "Plus de visiteurs finalisent une réservation"
+        },
+        "monthlyRevenue": {
+          "label": "Hausse du revenu mensuel",
+          "detail": "Moins de créneaux vides, meilleure utilisation de la capacité"
+        },
+        "noShowRate": {
+          "label": "Réduction des no-shows",
+          "detail": "Les rappels automatiques remplissent votre calendrier"
+        },
+        "opsTime": {
+          "label": "Temps moyen de traitement d'une réservation",
+          "detail": "Workflow rapide de la réservation à la confirmation"
+        }
+      }
     },
     "pricing": {
       "title": "Tarification de nos services",
