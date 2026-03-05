@@ -65,10 +65,11 @@ export async function POST(request: Request) {
     checkout_date: payload.checkout_date || null,
     party_size: payload.party_size,
     special_requests: payload.special_requests || null,
-    reservation_language: payload.reservation_language || business.language || 'fr',
     status: 'pending',
     source: 'online',
   }
+
+  const reservationLanguage = payload.reservation_language || business.language || 'fr'
 
   const { error } = await supabase.from('reservations').insert(reservationPayload)
 
@@ -77,8 +78,8 @@ export async function POST(request: Request) {
   }
 
   await Promise.allSettled([
-    sendBookingConfirmation(reservationPayload, business),
-    sendOwnerAlert(reservationPayload, business),
+    sendBookingConfirmation({ ...reservationPayload, reservation_language: reservationLanguage }, business),
+    sendOwnerAlert({ ...reservationPayload, reservation_language: reservationLanguage }, business),
   ])
 
   return NextResponse.json({ ok: true })
