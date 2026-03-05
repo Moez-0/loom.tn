@@ -231,6 +231,59 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="border-y border-[#1e1e1e] bg-[#0b0b0b] py-16" id="reservation-flow-mobile">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold md:text-4xl">{t('reservationFlow.title')}</h2>
+            <p className="mx-auto mt-3 max-w-3xl text-sm text-[#888888] md:text-base">
+              {t('reservationFlow.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                src: '/reservation_screen_preview.png',
+                alt: t('reservationFlow.cards.step1.title'),
+                title: t('reservationFlow.cards.step1.title'),
+                text: t('reservationFlow.cards.step1.text'),
+              },
+              {
+                src: '/reservation_success_preview.png',
+                alt: t('reservationFlow.cards.step2.title'),
+                title: t('reservationFlow.cards.step2.title'),
+                text: t('reservationFlow.cards.step2.text'),
+              },
+              {
+                src: '/reservation_confirmation_email_preview.png',
+                alt: t('reservationFlow.cards.step3.title'),
+                title: t('reservationFlow.cards.step3.title'),
+                text: t('reservationFlow.cards.step3.text'),
+              },
+            ].map((item) => (
+              <article key={item.src} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <div className="overflow-hidden rounded-lg border border-white/10 bg-[#111111]">
+                  <Image
+                    alt={item.alt}
+                    className="h-auto w-full"
+                    src={item.src}
+                    width={640}
+                    height={1280}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <h3 className="mt-4 text-lg font-bold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#a5a5a5]">{item.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-xl border border-[#0067b0]/30 bg-[#0067b0]/10 p-4 text-center text-sm text-[#cfe9ff]">
+            {t('reservationFlow.note')}
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-[#1e1e1e] bg-[#0b0b0b] py-16">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-10 text-center">

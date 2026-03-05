@@ -123,6 +123,25 @@
         "analytics": "Analytique"
       }
     },
+    "reservationFlow": {
+      "title": "Comment fonctionne le parcours de réservation côté client",
+      "subtitle": "Du choix du créneau sur mobile à la réception des notifications de confirmation, le client suit un parcours simple et rapide.",
+      "cards": {
+        "step1": {
+          "title": "1) Le client choisit le service et l'horaire",
+          "text": "Le formulaire est optimisé mobile et guide le client parmi les services, l'équipe et les créneaux disponibles."
+        },
+        "step2": {
+          "title": "2) La réservation est confirmée immédiatement",
+          "text": "Après l'envoi, le client voit un écran de succès instantané pour confirmer que la demande est bien reçue."
+        },
+        "step3": {
+          "title": "3) Notification automatique envoyée",
+          "text": "Un email de confirmation personnalisé est envoyé automatiquement, pendant que votre équipe reçoit l'alerte propriétaire en parallèle."
+        }
+      },
+      "note": "Ce parcours réduit l'incertitude client et garde le client et l'équipe alignés en temps réel."
+    },
     "widgets": {
       "cookie": {
         "title": "Préférences cookies",

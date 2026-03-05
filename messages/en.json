@@ -123,6 +123,25 @@
         "analytics": "Analytics"
       }
     },
+    "reservationFlow": {
+      "title": "How reservation flow works for your clients",
+      "subtitle": "From choosing a time slot on mobile to receiving confirmation notifications, clients experience a clear and fast booking journey.",
+      "cards": {
+        "step1": {
+          "title": "1) Client picks service and time",
+          "text": "The booking form is mobile-friendly and guides the client through available services, staff, and time slots."
+        },
+        "step2": {
+          "title": "2) Reservation is confirmed instantly",
+          "text": "After submission, clients see a success state immediately so they know the booking request is received."
+        },
+        "step3": {
+          "title": "3) Automatic notification is sent",
+          "text": "A branded confirmation email is delivered automatically, while your team receives the owner alert in parallel."
+        }
+      },
+      "note": "This flow helps reduce client uncertainty and keeps both customer and team aligned in real time."
+    },
     "widgets": {
       "cookie": {
         "title": "Cookie preferences",

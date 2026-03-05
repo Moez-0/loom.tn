@@ -289,7 +289,7 @@ export async function sendOwnerAlert(reservation: EmailReservation, business: Em
   const textMain = theme.text
   const textMuted = withAlpha(theme.text, 0.74)
   const border = withAlpha(theme.text, 0.18)
-  const buttonRadius = theme.buttonStyle === 'pill' ? '9999px' : '12px'
+  const chipRadius = theme.buttonStyle === 'pill' ? '9999px' : '10px'
   const intro = translate(locale, 'ownerIntro', { businessName: business.name })
 
   await resend.emails.send({
@@ -300,13 +300,15 @@ export async function sendOwnerAlert(reservation: EmailReservation, business: Em
       business,
       locale,
       `
-      <div style="display:inline-block;margin:0 0 12px;padding:7px 12px;border-radius:${buttonRadius};background:${theme.brand};color:#ffffff;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;">${escapeHtml(
-        translate(locale, 'ownerSubject')
-      )}</div>
-      <h2 style="margin:0 0 8px;font-size:24px;line-height:1.25;color:${textMain};font-weight:800;">${escapeHtml(
-        translate(locale, 'ownerTitle')
-      )}</h2>
-      <p style="margin:0 0 18px;font-size:14px;color:${textMuted};">${escapeHtml(intro)}</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px;">
+        <h2 style="margin:0;font-size:22px;line-height:1.25;color:${textMain};font-weight:800;">${escapeHtml(
+          translate(locale, 'ownerTitle')
+        )}</h2>
+        <span style="display:inline-block;padding:5px 10px;border-radius:${chipRadius};border:1px solid ${withAlpha(theme.brand, 0.45)};background:${withAlpha(theme.brand, 0.12)};color:${theme.brand};font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;">${escapeHtml(
+          translate(locale, 'ownerSubject')
+        )}</span>
+      </div>
+      <p style="margin:0 0 14px;font-size:14px;color:${textMuted};">${escapeHtml(intro)}</p>
       <div style="border:1px solid ${border};border-radius:14px;padding:14px 16px;background:${theme.surface};">
         <p style="margin:0 0 6px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:${textMuted};">${escapeHtml(
           translate(locale, 'detailsTitle')
@@ -326,6 +328,9 @@ export async function sendOwnerAlert(reservation: EmailReservation, business: Em
           )}
         </table>
       </div>
+      <p style="margin:14px 0 0;font-size:12px;color:${textMuted};">${escapeHtml(
+        translate(locale, 'ownerTitle')
+      )}</p>
     `
     ),
   })
