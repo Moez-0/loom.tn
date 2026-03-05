@@ -86,6 +86,27 @@ function parseDraftConfig(rawDraft: string | undefined): PublicSiteConfig | null
         hours_title: toNullableText(rawEditor.hours_title),
         contact_title: toNullableText(rawEditor.contact_title),
         contact_body: toNullableText(rawEditor.contact_body),
+        architect_show_grid_lines: rawEditor.architect_show_grid_lines === false ? false : true,
+        architect_show_shapes: rawEditor.architect_show_shapes === false ? false : true,
+        architect_motion_intensity:
+          rawEditor.architect_motion_intensity === 'subtle' || rawEditor.architect_motion_intensity === 'high'
+            ? rawEditor.architect_motion_intensity
+            : 'medium',
+        architect_contact_layout: rawEditor.architect_contact_layout === 'stacked' ? 'stacked' : 'split',
+        architect_contact_highlight: toNullableText(rawEditor.architect_contact_highlight),
+        architect_projects_label: toNullableText(rawEditor.architect_projects_label),
+        architect_projects_value: toNullableText(rawEditor.architect_projects_value),
+        architect_years_label: toNullableText(rawEditor.architect_years_label),
+        architect_years_value: toNullableText(rawEditor.architect_years_value),
+        architect_disciplines_label: toNullableText(rawEditor.architect_disciplines_label),
+        architect_disciplines_value: toNullableText(rawEditor.architect_disciplines_value),
+        architect_process_title: toNullableText(rawEditor.architect_process_title),
+        architect_process_step1_title: toNullableText(rawEditor.architect_process_step1_title),
+        architect_process_step1_description: toNullableText(rawEditor.architect_process_step1_description),
+        architect_process_step2_title: toNullableText(rawEditor.architect_process_step2_title),
+        architect_process_step2_description: toNullableText(rawEditor.architect_process_step2_description),
+        architect_process_step3_title: toNullableText(rawEditor.architect_process_step3_title),
+        architect_process_step3_description: toNullableText(rawEditor.architect_process_step3_description),
         footer_note: toNullableText(rawEditor.footer_note),
       },
     }

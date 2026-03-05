@@ -137,6 +137,27 @@ async function updateWebsiteConfig(formData: FormData) {
       hours_title: String(formData.get('hours_title') ?? '').trim() || null,
       contact_title: String(formData.get('contact_title') ?? '').trim() || null,
       contact_body: String(formData.get('contact_body') ?? '').trim() || null,
+      architect_show_grid_lines: formData.get('architect_show_grid_lines') === 'on',
+      architect_show_shapes: formData.get('architect_show_shapes') === 'on',
+      architect_motion_intensity: ((): 'subtle' | 'medium' | 'high' => {
+        const raw = String(formData.get('architect_motion_intensity') ?? 'medium')
+        return raw === 'subtle' || raw === 'high' ? raw : 'medium'
+      })(),
+      architect_contact_layout: String(formData.get('architect_contact_layout') ?? 'split') === 'stacked' ? 'stacked' : 'split',
+      architect_contact_highlight: String(formData.get('architect_contact_highlight') ?? '').trim() || null,
+      architect_projects_label: String(formData.get('architect_projects_label') ?? '').trim() || null,
+      architect_projects_value: String(formData.get('architect_projects_value') ?? '').trim() || null,
+      architect_years_label: String(formData.get('architect_years_label') ?? '').trim() || null,
+      architect_years_value: String(formData.get('architect_years_value') ?? '').trim() || null,
+      architect_disciplines_label: String(formData.get('architect_disciplines_label') ?? '').trim() || null,
+      architect_disciplines_value: String(formData.get('architect_disciplines_value') ?? '').trim() || null,
+      architect_process_title: String(formData.get('architect_process_title') ?? '').trim() || null,
+      architect_process_step1_title: String(formData.get('architect_process_step1_title') ?? '').trim() || null,
+      architect_process_step1_description: String(formData.get('architect_process_step1_description') ?? '').trim() || null,
+      architect_process_step2_title: String(formData.get('architect_process_step2_title') ?? '').trim() || null,
+      architect_process_step2_description: String(formData.get('architect_process_step2_description') ?? '').trim() || null,
+      architect_process_step3_title: String(formData.get('architect_process_step3_title') ?? '').trim() || null,
+      architect_process_step3_description: String(formData.get('architect_process_step3_description') ?? '').trim() || null,
       footer_note: String(formData.get('footer_note') ?? '').trim() || null,
     },
   })
@@ -193,6 +214,7 @@ export default async function DashboardWebsitePage({
   }
 
   const effective = config ?? getDefaultPublicSiteConfig()
+  const isArchitectBusiness = business.type === 'architect'
   const offeringsLabel = tPublic(offeringsLabelKeyForBusinessType(business.type))
   const previewToken = searchParams?.preview || websiteRedirectToken()
   const sectionLabels: Record<PublicSiteSectionKey, string> = {
@@ -431,6 +453,109 @@ export default async function DashboardWebsitePage({
                   <label className="label" htmlFor="contact_body">{tw('contactIntroTextOptional')}</label>
                   <textarea id="contact_body" name="contact_body" className="input min-h-[80px]" defaultValue={effective.editor.contact_body ?? ''} />
                 </div>
+                {isArchitectBusiness ? (
+                  <div className="rounded-md border border-loom-border bg-loom-white p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-loom-muted">{tw('architectExperience')}</p>
+                    <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                      <label className="flex items-center justify-between rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-sm">
+                        <span>{tw('architectShowGridLines')}</span>
+                        <input type="checkbox" name="architect_show_grid_lines" defaultChecked={effective.editor.architect_show_grid_lines} />
+                      </label>
+                      <label className="flex items-center justify-between rounded-md border border-loom-border bg-loom-surface px-3 py-2 text-sm">
+                        <span>{tw('architectShowShapes')}</span>
+                        <input type="checkbox" name="architect_show_shapes" defaultChecked={effective.editor.architect_show_shapes} />
+                      </label>
+                      <div>
+                        <label className="label" htmlFor="architect_motion_intensity">{tw('architectMotionIntensity')}</label>
+                        <select
+                          id="architect_motion_intensity"
+                          name="architect_motion_intensity"
+                          className="input"
+                          defaultValue={effective.editor.architect_motion_intensity}
+                        >
+                          <option value="subtle">{tw('architectMotionSubtle')}</option>
+                          <option value="medium">{tw('architectMotionMedium')}</option>
+                          <option value="high">{tw('architectMotionHigh')}</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_contact_layout">{tw('architectContactLayout')}</label>
+                        <select
+                          id="architect_contact_layout"
+                          name="architect_contact_layout"
+                          className="input"
+                          defaultValue={effective.editor.architect_contact_layout}
+                        >
+                          <option value="split">{tw('architectContactSplit')}</option>
+                          <option value="stacked">{tw('architectContactStacked')}</option>
+                        </select>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="label" htmlFor="architect_contact_highlight">{tw('architectContactHighlight')}</label>
+                        <input
+                          id="architect_contact_highlight"
+                          name="architect_contact_highlight"
+                          className="input"
+                          defaultValue={effective.editor.architect_contact_highlight ?? ''}
+                        />
+                      </div>
+
+                      <div>
+                        <label className="label" htmlFor="architect_projects_label">{tw('architectProjectsLabel')}</label>
+                        <input id="architect_projects_label" name="architect_projects_label" className="input" defaultValue={effective.editor.architect_projects_label ?? ''} />
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_projects_value">{tw('architectProjectsValue')}</label>
+                        <input id="architect_projects_value" name="architect_projects_value" className="input" defaultValue={effective.editor.architect_projects_value ?? ''} />
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_years_label">{tw('architectYearsLabel')}</label>
+                        <input id="architect_years_label" name="architect_years_label" className="input" defaultValue={effective.editor.architect_years_label ?? ''} />
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_years_value">{tw('architectYearsValue')}</label>
+                        <input id="architect_years_value" name="architect_years_value" className="input" defaultValue={effective.editor.architect_years_value ?? ''} />
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_disciplines_label">{tw('architectDisciplinesLabel')}</label>
+                        <input id="architect_disciplines_label" name="architect_disciplines_label" className="input" defaultValue={effective.editor.architect_disciplines_label ?? ''} />
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_disciplines_value">{tw('architectDisciplinesValue')}</label>
+                        <input id="architect_disciplines_value" name="architect_disciplines_value" className="input" defaultValue={effective.editor.architect_disciplines_value ?? ''} />
+                      </div>
+
+                      <div className="sm:col-span-2">
+                        <label className="label" htmlFor="architect_process_title">{tw('architectProcessTitle')}</label>
+                        <input id="architect_process_title" name="architect_process_title" className="input" defaultValue={effective.editor.architect_process_title ?? ''} />
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_process_step1_title">{tw('architectProcessStep1Title')}</label>
+                        <input id="architect_process_step1_title" name="architect_process_step1_title" className="input" defaultValue={effective.editor.architect_process_step1_title ?? ''} />
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_process_step2_title">{tw('architectProcessStep2Title')}</label>
+                        <input id="architect_process_step2_title" name="architect_process_step2_title" className="input" defaultValue={effective.editor.architect_process_step2_title ?? ''} />
+                      </div>
+                      <div>
+                        <label className="label" htmlFor="architect_process_step3_title">{tw('architectProcessStep3Title')}</label>
+                        <input id="architect_process_step3_title" name="architect_process_step3_title" className="input" defaultValue={effective.editor.architect_process_step3_title ?? ''} />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="label" htmlFor="architect_process_step1_description">{tw('architectProcessStep1Description')}</label>
+                        <textarea id="architect_process_step1_description" name="architect_process_step1_description" className="input min-h-[72px]" defaultValue={effective.editor.architect_process_step1_description ?? ''} />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="label" htmlFor="architect_process_step2_description">{tw('architectProcessStep2Description')}</label>
+                        <textarea id="architect_process_step2_description" name="architect_process_step2_description" className="input min-h-[72px]" defaultValue={effective.editor.architect_process_step2_description ?? ''} />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className="label" htmlFor="architect_process_step3_description">{tw('architectProcessStep3Description')}</label>
+                        <textarea id="architect_process_step3_description" name="architect_process_step3_description" className="input min-h-[72px]" defaultValue={effective.editor.architect_process_step3_description ?? ''} />
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
                 <div>
                   <label className="label" htmlFor="footer_note">{tw('footerNoteOptional')}</label>
                   <input id="footer_note" name="footer_note" className="input" defaultValue={effective.editor.footer_note ?? ''} />

@@ -110,6 +110,27 @@ export default function WebsiteLivePreviewSync({ formId, iframeId, slug }: Websi
           hours_title: nullableText(data.get('hours_title')),
           contact_title: nullableText(data.get('contact_title')),
           contact_body: nullableText(data.get('contact_body')),
+          architect_show_grid_lines: data.get('architect_show_grid_lines') === 'on',
+          architect_show_shapes: data.get('architect_show_shapes') === 'on',
+          architect_motion_intensity:
+            data.get('architect_motion_intensity') === 'subtle' || data.get('architect_motion_intensity') === 'high'
+              ? data.get('architect_motion_intensity')
+              : 'medium',
+          architect_contact_layout: data.get('architect_contact_layout') === 'stacked' ? 'stacked' : 'split',
+          architect_contact_highlight: nullableText(data.get('architect_contact_highlight')),
+          architect_projects_label: nullableText(data.get('architect_projects_label')),
+          architect_projects_value: nullableText(data.get('architect_projects_value')),
+          architect_years_label: nullableText(data.get('architect_years_label')),
+          architect_years_value: nullableText(data.get('architect_years_value')),
+          architect_disciplines_label: nullableText(data.get('architect_disciplines_label')),
+          architect_disciplines_value: nullableText(data.get('architect_disciplines_value')),
+          architect_process_title: nullableText(data.get('architect_process_title')),
+          architect_process_step1_title: nullableText(data.get('architect_process_step1_title')),
+          architect_process_step1_description: nullableText(data.get('architect_process_step1_description')),
+          architect_process_step2_title: nullableText(data.get('architect_process_step2_title')),
+          architect_process_step2_description: nullableText(data.get('architect_process_step2_description')),
+          architect_process_step3_title: nullableText(data.get('architect_process_step3_title')),
+          architect_process_step3_description: nullableText(data.get('architect_process_step3_description')),
           footer_note: nullableText(data.get('footer_note')),
         },
       }

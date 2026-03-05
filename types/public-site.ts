@@ -8,6 +8,10 @@ export type PublicSiteButtonStyle = 'rounded' | 'pill'
 
 export type PublicSiteColorPreset = 'neutral' | 'ocean' | 'forest' | 'charcoal'
 
+export type ArchitectMotionIntensity = 'subtle' | 'medium' | 'high'
+
+export type ArchitectContactLayout = 'split' | 'stacked'
+
 export type PublicSiteEditorConfig = {
   theme_preset: PublicSiteThemePreset
   color_preset: PublicSiteColorPreset
@@ -32,6 +36,24 @@ export type PublicSiteEditorConfig = {
   hours_title: string | null
   contact_title: string | null
   contact_body: string | null
+  architect_show_grid_lines: boolean
+  architect_show_shapes: boolean
+  architect_motion_intensity: ArchitectMotionIntensity
+  architect_contact_layout: ArchitectContactLayout
+  architect_contact_highlight: string | null
+  architect_projects_label: string | null
+  architect_projects_value: string | null
+  architect_years_label: string | null
+  architect_years_value: string | null
+  architect_disciplines_label: string | null
+  architect_disciplines_value: string | null
+  architect_process_title: string | null
+  architect_process_step1_title: string | null
+  architect_process_step1_description: string | null
+  architect_process_step2_title: string | null
+  architect_process_step2_description: string | null
+  architect_process_step3_title: string | null
+  architect_process_step3_description: string | null
   footer_note: string | null
 }
 
